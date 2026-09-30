@@ -1,0 +1,50 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { profile, revisions } from '../lib/content';
+import { builtCount, currentStop, stopText } from '../lib/derive';
+import Chips from './Chips.astro';
+interface Props {
+  /** The parts-list rows, which is what "N of M releases built" counts. */
+  projects: CollectionEntry<'projects'>[];
+}
+
+const { projects } = Astro.props;
+const stop = currentStop(revisions);
+const currentIndex = revisions.findIndex((s) => s.current);
+const { built, total } = builtCount(projects, stop);
+
+const stopsForScript = revisions.map((s) => (s.current ? { ...s, ...stopText(s, profile) } : s));
+const json = JSON.stringify(stopsForScript).replace(/</g, '\\u003c');
+---
+
+<div class="scrubber">
+  <div data-scrubber-controls hidden>
+    <div class="scrubber__top">
+      <label for="rev-range">Drag to travel through revisions</label>
+      <span class="scrubber__count"><b data-built>{built} of {total}</b> releases built by v<span data-rev-field="rev">{stop.rev}</span></span>
+    </div>
+    <div class="scrubber__track" style={`--v:${currentIndex}; --stops:${revisions.length}`}>
+      <div class="scrubber__rail"></div>
+      <div class="scrubber__fill"></div>
+      {revisions.map((_, i) => <span class="scrubber__tick" style={`--i:${i}`}></span>)}
+      <input id="rev-range" type="range" min="0" max={revisions.length - 1} step="1" value={currentIndex}
+        aria-valuetext={`Revision ${stop.rev}, ${stop.era}`}>
+    </div>
+    <div class="scrubber__stops" style={`--stops:${revisions.length}`}>
+      {revisions.map((s, i) => (
+        <button type="button" class="scrubber__stop" data-stop={i} style={`--i:${i}`} aria-pressed={s.current === true ? 'true' : 'false'}>
+          <b>v{s.rev}</b><span class="long">{s.era}</span><span class="short">{s.short}</span>
+        </button>
+      ))}
+    </div>
+    <p class="visually-hidden" aria-live="polite" data-rev-live></p>
+  </div>
+
+  <div class="onhand">
+    <span class="label">Parts on hand at rev <span data-rev-field="rev">{stop.rev}</span></span>
+    <Chips stop={stop} />
+  </div>
+</div>
+
+<script type="application/json" id="revisions-data" is:inline set:html={json} />
+<script>import '../scripts/scrubber.ts';</script>

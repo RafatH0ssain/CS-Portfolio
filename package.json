@@ -1,0 +1,27 @@
+{
+  "name": "portfolio",
+  "version": "0.9.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22.12.0" },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "node scripts/check-content.mjs && astro build",
+    "preview": "astro preview",
+    "check:types": "astro check",
+    "check:content": "node scripts/check-content.mjs && node scripts/check-content.mjs --dist",
+    "check:design": "node scripts/check-design.mjs",
+    "check:budget": "node scripts/check-budget.mjs",
+    "check:links": "node scripts/check-links.mjs",
+    "check:external": "node scripts/check-links.mjs --external",
+    "verify": "astro check && npm run build && node scripts/check-content.mjs --dist && npm run check:design && npm run check:budget && npm run check:links",
+    "hooks": "sh scripts/setup-hooks.sh"
+  },
+  "dependencies": {
+    "astro": "^7.3.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "typescript": "^6.0.3"
+  }
+}

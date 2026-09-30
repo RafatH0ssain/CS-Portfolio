@@ -1,0 +1,16 @@
+---
+import { skills } from '../lib/content';
+import { stateClass, type Stop } from '../lib/derive';
+
+interface Props {
+  stop: Stop;
+}
+
+const { stop } = Astro.props;
+---
+
+<ul class="chips" aria-label="Skills">
+  {skills.map((s) => (
+    <li class="chip" data-lvl={s.level} class:list={[stateClass(s.level, stop)]}>{s.name}</li>
+  ))}
+</ul>

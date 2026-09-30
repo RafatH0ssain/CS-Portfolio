@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Name — Software engineer, BCS Dalhousie 2027</title>
+<meta name="description" content="Reference prototype for the Blueprint portfolio. Sample content only.">
+<meta name="theme-color" content="#0F2350">
+<link rel="preload" href="fonts/anybody-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/blueprint.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<p class="proto-banner">Reference prototype. Every name, project, date and number below is sample content, not the owner's.</p>
+
+<div class="sheet">
+  <div class="zones zones--top" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div>
+  <div class="zones zones--left" aria-hidden="true"><span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span>G</span><span>H</span></div>
+
+  <div class="drawing">
+    <header class="masthead">
+      <div class="masthead__id">
+        <a class="masthead__name" href="index.html">Your Name</a>
+        <span class="label">DWG PF-2027-001</span>
+      </div>
+      <nav class="masthead__nav" aria-label="Main">
+        <a href="#parts">Parts</a>
+        <a href="#parts-list">Parts list</a>
+        <a href="#revisions">Revisions</a>
+        <a class="btn btn--primary" href="#approval">Email me</a>
+      </nav>
+      <details class="masthead__menu">
+        <summary aria-label="Menu">
+          <svg width="22" height="14" viewBox="0 0 22 14" aria-hidden="true"><line x1="1" y1="1" x2="21" y2="1" stroke="#E8EEF7" stroke-width="2"/><line x1="1" y1="7" x2="21" y2="7" stroke="#E8EEF7" stroke-width="2"/><line x1="1" y1="13" x2="13" y2="13" stroke="#FFB547" stroke-width="2"/></svg>
+        </summary>
+        <nav aria-label="Main">
+          <a href="#parts">Parts</a>
+          <a href="#parts-list">Parts list</a>
+          <a href="#revisions">Revisions</a>
+          <a href="#approval">Email me</a>
+        </nav>
+      </details>
+    </header>
+
+    <main id="main">
+      <!-- ======================= SHEET 1: HERO ======================= -->
+      <section class="hero" aria-labelledby="name">
+        <div class="hero__grid">
+          <div class="hero__intro">
+            <div class="stamp-row">
+              <span class="rev-badge">REV <span data-rev-field="rev">0.9</span></span>
+              <span class="stamp-row__era" data-rev-field="era">Year 4</span>
+              <span class="stamp-row__rule" aria-hidden="true"></span>
+              <span class="label" data-rev-field="status">Release candidate</span>
+            </div>
+            <div class="name-box">
+              <h1 id="name" class="name" style="--chars: 4"><span>Your</span><span>Name</span></h1>
+            </div>
+            <div class="hero__copy">
+              <p class="t-head" data-rev-field="head">Release candidate.</p>
+              <p class="hero__bio" data-rev-field="bio">Generalist engineer with a lean toward ML and product. Nine releases, three in production, open to new grad roles across CS.</p>
+            </div>
+            <div class="btn-row">
+              <a class="btn btn--primary" href="#approval">Email me</a>
+              <a class="btn btn--outline" href="resume.pdf">Résumé (PDF)</a>
+            </div>
+          </div>
+
+          <div class="fig-box">
+            <figure class="fig">
+              <figcaption class="fig__caption">
+                <span class="label">Fig. 1 — The system, as built at rev <span data-rev-field="rev">0.9</span></span>
+                <span class="label">Scale 1:1</span>
+              </figcaption>
+
+              <!-- Wide drawing (container wider than 520px) -->
+              <svg class="fig__wide" viewBox="0 0 600 420" role="img" aria-labelledby="fig1-desc">
+                <desc id="fig1-desc">Block diagram of skills: a core connected to languages, algorithms, systems, web, machine learning and product modules. It grows as the revision increases.</desc>
+                <g data-max-lvl="1">
+                  <line class="d-guide" x1="20" y1="210" x2="580" y2="210"/>
+                  <line class="d-guide" x1="310" y1="10" x2="310" y2="410"/>
+                  <circle class="d-guide" cx="310" cy="210" r="132"/>
+                </g>
+                <g data-only-lvl="0" class="is-off">
+                  <path class="d-sketch" d="M236 168 C270 162 350 166 388 163 C392 196 394 232 390 262 C340 266 280 264 232 267 C229 232 231 198 236 168 Z"/>
+                  <text class="d-text" x="312" y="221" style="font-size:16px">HELLO, WORLD</text>
+                  <text class="d-text d-text--dim" x="312" y="296" style="font-size:11px">SKETCH ONLY — NOT TO SCALE</text>
+                </g>
+                <g class="mod" data-lvl="1">
+                  <path class="d-line" d="M230 185 H205 V82 H180"/>
+                  <rect class="d-box" x="40" y="50" width="140" height="64"/>
+                  <text class="d-text" x="110" y="87">LANGUAGES</text>
+                  <path class="d-line" d="M230 235 H205 V338 H180"/>
+                  <rect class="d-box" x="40" y="306" width="140" height="64"/>
+                  <text class="d-text" x="110" y="343">ALGORITHMS</text>
+                </g>
+                <g class="mod" data-lvl="2">
+                  <path class="d-line" d="M390 185 H405 V82 H420"/>
+                  <rect class="d-box" x="420" y="50" width="140" height="64"/>
+                  <text class="d-text" x="490" y="87">SYSTEMS</text>
+                  <path class="d-line" d="M390 235 H405 V338 H420"/>
+                  <rect class="d-box" x="420" y="306" width="140" height="64"/>
+                  <text class="d-text" x="490" y="343">WEB</text>
+                </g>
+                <g class="mod" data-lvl="3">
+                  <path class="d-line" d="M310 160 V92"/>
+                  <rect class="d-box" x="250" y="40" width="120" height="52"/>
+                  <text class="d-text" x="310" y="71">ML</text>
+                  <path class="d-line" d="M310 260 V328"/>
+                  <rect class="d-box" x="250" y="328" width="120" height="52"/>
+                  <text class="d-text" x="310" y="359">PRODUCT</text>
+                </g>
+                <g data-lvl="1">
+                  <rect class="d-core" x="230" y="160" width="160" height="100"/>
+                  <rect class="d-port" x="226" y="181" width="8" height="8"/>
+                  <rect class="d-port" x="226" y="231" width="8" height="8"/>
+                  <rect class="d-port" x="386" y="181" width="8" height="8"/>
+                  <rect class="d-port" x="386" y="231" width="8" height="8"/>
+                  <rect class="d-port" x="306" y="156" width="8" height="8"/>
+                  <rect class="d-port" x="306" y="256" width="8" height="8"/>
+                  <text class="d-text" x="310" y="204" style="font-size:13px;font-weight:800;letter-spacing:.14em">CORE</text>
+                  <text class="d-text d-text--amber" x="310" y="228" style="font-size:13px">REV <tspan data-rev-field="rev">0.9</tspan></text>
+                </g>
+                <g data-lvl="4">
+                  <line class="d-thin" x1="40" y1="22" x2="560" y2="22"/>
+                  <line class="d-thin" x1="40" y1="14" x2="40" y2="46"/>
+                  <line class="d-thin" x1="560" y1="14" x2="560" y2="46"/>
+                  <line class="d-tick" x1="35" y1="27" x2="45" y2="17"/>
+                  <line class="d-tick" x1="555" y1="27" x2="565" y2="17"/>
+                  <text class="d-text" x="300" y="15" style="font-size:11px">9 RELEASES</text>
+                  <line class="d-thin" x1="588" y1="50" x2="588" y2="370"/>
+                  <line class="d-thin" x1="564" y1="50" x2="596" y2="50"/>
+                  <line class="d-thin" x1="564" y1="370" x2="596" y2="370"/>
+                  <line class="d-tick" x1="583" y1="55" x2="593" y2="45"/>
+                  <line class="d-tick" x1="583" y1="375" x2="593" y2="365"/>
+                  <text class="d-text" x="600" y="210" transform="rotate(90 600 210)" style="font-size:11px">4 YEARS ± 0</text>
+                  <circle class="d-dot" cx="206" cy="82" r="3"/>
+                  <circle class="d-dot" cx="404" cy="338" r="3"/>
+                  <text class="d-text d-text--dim d-text--left" x="20" y="412" style="font-size:10px">NOTES: 1. ALL DIMENSIONS IN YEARS.  2. DO NOT SCALE.  3. CAFFEINE NOT SHOWN.</text>
+                </g>
+                <g data-locked-only transform="rotate(-9 310 210)">
+                  <rect class="d-stamp" x="160" y="174" width="300" height="72"/>
+                  <rect class="d-stamp-inner" x="166" y="180" width="288" height="60"/>
+                  <text class="d-text d-text--amber" x="310" y="213" style="font-size:24px;font-weight:800;letter-spacing:.05em">RELEASE PENDING</text>
+                  <text class="d-text d-text--amber" x="310" y="231" style="font-size:11px;letter-spacing:.16em">SHIPS MAY 2027</text>
+                </g>
+              </svg>
+
+              <!-- Narrow drawing (container 520px or less): larger type, simpler layout -->
+              <svg class="fig__narrow" viewBox="0 0 340 344" role="img" aria-labelledby="fig1n-desc">
+                <desc id="fig1n-desc">Block diagram of skills that grows as the revision increases.</desc>
+                <g data-max-lvl="1">
+                  <line class="d-guide" x1="6" y1="165" x2="334" y2="165"/>
+                  <line class="d-guide" x1="170" y1="16" x2="170" y2="320"/>
+                  <circle class="d-guide" cx="170" cy="165" r="92"/>
+                </g>
+                <g data-only-lvl="0" class="is-off">
+                  <path class="d-sketch" d="M124 132 C150 127 196 131 218 128 C221 150 222 176 219 200 C190 204 150 202 121 204 C118 180 120 154 124 132 Z"/>
+                  <text class="d-text" x="170" y="170" style="font-size:13px">HELLO, WORLD</text>
+                </g>
+                <g class="mod" data-lvl="1">
+                  <path class="d-line" d="M120 150 H115 V58 H110"/>
+                  <rect class="d-box" x="8" y="34" width="102" height="48"/>
+                  <text class="d-text" x="59" y="62" style="font-size:11px;letter-spacing:.06em">LANGUAGES</text>
+                  <path class="d-line" d="M120 180 H115 V272 H110"/>
+                  <rect class="d-box" x="8" y="248" width="102" height="48"/>
+                  <text class="d-text" x="59" y="276" style="font-size:11px;letter-spacing:.06em">ALGORITHMS</text>
+                </g>
+                <g class="mod" data-lvl="2">
+                  <path class="d-line" d="M220 150 H225 V58 H230"/>
+                  <rect class="d-box" x="230" y="34" width="102" height="48"/>
+                  <text class="d-text" x="281" y="62" style="font-size:11px;letter-spacing:.06em">SYSTEMS</text>
+                  <path class="d-line" d="M220 180 H225 V272 H230"/>
+                  <rect class="d-box" x="230" y="248" width="102" height="48"/>
+                  <text class="d-text" x="281" y="276" style="font-size:11px;letter-spacing:.06em">WEB</text>
+                </g>
+                <g class="mod" data-lvl="3">
+                  <path class="d-line" d="M170 130 V88"/>
+                  <rect class="d-box" x="128" y="44" width="84" height="44"/>
+                  <text class="d-text" x="170" y="70" style="font-size:11px">ML</text>
+                  <path class="d-line" d="M170 200 V242"/>
+                  <rect class="d-box" x="128" y="242" width="84" height="44"/>
+                  <text class="d-text" x="170" y="268" style="font-size:11px">PRODUCT</text>
+                </g>
+                <g data-lvl="1">
+                  <rect class="d-core" x="120" y="130" width="100" height="70"/>
+                  <text class="d-text" x="170" y="161" style="font-size:12px;font-weight:800;letter-spacing:.14em">CORE</text>
+                  <text class="d-text d-text--amber" x="170" y="182" style="font-size:12px">REV <tspan data-rev-field="rev">0.9</tspan></text>
+                </g>
+                <g data-lvl="4">
+                  <line class="d-thin" x1="8" y1="14" x2="332" y2="14"/>
+                  <line class="d-tick" x1="4" y1="18" x2="12" y2="10"/>
+                  <line class="d-tick" x1="328" y1="18" x2="336" y2="10"/>
+                  <rect x="120" y="5" width="100" height="16" fill="#0F2350"/>
+                  <text class="d-text" x="170" y="17" style="font-size:10px">9 RELEASES</text>
+                  <text class="d-text d-text--dim d-text--left" x="6" y="336" style="font-size:9px">NOTES: DIMENSIONS IN YEARS. CAFFEINE NOT SHOWN.</text>
+                </g>
+                <g data-locked-only transform="rotate(-9 170 165)">
+                  <rect class="d-stamp" x="52" y="136" width="236" height="58"/>
+                  <text class="d-text d-text--amber" x="170" y="166" style="font-size:20px;font-weight:800;letter-spacing:.05em">RELEASE PENDING</text>
+                  <text class="d-text d-text--amber" x="170" y="183" style="font-size:10px;letter-spacing:.16em">SHIPS MAY 2027</text>
+                </g>
+              </svg>
+
+              <div class="tblock">
+                <div class="tblock__cell"><span class="label">Drawn by</span><span class="tblock__value">Your Name</span></div>
+                <div class="tblock__cell"><span class="label">Program</span><span class="tblock__value">BCS, Dalhousie</span></div>
+                <div class="tblock__cell"><span class="label">Ships</span><span class="tblock__value">May 2027</span></div>
+                <div class="tblock__cell"><span class="label">Rev</span><span class="tblock__value tblock__value--amber" data-rev-field="rev">0.9</span></div>
+                <div class="tblock__cell"><span class="label">Date</span><span class="tblock__value" data-rev-field="date">2026-09</span></div>
+                <div class="tblock__cell"><span class="label">Sheet</span><span class="tblock__value">1 of 5</span></div>
+              </div>
+            </figure>
+          </div>
+        </div>
+
+        <div class="scrubber">
+          <div data-scrubber-controls hidden>
+            <div class="scrubber__top">
+              <label for="rev-range">Drag to travel through revisions</label>
+              <span class="scrubber__count"><b data-built>9 of 9</b> releases built by v<span data-rev-field="rev">0.9</span></span>
+            </div>
+            <div class="scrubber__track" style="--v:4; --stops:6">
+              <div class="scrubber__rail"></div>
+              <div class="scrubber__fill"></div>
+              <span class="scrubber__tick" style="--i:0"></span>
+              <span class="scrubber__tick" style="--i:1"></span>
+              <span class="scrubber__tick" style="--i:2"></span>
+              <span class="scrubber__tick" style="--i:3"></span>
+              <span class="scrubber__tick" style="--i:4"></span>
+              <span class="scrubber__tick" style="--i:5"></span>
+              <input id="rev-range" type="range" min="0" max="5" step="1" value="4" aria-valuetext="Revision 0.9, Year 4">
+            </div>
+            <div class="scrubber__stops" style="--stops:6">
+              <button type="button" class="scrubber__stop" data-stop="0" style="--i:0" aria-pressed="false"><b>v0.1</b><span class="long">Year 1</span><span class="short">Yr 1</span></button>
+              <button type="button" class="scrubber__stop" data-stop="1" style="--i:1" aria-pressed="false"><b>v0.3</b><span class="long">Year 2</span><span class="short">Yr 2</span></button>
+              <button type="button" class="scrubber__stop" data-stop="2" style="--i:2" aria-pressed="false"><b>v0.5</b><span class="long">Year 3</span><span class="short">Yr 3</span></button>
+              <button type="button" class="scrubber__stop" data-stop="3" style="--i:3" aria-pressed="false"><b>v0.7</b><span class="long">Co-op</span><span class="short">Co-op</span></button>
+              <button type="button" class="scrubber__stop" data-stop="4" style="--i:4" aria-pressed="true"><b>v0.9</b><span class="long">Year 4</span><span class="short">Yr 4</span></button>
+              <button type="button" class="scrubber__stop" data-stop="5" style="--i:5" aria-pressed="false"><b>v1.0</b><span class="long">May 2027</span><span class="short">2027</span></button>
+            </div>
+            <p class="visually-hidden" aria-live="polite" data-rev-live></p>
+          </div>
+          <div class="onhand">
+            <span class="label">Parts on hand at rev <span data-rev-field="rev">0.9</span></span>
+            <ul class="chips" aria-label="Skills">
+              <li class="chip" data-lvl="0">Python</li>
+              <li class="chip" data-lvl="1">Java</li>
+              <li class="chip" data-lvl="1">C</li>
+              <li class="chip" data-lvl="1">SQL</li>
+              <li class="chip" data-lvl="1">Git</li>
+              <li class="chip" data-lvl="2">Linux</li>
+              <li class="chip" data-lvl="2">TypeScript</li>
+              <li class="chip" data-lvl="2">React</li>
+              <li class="chip" data-lvl="2">Go</li>
+              <li class="chip" data-lvl="3">Docker</li>
+              <li class="chip" data-lvl="3">PostgreSQL</li>
+              <li class="chip" data-lvl="3">PyTorch</li>
+              <li class="chip" data-lvl="3">AWS</li>
+              <li class="chip" data-lvl="4">Kubernetes</li>
+              <li class="chip" data-lvl="4">FastAPI</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="gen-notes">
+          <span class="label">General notes — the short version</span>
+          <ol>
+            <li><span class="gnotes__n">1.</span><p><strong>Builds backend services in Python and Go</strong> on a co-op team, after a term shipping a React product to a few hundred students.</p></li>
+            <li><span class="gnotes__n">2.</span><p><strong>Does machine learning research</strong> for an Honours thesis, and forecasts transit delays as a side project that beat its baseline.</p></li>
+            <li><span class="gnotes__n">3.</span><p><strong>Leads a student society</strong> and teaches: web development labs as a TA, and a weekend workshop for first-year students.</p></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ======================= SHEET 2: PARTS ======================= -->
+      <section class="section" id="parts" aria-labelledby="parts-h">
+        <div class="section__head">
+          <div class="section__title">
+            <span class="label">Sheet 2 — Exploded view</span>
+            <h2 id="parts-h" class="t-sheet">Parts</h2>
+          </div>
+          <p class="section__intro">Four featured releases, pulled apart. Hover, tab or tap a part to lift it out and read its spec.</p>
+        </div>
+
+        <div class="parts" data-parts style="--n:4">
+          <div class="parts__stage">
+            <div class="plate-wrap" data-part="3" data-lvl="1" style="--i:3">
+              <div class="plate-base"></div>
+              <div class="plate" aria-hidden="true">
+                <div class="plate__fig"><svg viewBox="0 0 148 104"><rect x="10" y="40" width="30" height="22" fill="none" stroke="#E8EEF7" stroke-width="1.5"/><rect x="59" y="40" width="30" height="22" fill="none" stroke="#E8EEF7" stroke-width="1.5"/><rect x="108" y="40" width="30" height="22" fill="none" stroke="#FFB547" stroke-width="1.5"/><path d="M40 51 H59 M89 51 H108" stroke="#E8EEF7" stroke-width="1.5"/></svg></div>
+                <span class="plate__balloon">4</span>
+                <span class="plate__no">PART 04</span>
+                <span class="plate__title">Unix shell</span>
+                <span class="plate__ver">v0.3.0</span>
+              </div>
+            </div>
+            <div class="plate-wrap" data-part="2" data-lvl="2" style="--i:2">
+              <div class="plate-base"></div>
+              <div class="plate" aria-hidden="true">
+                <div class="plate__fig"><svg viewBox="0 0 148 104"><circle cx="74" cy="26" r="11" fill="none" stroke="#FFB547" stroke-width="1.5"/><circle cx="36" cy="78" r="11" fill="none" stroke="#E8EEF7" stroke-width="1.5"/><circle cx="112" cy="78" r="11" fill="none" stroke="#E8EEF7" stroke-width="1.5"/><path d="M68 35 L42 69 M80 35 L106 69 M47 78 H101" stroke="#E8EEF7" stroke-width="1.5" stroke-dasharray="4 3"/></svg></div>
+                <span class="plate__balloon">3</span>
+                <span class="plate__no">PART 03</span>
+                <span class="plate__title">Replicated KV store</span>
+                <span class="plate__ver">v1.0.0</span>
+              </div>
+            </div>
+            <div class="plate-wrap" data-part="1" data-lvl="3" style="--i:1">
+              <div class="plate-base"></div>
+              <div class="plate" aria-hidden="true">
+                <div class="plate__fig"><svg viewBox="0 0 148 104"><path d="M12 12 V90 H138" fill="none" stroke="#B4C3DE"/><polyline points="14,70 32,62 50,66 68,44 86,52 104,34 122,40 136,28" fill="none" stroke="#E8EEF7" stroke-width="1.5"/><polyline points="14,74 32,68 50,62 68,52 86,48 104,40 122,36 136,32" fill="none" stroke="#FFB547" stroke-width="1.5" stroke-dasharray="4 3"/></svg></div>
+                <span class="plate__balloon">2</span>
+                <span class="plate__no">PART 02</span>
+                <span class="plate__title">Delay forecaster</span>
+                <span class="plate__ver">v1.3.0</span>
+              </div>
+            </div>
+            <div class="plate-wrap" data-part="0" data-lvl="2" style="--i:0">
+              <div class="plate-base"></div>
+              <div class="plate" aria-hidden="true">
+                <div class="plate__fig"><svg viewBox="0 0 148 104"><line x1="0" y1="16" x2="148" y2="16" stroke="#7189BA"/><rect x="10" y="26" width="26" height="14" fill="#E8EEF7"/><rect x="10" y="44" width="26" height="14" fill="none" stroke="#E8EEF7"/><rect x="43" y="26" width="26" height="14" fill="none" stroke="#E8EEF7"/><rect x="43" y="44" width="26" height="14" fill="#FFB547"/><rect x="76" y="26" width="26" height="14" fill="none" stroke="#E8EEF7"/><rect x="76" y="44" width="26" height="14" fill="#E8EEF7"/><rect x="109" y="26" width="26" height="14" fill="#E8EEF7"/><rect x="109" y="44" width="26" height="14" fill="none" stroke="#E8EEF7"/><rect x="10" y="68" width="125" height="22" fill="none" stroke="#FFB547" stroke-dasharray="3 3"/></svg></div>
+                <span class="plate__balloon">1</span>
+                <span class="plate__no">PART 01</span>
+                <span class="plate__title">Course planner</span>
+                <span class="plate__ver">v2.1.0</span>
+              </div>
+            </div>
+
+            <svg class="parts__axis" aria-hidden="true" preserveAspectRatio="none" viewBox="0 0 12 100"><line x1="6" y1="0" x2="6" y2="100" vector-effect="non-scaling-stroke"/></svg>
+
+            <a class="part-label" href="part.html" data-part="0" data-lvl="2" style="--i:0">
+              <span class="part-label__leader"></span><span class="balloon">1</span>
+              <span class="part-label__text"><span class="part-label__title">Course planner</span><span class="part-label__note"><span class="note-built">v2.1.0 — Product</span><span class="note-future">Not built at v<span data-rev-field="rev">0.9</span></span></span></span>
+            </a>
+            <a class="part-label" href="part.html" data-part="1" data-lvl="3" style="--i:1">
+              <span class="part-label__leader"></span><span class="balloon">2</span>
+              <span class="part-label__text"><span class="part-label__title">Transit delay forecaster</span><span class="part-label__note"><span class="note-built">v1.3.0 — Machine learning</span><span class="note-future">Not built at v<span data-rev-field="rev">0.9</span></span></span></span>
+            </a>
+            <a class="part-label" href="part.html" data-part="2" data-lvl="2" style="--i:2">
+              <span class="part-label__leader"></span><span class="balloon">3</span>
+              <span class="part-label__text"><span class="part-label__title">Replicated key-value store</span><span class="part-label__note"><span class="note-built">v1.0.0 — Distributed systems</span><span class="note-future">Not built at v<span data-rev-field="rev">0.9</span></span></span></span>
+            </a>
+            <a class="part-label" href="part.html" data-part="3" data-lvl="1" style="--i:3">
+              <span class="part-label__leader"></span><span class="balloon">4</span>
+              <span class="part-label__text"><span class="part-label__title">Unix shell</span><span class="part-label__note"><span class="note-built">v0.3.0 — Systems</span><span class="note-future">Not built at v<span data-rev-field="rev">0.9</span></span></span></span>
+            </a>
+          </div>
+
+          <div>
+            <div class="parts__picker" role="group" aria-label="Choose a part">
+              <button type="button" data-pick="0" data-lvl="2" aria-pressed="true">1</button>
+              <button type="button" data-pick="1" data-lvl="3" aria-pressed="false">2</button>
+              <button type="button" data-pick="2" data-lvl="2" aria-pressed="false">3</button>
+              <button type="button" data-pick="3" data-lvl="1" aria-pressed="false">4</button>
+            </div>
+
+            <section class="spec" data-part="0" data-lvl="2" aria-live="polite">
+              <div class="spec__bar"><span class="label label--amber">Part 01 — Detail</span><span class="label">v2.1.0</span></div>
+              <div class="spec__body">
+                <h3 class="t-part">Course planner</h3>
+                <p class="t-body t-dim">Builds a four-year schedule around prerequisites, term offerings and co-op terms.</p>
+                <p class="spec__notice note-future">Not yet built at rev <span data-rev-field="rev">0.9</span>.</p>
+                <ul class="rl" style="border-top:1px solid var(--line);padding-top:14px">
+                  <li><span class="rl__m rl__m--add" role="img" aria-label="Added">+</span><span class="rl__t">Generates a valid plan for any CS stream in under 300 ms.</span></li>
+                  <li><span class="rl__m rl__m--chg" role="img" aria-label="Changed">~</span><span class="rl__t">Replaced brute-force search with constraint propagation once plans took 4 s.</span></li>
+                  <li><span class="rl__m rl__m--iss" role="img" aria-label="Known issue">!</span><span class="rl__t">Offerings are scraped, so a timetable change breaks plans until the next sync.</span></li>
+                </ul>
+                <div style="border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:4px">
+                  <span class="label" style="font-size:10px">Material</span>
+                  <span style="font-size:15px;font-weight:600">TypeScript, React, PostgreSQL</span>
+                </div>
+                <a class="btn btn--primary" href="part.html" style="align-self:flex-start">Open release notes</a>
+              </div>
+            </section>
+            <section class="spec" data-part="1" data-lvl="3" aria-live="polite">
+              <div class="spec__bar"><span class="label label--amber">Part 02 — Detail</span><span class="label">v1.3.0</span></div>
+              <div class="spec__body">
+                <h3 class="t-part">Transit delay forecaster</h3>
+                <p class="t-body t-dim">Predicts bus delays from the live GTFS feed and the weather.</p>
+                <p class="spec__notice note-future">Not yet built at rev <span data-rev-field="rev">0.9</span>.</p>
+                <ul class="rl" style="border-top:1px solid var(--line);padding-top:14px">
+                  <li><span class="rl__m rl__m--add" role="img" aria-label="Added">+</span><span class="rl__t">Beats the schedule-only baseline by 38% MAE on held-out weeks.</span></li>
+                  <li><span class="rl__m rl__m--chg" role="img" aria-label="Changed">~</span><span class="rl__t">Swapped an LSTM for gradient-boosted trees: faster, and easier to explain.</span></li>
+                  <li><span class="rl__m rl__m--iss" role="img" aria-label="Known issue">!</span><span class="rl__t">Accuracy falls apart in snowstorms; the training data has too few of them.</span></li>
+                </ul>
+                <div style="border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:4px">
+                  <span class="label" style="font-size:10px">Material</span>
+                  <span style="font-size:15px;font-weight:600">Python, PyTorch, FastAPI</span>
+                </div>
+                <a class="btn btn--primary" href="part.html" style="align-self:flex-start">Open release notes</a>
+              </div>
+            </section>
+            <section class="spec" data-part="2" data-lvl="2" aria-live="polite">
+              <div class="spec__bar"><span class="label label--amber">Part 03 — Detail</span><span class="label">v1.0.0</span></div>
+              <div class="spec__body">
+                <h3 class="t-part">Replicated key-value store</h3>
+                <p class="t-body t-dim">A three-node store that keeps serving when any single node dies.</p>
+                <p class="spec__notice note-future">Not yet built at rev <span data-rev-field="rev">0.9</span>.</p>
+                <ul class="rl" style="border-top:1px solid var(--line);padding-top:14px">
+                  <li><span class="rl__m rl__m--add" role="img" aria-label="Added">+</span><span class="rl__t">Passes a partition-and-restart test suite modelled on Jepsen.</span></li>
+                  <li><span class="rl__m rl__m--chg" role="img" aria-label="Changed">~</span><span class="rl__t">Moved from hand-rolled leader election to Raft after a split-brain bug.</span></li>
+                  <li><span class="rl__m rl__m--iss" role="img" aria-label="Known issue">!</span><span class="rl__t">Snapshots block writes for about 200 ms; compaction is naive.</span></li>
+                </ul>
+                <div style="border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:4px">
+                  <span class="label" style="font-size:10px">Material</span>
+                  <span style="font-size:15px;font-weight:600">Go, gRPC</span>
+                </div>
+                <a class="btn btn--primary" href="part.html" style="align-self:flex-start">Open release notes</a>
+              </div>
+            </section>
+            <section class="spec" data-part="3" data-lvl="1" aria-live="polite">
+              <div class="spec__bar"><span class="label label--amber">Part 04 — Detail</span><span class="label">v0.3.0</span></div>
+              <div class="spec__body">
+                <h3 class="t-part">Unix shell</h3>
+                <p class="t-body t-dim">An interactive shell with pipes, redirection and job control.</p>
+                <p class="spec__notice note-future">Not yet built at rev <span data-rev-field="rev">0.9</span>.</p>
+                <ul class="rl" style="border-top:1px solid var(--line);padding-top:14px">
+                  <li><span class="rl__m rl__m--add" role="img" aria-label="Added">+</span><span class="rl__t">Handles pipelines of any length and background jobs.</span></li>
+                  <li><span class="rl__m rl__m--chg" role="img" aria-label="Changed">~</span><span class="rl__t">Rewrote the parser as a real tokenizer after quoting bugs piled up.</span></li>
+                  <li><span class="rl__m rl__m--iss" role="img" aria-label="Known issue">!</span><span class="rl__t">No scripting support; it is an interactive shell only.</span></li>
+                </ul>
+                <div style="border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:4px">
+                  <span class="label" style="font-size:10px">Material</span>
+                  <span style="font-size:15px;font-weight:600">C, POSIX</span>
+                </div>
+                <a class="btn btn--primary" href="part.html" style="align-self:flex-start">Open release notes</a>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================= SHEET 3: PARTS LIST ======================= -->
+      <section class="section" id="parts-list" aria-labelledby="bom-h">
+        <div class="section__head">
+          <div class="section__title">
+            <span class="label">Sheet 3 — Bill of materials</span>
+            <h2 id="bom-h" class="t-sheet">Parts list</h2>
+          </div>
+          <p class="section__intro">Every release, not only the featured ones. Rows dim for anything not yet built at the revision picked above.</p>
+        </div>
+        <table class="table">
+          <thead><tr><th scope="col" style="width:70px">Item</th><th scope="col">Part</th><th scope="col" style="width:120px">Rev</th><th scope="col" style="width:300px">Material</th><th scope="col" style="width:140px">Type</th><th scope="col" style="width:160px">Status</th></tr></thead>
+          <tbody>
+            <tr data-release data-lvl="2"><td class="num">01</td><td><a class="strong" href="part.html">Course planner</a></td><td class="num">v2.1.0</td><td>TypeScript, React, PostgreSQL</td><td>Product</td><td class="st"><span class="st-released">Released</span><span class="st-new">New in v<span data-rev-field="rev">0.9</span></span><span class="st-future">Not yet</span></td></tr>
+            <tr data-release data-lvl="3"><td class="num">02</td><td><a class="strong" href="part.html">Transit delay forecaster</a></td><td class="num">v1.3.0</td><td>Python, PyTorch, FastAPI</td><td>ML</td><td class="st"><span class="st-released">Released</span><span class="st-new">New in v<span data-rev-field="rev">0.9</span></span><span class="st-future">Not yet</span></td></tr>
+            <tr data-release data-lvl="2"><td class="num">03</td><td><a class="strong" href="part.html">Replicated key-value store</a></td><td class="num">v1.0.0</td><td>Go, gRPC</td><td>Systems</td><td class="st"><span class="st-released">Released</span><span class="st-new">New in v<span data-rev-field="rev">0.9</span></span><span class="st-future">Not yet</span></td></tr>
+            <tr data-release data-lvl="1"><td class="num">04</td><td><a class="strong" href="part.html">Unix shell</a></td><td class="num">v0.3.0</td><td>C, POSIX</td><td>Systems</td><td class="st"><span class="st-released">Released</span><span class="st-new">New in v<span data-rev-field="rev">0.9</span></span><span class="st-future">Not yet</span></td></tr>
+            <tr data-release data-lvl="3"><td class="num">05</td><td><a class="strong" href="part.html">Accessibility checker</a></td><td class="num">v0.2.0</td><td>TypeScript, axe-core</td><td>Product</td><td class="st"><span class="st-released">Released</span><span class="st-new">New in v<span data-rev-field="rev">0.9</span></span><span class="st-future">Not yet</span></td></tr>
+            <tr data-release data-lvl="2"><td class="num">06</td><td><a class="strong" href="part.html">Study-group matcher</a></td><td class="num">v1.1.0</td><td>Python, Flask, SQLite</td><td>Web</td><td class="st"><span class="st-released">Released</span><span class="st-new">New in v<span data-rev-field="rev">0.9</span></span><span class="st-future">Not yet</span></td></tr>
+            <tr data-release data-lvl="4"><td class="num">07</td><td><a class="strong" href="part.html">Caption model fine-tune</a></td><td class="num">v0.4.0</td><td>Python, PyTorch</td><td>ML</td><td class="st"><span class="st-released">Released</span><span class="st-new">New in v<span data-rev-field="rev">0.9</span></span><span class="st-future">Not yet</span></td></tr>
+            <tr data-release data-lvl="4"><td class="num">08</td><td><a class="strong" href="part.html">This portfolio</a></td><td class="num">v0.9.0-rc</td><td>Astro, CSS</td><td>Web</td><td class="st"><span class="st-released">Released</span><span class="st-new">New in v<span data-rev-field="rev">0.9</span></span><span class="st-future">Not yet</span></td></tr>
+            <tr data-release data-lvl="0"><td class="num">09</td><td><a class="strong" href="part.html">Tic-tac-toe with minimax</a></td><td class="num">v0.1.0</td><td>Python</td><td>Algorithms</td><td class="st"><span class="st-released">Released</span><span class="st-new">New in v<span data-rev-field="rev">0.9</span></span><span class="st-future">Not yet</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ======================= SHEET 4: REVISIONS ======================= -->
+      <section class="section" id="revisions" aria-labelledby="rev-h">
+        <div class="section__head">
+          <div class="section__title">
+            <span class="label">Sheet 4 — Revision history</span>
+            <h2 id="rev-h" class="t-sheet">Revisions</h2>
+          </div>
+          <p class="section__intro">Work, research, leadership, teaching and awards. Every change to the drawing, with who can sign it off.</p>
+        </div>
+        <table class="table">
+          <thead><tr><th scope="col" style="width:70px">Rev</th><th scope="col" style="width:170px">Date</th><th scope="col">Description</th><th scope="col" style="width:220px">Approved by</th></tr></thead>
+          <tbody>
+            <tr class="group"><th colspan="4" scope="colgroup">Software development</th></tr>
+            <tr><td><span class="rev-letter rev-letter--latest">F</span></td><td class="num">2026 — present</td><td><div class="desc"><span class="strong">Software developer co-op, [Company]</span><span>Moved a nightly billing job from cron to a queue with retries; failed runs went from weekly to none.</span><details class="more"><summary>3 more outcomes</summary><ul class="bullets"><li>Wrote integration tests for the audit export, catching two data-loss bugs before release.</li><li>Cut the service's cold start from 9 s to 2 s by trimming its dependency tree.</li><li>Paired with QA on the release checklist the team now uses.</li></ul></details></div></td><td>[Manager], reference on request</td></tr>
+            <tr><td><span class="rev-letter">D</span></td><td class="num">2025</td><td><div class="desc"><span class="strong">Developer, [Campus office]</span><span>Replaced a manual scheduling spreadsheet with a small Java tool staff still use.</span></div></td><td>[Supervisor]</td></tr>
+            <tr class="group"><th colspan="4" scope="colgroup">Research</th></tr>
+            <tr><td><span class="rev-letter">E</span></td><td class="num">2025 — present</td><td><div class="desc"><span class="strong">Honours thesis, [Lab name]</span><span>[One line: the question, the method, and where it stands.]</span></div></td><td>[Supervisor]</td></tr>
+            <tr class="group"><th colspan="4" scope="colgroup">Leadership and teaching</th></tr>
+            <tr><td><span class="rev-letter">C</span></td><td class="num">2025 — present</td><td><div class="desc"><span class="strong">Vice-president, [Student society] <span class="tag">Promoted twice</span></span><span>Previously events lead, then treasurer.</span></div></td><td>Society executive</td></tr>
+            <tr><td><span class="rev-letter">B</span></td><td class="num">2025</td><td><div class="desc"><span class="strong">Teaching assistant, Dalhousie University</span><span>Ran weekly web development labs and marked assignments.</span></div></td><td>[Course instructor]</td></tr>
+            <tr class="group"><th colspan="4" scope="colgroup">Hackathons and awards</th></tr>
+            <tr><td><span class="rev-letter">A</span></td><td class="num">2024</td><td><div class="desc"><span class="strong">[Hackathon], 2nd place</span><span>Built an accessibility checker for course sites in 36 hours with three teammates.</span></div></td><td>Judging panel</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ======================= SHEET 5: CERTIFICATIONS (optional) ======================= -->
+      <section class="section" id="certifications" aria-labelledby="cert-h">
+        <div class="section__head">
+          <div class="section__title">
+            <span class="label">Sheet 5 — Certificates of conformance</span>
+            <h2 id="cert-h" class="t-sheet">Certifications</h2>
+          </div>
+          <p class="section__intro">Each one links to the issuer's own verification page.</p>
+        </div>
+        <table class="table">
+          <thead><tr><th scope="col" style="width:70px">No.</th><th scope="col">Certification</th><th scope="col" style="width:220px">Issuer</th><th scope="col" style="width:90px">Year</th><th scope="col" style="width:160px">Verify</th></tr></thead>
+          <tbody>
+            <tr><td class="num">C1</td><td><span class="strong">[Cloud certification]</span></td><td>[Issuer]</td><td class="num">2025</td><td><a href="#">Verify on [site]</a></td></tr>
+            <tr><td class="num">C2</td><td><span class="strong">[Machine learning specialization]</span></td><td>[Issuer]</td><td class="num">2026</td><td><a href="#">Verify on [site]</a></td></tr>
+          </tbody>
+        </table>
+        <div class="inspect">
+          <div class="inspect__head"><span class="label label--amber">Inspection report</span><span class="label">Optional — shown only if the owner asks</span></div>
+          <div class="inspect__grid">
+            <div class="tblock__cell"><span class="label">Standing</span><span class="tblock__value">[Dean's list, every term]</span></div>
+            <div class="tblock__cell"><span class="label">Awards</span><span class="tblock__value">[Entrance scholarship]; [Faculty award]</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================= APPROVAL + CONTACT ======================= -->
+      <section class="section" id="approval" aria-labelledby="appr-h">
+        <div class="approval">
+          <div class="approval__main">
+            <span class="label label--amber">Awaiting approval</span>
+            <h2 id="appr-h" class="t-sheet">Sign off on this release.</h2>
+            <p class="t-lead">Open to new grad roles across CS, starting May 2027. A useful first message names the company, the role and the problem you want solved.</p>
+            <form class="form" action="https://formspree.io/f/FORMSPREE_ID" method="POST" data-enhance>
+              <div class="form__field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
+              <div class="form__field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+              <div class="form__field form__field--wide"><label for="f-role">Company and role</label><input id="f-role" name="role" autocomplete="organization"></div>
+              <div class="form__field form__field--wide"><label for="f-msg">Message</label><textarea id="f-msg" name="message" required></textarea></div>
+              <div class="form__trap" aria-hidden="true"><label for="f-gotcha">Leave this empty</label><input id="f-gotcha" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+              <div class="form__foot">
+                <button class="btn btn--primary" type="submit">Send message</button>
+                <p class="form__status" role="status" data-form-status></p>
+              </div>
+            </form>
+          </div>
+          <div class="approval__side">
+            <div class="approval__cell"><span class="label">Issued for</span><span style="font-size:16px;font-weight:700">New grad roles, any field</span></div>
+            <div class="approval__cell"><span class="label">Email</span><a href="mailto:you@example.com" style="font-size:16px;font-weight:700">you@example.com</a></div>
+            <div class="approval__cell" style="flex-direction:row;gap:22px"><a href="#" style="color:var(--chalk);font-weight:600">GitHub</a><a href="#" style="color:var(--chalk);font-weight:600">LinkedIn</a><a href="resume.pdf" style="color:var(--chalk);font-weight:600">Résumé</a></div>
+            <div class="approval__cell">
+              <span class="label">Approved by</span>
+              <div style="display:flex;flex-direction:column;gap:6px"><span class="signature"></span><span style="font-size:12px;color:var(--dim)">Your signature here</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="sheet-foot"><span class="label">Updated 2026-09</span><span class="label">DWG PF-2027-001 — Sheet 5 of 5</span></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="zones zones--right" aria-hidden="true"><span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span>G</span><span>H</span></div>
+  <div class="zones zones--bottom" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div>
+</div>
+
+<script type="application/json" id="revisions-data">
+[
+  {"rev":"0.1","era":"Year 1","date":"2023-09","status":"Draft","level":0,"head":"First commit.","bio":"Wrote a program that did something useful, then broke it three new ways. Learned the compiler is usually right."},
+  {"rev":"0.3","era":"Year 2","date":"2024-09","status":"Draft","level":1,"head":"Data structures, then everything.","bio":"Algorithms, a second language, and the first project somebody else actually used."},
+  {"rev":"0.5","era":"Year 3","date":"2025-01","status":"In review","level":2,"head":"Systems, and a first team.","bio":"Operating systems, networks and a four-person project with a real deadline. Learned to read other people's code."},
+  {"rev":"0.7","era":"Co-op","date":"2025-09","status":"In review","level":3,"head":"Shipped to production.","bio":"A co-op term on a real team: code review, on-call, and a feature real users now depend on."},
+  {"rev":"0.9","era":"Year 4","date":"2026-09","status":"Release candidate","level":4,"current":true,"head":"Release candidate.","bio":"Generalist engineer with a lean toward ML and product. Nine releases, three in production, open to new grad roles across CS."},
+  {"rev":"1.0","era":"May 2027","date":"2027-05","status":"Release pending","level":4,"locked":true,"head":"Not yet released.","bio":"Scheduled for May 2027. Like every release date it is a plan, not a promise, but this one comes with a degree."}
+]
+</script>
+<script src="assets/scrubber.js" defer></script>
+<script src="assets/parts.js" defer></script>
+<script src="assets/form.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { revisions } from '../lib/content';
+import { currentStop, featuredProjects, numberedProjects, stateClass } from '../lib/derive';
+import Schematic from './Schematic.astro';
+import SheetFoot from './SheetFoot.astro';
+
+interface Props {
+  projects: CollectionEntry<'projects'>[];
+  /** Total sheets on the home page, for the foot. */
+  of: number;
+}
+
+const { projects, of } = Astro.props;
+const stop = currentStop(revisions);
+
+// Part numbers come from `order`, the same source the parts list uses.
+const partNoById = new Map(numberedProjects(projects).map((q) => [q.id, q.partNo]));
+
+// Top plate first in profile.featured; position i is 0 for the top plate.
+const parts = featuredProjects(projects).map((p, i) => ({
+  p,
+  i,
+  partNo: partNoById.get(p.id) ?? String(i + 1).padStart(2, '0'),
+}));
+
+const n = parts.length;
+---
+
+<section class="section" id="parts" aria-labelledby="parts-h">
+  <div class="section__head">
+    <div class="section__title">
+      <span class="label">Sheet 2 — Exploded view</span>
+      <h2 id="parts-h" class="t-sheet">Parts</h2>
+    </div>
+    <p class="section__intro">{n === 4 ? 'Four' : String(n)} featured releases, pulled apart. Hover, tab or tap a part to lift it out and read its spec.</p>
+  </div>
+
+  <div class="parts" data-parts style={`--n:${n}`}>
+    <div class="parts__stage">
+      {/* Bottom plate first, so upper plates paint over lower ones. */}
+      {[...parts].reverse().map(({ p, i, partNo }) => (
+        <div class="plate-wrap" data-part={i} data-lvl={p.data.level} style={`--i:${i}`}>
+          <div class="plate-base"></div>
+          <div class="plate" aria-hidden="true">
+            <div class="plate__fig">
+              <Schematic name={p.data.figure.schematic} size="plate" />
+            </div>
+            <span class="plate__balloon">{i + 1}</span>
+            <span class="plate__no">PART {partNo}</span>
+            <span class="plate__title">{p.data.plateTitle ?? p.data.title}</span>
+            <span class="plate__ver">{p.data.version}</span>
+          </div>
+        </div>
+      ))}
+
+      <svg class="parts__axis" aria-hidden="true" preserveAspectRatio="none" viewBox="0 0 12 100"><line x1="6" y1="0" x2="6" y2="100" vector-effect="non-scaling-stroke"/></svg>
+
+      {parts.map(({ p, i }) => (
+        <a class="part-label" href={`/parts/${p.id}/`} data-part={i} data-lvl={p.data.level} style={`--i:${i}`}>
+          <span class="part-label__leader"></span>
+          <span class="balloon">{i + 1}</span>
+          <span class="part-label__text">
+            <span class="part-label__title">{p.data.title}</span>
+            <span class="part-label__note">
+              <span class="note-built">{p.data.version} — {p.data.kind}</span>
+              <span class="note-future">Not built at v<span data-rev-field="rev">{stop.rev}</span></span>
+            </span>
+          </span>
+        </a>
+      ))}
+    </div>
+
+    <div>
+      <div class="parts__picker" role="group" aria-label="Choose a part">
+        {parts.map(({ p, i }) => (
+          <button type="button" data-pick={i} data-lvl={p.data.level} aria-pressed={i === 0 ? 'true' : 'false'}>{i + 1}</button>
+        ))}
+      </div>
+
+      {parts.map(({ p, i, partNo }) => (
+        <section class="spec" data-part={i} data-lvl={p.data.level} class:list={[stateClass(p.data.level, stop)]} aria-live="polite">
+          <div class="spec__bar">
+            <span class="label label--amber">Part {partNo} — Detail</span>
+            <span class="label">{p.data.version}</span>
+          </div>
+          <div class="spec__body">
+            <h3 class="t-part">{p.data.title}</h3>
+            <p class="t-body t-dim">{p.data.summary}</p>
+            <p class="spec__notice note-future">Not yet built at rev <span data-rev-field="rev">{stop.rev}</span>.</p>
+            <ul class="rl rule-top">
+              {p.data.added.map((line) => (
+                <li><span class="rl__m rl__m--add" role="img" aria-label="Added">+</span><span class="rl__t">{line}</span></li>
+              ))}
+              {p.data.changed.map((line) => (
+                <li><span class="rl__m rl__m--chg" role="img" aria-label="Changed">~</span><span class="rl__t">{line}</span></li>
+              ))}
+              {p.data.issues.map((line) => (
+                <li><span class="rl__m rl__m--iss" role="img" aria-label="Known issue">!</span><span class="rl__t">{line}</span></li>
+              ))}
+            </ul>
+            <div class="stack stack--tight rule-top rule-top--tight">
+              <span class="label label--tiny">Material</span>
+              <span class="cell-value">{p.data.stack.join(', ')}</span>
+            </div>
+            <a class="btn btn--primary self-start" href={`/parts/${p.id}/`}>Open release notes</a>
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
+
+  <SheetFoot left="Sheet 2 — Exploded view" n={2} of={of} />
+</section>
+
+<script>import '../scripts/parts.ts';</script>

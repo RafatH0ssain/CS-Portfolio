@@ -1,0 +1,15 @@
+---
+import { profile } from '../lib/content';
+---
+
+<div class="gen-notes">
+  <span class="label">General notes — the short version</span>
+  <ol>
+    {profile.shortVersion.map((note, i) => (
+      <li>
+        <span class="gnotes__n">{i + 1}.</span>
+        <p><strong>{note.lead}</strong> {note.rest}</p>
+      </li>
+    ))}
+  </ol>
+</div>

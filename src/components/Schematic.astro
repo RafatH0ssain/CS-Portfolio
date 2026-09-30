@@ -1,0 +1,197 @@
+---
+/**
+ * The four drawn schematics. `plate` is the small 148x104 version that sits on
+ * an exploded plate; `sheet` is the 820x480 version used as FIG. 3.1 on a part
+ * sheet when there is no real screenshot. Colours are the palette tokens.
+ */
+export type SchematicName = 'grid' | 'chart' | 'nodes' | 'pipeline';
+
+interface Props {
+  name: SchematicName;
+  size: 'plate' | 'sheet';
+}
+
+const { name, size } = Astro.props;
+const plate = size === 'plate';
+---
+
+{plate && name === 'grid' && (
+  <svg viewBox="0 0 148 104" aria-hidden="true">
+    <line x1="0" y1="16" x2="148" y2="16" stroke="#7189BA"/>
+    <rect x="10" y="26" width="26" height="14" fill="#E8EEF7"/>
+    <rect x="10" y="44" width="26" height="14" fill="none" stroke="#E8EEF7"/>
+    <rect x="43" y="26" width="26" height="14" fill="none" stroke="#E8EEF7"/>
+    <rect x="43" y="44" width="26" height="14" fill="#FFB547"/>
+    <rect x="76" y="26" width="26" height="14" fill="none" stroke="#E8EEF7"/>
+    <rect x="76" y="44" width="26" height="14" fill="#E8EEF7"/>
+    <rect x="109" y="26" width="26" height="14" fill="#E8EEF7"/>
+    <rect x="109" y="44" width="26" height="14" fill="none" stroke="#E8EEF7"/>
+    <rect x="10" y="68" width="125" height="22" fill="none" stroke="#FFB547" stroke-dasharray="3 3"/>
+  </svg>
+)}
+
+{plate && name === 'chart' && (
+  <svg viewBox="0 0 148 104" aria-hidden="true">
+    <path d="M12 12 V90 H138" fill="none" stroke="#B4C3DE"/>
+    <polyline points="14,70 32,62 50,66 68,44 86,52 104,34 122,40 136,28" fill="none" stroke="#E8EEF7" stroke-width="1.5"/>
+    <polyline points="14,74 32,68 50,62 68,52 86,48 104,40 122,36 136,32" fill="none" stroke="#FFB547" stroke-width="1.5" stroke-dasharray="4 3"/>
+  </svg>
+)}
+
+{plate && name === 'nodes' && (
+  <svg viewBox="0 0 148 104" aria-hidden="true">
+    <circle cx="74" cy="26" r="11" fill="none" stroke="#FFB547" stroke-width="1.5"/>
+    <circle cx="36" cy="78" r="11" fill="none" stroke="#E8EEF7" stroke-width="1.5"/>
+    <circle cx="112" cy="78" r="11" fill="none" stroke="#E8EEF7" stroke-width="1.5"/>
+    <path d="M68 35 L42 69 M80 35 L106 69 M47 78 H101" stroke="#E8EEF7" stroke-width="1.5" stroke-dasharray="4 3"/>
+  </svg>
+)}
+
+{plate && name === 'pipeline' && (
+  <svg viewBox="0 0 148 104" aria-hidden="true">
+    <rect x="10" y="40" width="30" height="22" fill="none" stroke="#E8EEF7" stroke-width="1.5"/>
+    <rect x="59" y="40" width="30" height="22" fill="none" stroke="#E8EEF7" stroke-width="1.5"/>
+    <rect x="108" y="40" width="30" height="22" fill="none" stroke="#FFB547" stroke-width="1.5"/>
+    <path d="M40 51 H59 M89 51 H108" stroke="#E8EEF7" stroke-width="1.5"/>
+  </svg>
+)}
+
+{!plate && name === 'grid' && (
+  <svg viewBox="0 0 820 480" role="img" aria-labelledby="fig31-grid-desc">
+    <desc id="fig31-grid-desc">Schematic of a grid of cells laid out in columns, with one cell outlined as the conflict and a status badge showing the last sync.</desc>
+    <rect x="0" y="0" width="820" height="44" fill="#16306A"/>
+    <line x1="0" y1="44" x2="820" y2="44" stroke="#7189BA"/>
+    <rect x="20" y="15" width="120" height="14" fill="#E8EEF7"/>
+    <rect x="640" y="12" width="160" height="20" fill="none" stroke="#7189BA"/>
+    <rect x="20" y="64" width="160" height="396" fill="none" stroke="#7189BA"/>
+    <rect x="36" y="82" width="100" height="10" fill="#B4C3DE"/>
+    <rect x="36" y="108" width="128" height="26" fill="none" stroke="#E8EEF7"/>
+    <rect x="36" y="146" width="128" height="26" fill="none" stroke="#E8EEF7"/>
+    <rect x="36" y="184" width="128" height="26" fill="#E8EEF7"/>
+    <rect x="36" y="258" width="14" height="14" fill="#FFB547"/>
+    <rect x="58" y="260" width="90" height="10" fill="#7189BA"/>
+    <rect x="36" y="284" width="14" height="14" fill="none" stroke="#E8EEF7"/>
+    <rect x="58" y="286" width="72" height="10" fill="#7189BA"/>
+    <g class="d-text d-text--dim" style="font-size:11px">
+      <text x="252" y="80">COLUMN 1</text><text x="400" y="80">COLUMN 2</text>
+      <text x="548" y="80">COLUMN 3</text><text x="696" y="80">COLUMN 4</text>
+    </g>
+    <g fill="#16306A" stroke="#E8EEF7">
+      <rect x="190" y="92" width="124" height="34"/><rect x="190" y="132" width="124" height="34"/>
+      <rect x="190" y="172" width="124" height="34"/><rect x="190" y="252" width="124" height="34"/>
+      <rect x="190" y="292" width="124" height="34"/>
+      <rect x="338" y="92" width="124" height="34"/><rect x="338" y="172" width="124" height="34"/>
+      <rect x="338" y="252" width="124" height="34"/><rect x="338" y="292" width="124" height="34"/>
+      <rect x="486" y="252" width="124" height="34"/><rect x="486" y="292" width="124" height="34"/>
+      <rect x="634" y="92" width="124" height="34"/><rect x="634" y="132" width="124" height="34"/>
+      <rect x="634" y="252" width="124" height="34"/>
+    </g>
+    <rect x="338" y="132" width="124" height="34" fill="none" stroke="#FFB547" stroke-width="2" stroke-dasharray="5 3"/>
+    <rect x="486" y="92" width="124" height="114" fill="none" stroke="#B4C3DE" stroke-dasharray="3 3"/>
+    <text class="d-text d-text--dim" x="548" y="154" style="font-size:11px">SPAN 3</text>
+    <path d="M314 149 H338" stroke="#FFB547" stroke-width="1.5"/>
+    <line x1="190" y1="236" x2="760" y2="236" stroke="#7189BA" stroke-dasharray="2 4"/>
+    <rect x="190" y="360" width="568" height="80" fill="none" stroke="#7189BA"/>
+    <rect x="206" y="378" width="220" height="10" fill="#B4C3DE"/>
+    <rect x="206" y="398" width="340" height="10" fill="#7189BA"/>
+    <rect x="206" y="418" width="280" height="10" fill="#7189BA"/>
+    <rect x="640" y="436" width="118" height="22" fill="none" stroke="#FFB547"/>
+    <text class="d-text d-text--amber" x="699" y="451" style="font-size:10px">SYNCED 2D AGO</text>
+  </svg>
+)}
+
+{!plate && name === 'chart' && (
+  <svg viewBox="0 0 820 480" role="img" aria-labelledby="fig31-chart-desc">
+    <desc id="fig31-chart-desc">Schematic of a line chart: an actual series in chalk and a dashed amber forecast, with axes, a legend and a readout panel.</desc>
+    <rect x="0" y="0" width="820" height="44" fill="#16306A"/>
+    <line x1="0" y1="44" x2="820" y2="44" stroke="#7189BA"/>
+    <rect x="20" y="15" width="120" height="14" fill="#E8EEF7"/>
+    <rect x="640" y="12" width="160" height="20" fill="none" stroke="#7189BA"/>
+    <line x1="80" y1="80" x2="80" y2="440" stroke="#7189BA"/>
+    <line x1="80" y1="440" x2="780" y2="440" stroke="#7189BA"/>
+    <g class="d-text d-text--dim" style="font-size:10px">
+      <text x="60" y="86" text-anchor="end">HIGH</text>
+      <text x="60" y="444" text-anchor="end">LOW</text>
+      <text x="80" y="458">T0</text><text x="290" y="458">T1</text>
+      <text x="500" y="458">T2</text><text x="720" y="458">T3</text>
+    </g>
+    <polyline points="90,360 140,320 190,344 240,272 290,300 340,232 390,268 440,180" fill="none" stroke="#E8EEF7" stroke-width="1.5"/>
+    <polyline points="440,180 500,214 560,160 620,196 680,152 740,178" fill="none" stroke="#FFB547" stroke-width="1.5" stroke-dasharray="6 4"/>
+    <line x1="440" y1="80" x2="440" y2="440" stroke="#7189BA" stroke-dasharray="2 4"/>
+    <circle cx="440" cy="180" r="4" fill="#FFB547"/>
+    <text class="d-text d-text--amber" x="450" y="118" style="font-size:11px">FORECAST STARTS</text>
+    <rect x="90" y="96" width="150" height="40" fill="none" stroke="#7189BA"/>
+    <rect x="104" y="110" width="60" height="10" fill="#E8EEF7"/>
+    <rect x="104" y="126" width="100" height="4" fill="#7189BA"/>
+    <rect x="560" y="330" width="220" height="110" fill="none" stroke="#7189BA"/>
+    <rect x="576" y="348" width="80" height="10" fill="#B4C3DE"/>
+    <rect x="576" y="368" width="188" height="4" fill="#7189BA"/>
+    <rect x="576" y="382" width="160" height="4" fill="#7189BA"/>
+    <rect x="576" y="396" width="176" height="4" fill="#7189BA"/>
+    <text class="d-text d-text--dim" x="576" y="428" style="font-size:10px">READOUT</text>
+  </svg>
+)}
+
+{!plate && name === 'nodes' && (
+  <svg viewBox="0 0 820 480" role="img" aria-labelledby="fig31-nodes-desc">
+    <desc id="fig31-nodes-desc">Schematic of three connected nodes: an amber core, two chalk satellites, a store below, and dashed links between them.</desc>
+    <rect x="0" y="0" width="820" height="44" fill="#16306A"/>
+    <line x1="0" y1="44" x2="820" y2="44" stroke="#7189BA"/>
+    <rect x="20" y="15" width="120" height="14" fill="#E8EEF7"/>
+    <rect x="640" y="12" width="160" height="20" fill="none" stroke="#7189BA"/>
+    <circle cx="410" cy="170" r="56" fill="#16306A" stroke="#FFB547" stroke-width="2"/>
+    <circle cx="170" cy="330" r="44" fill="none" stroke="#E8EEF7" stroke-width="1.5"/>
+    <circle cx="650" cy="330" r="44" fill="none" stroke="#E8EEF7" stroke-width="1.5"/>
+    <rect x="330" y="360" width="160" height="60" fill="none" stroke="#E8EEF7" stroke-width="1.5"/>
+    <path d="M372 208 L206 292 M448 208 L614 292 M196 374 H624" stroke="#E8EEF7" stroke-width="1.5" stroke-dasharray="6 4"/>
+    <path d="M366 226 L414 360 M454 226 L406 360" stroke="#7189BA" stroke-width="1" stroke-dasharray="2 5"/>
+    <text class="d-text" x="410" y="166" style="font-size:13px;font-weight:800;letter-spacing:.14em">CORE</text>
+    <text class="d-text d-text--amber" x="410" y="188" style="font-size:11px">COORDINATOR</text>
+    <text class="d-text" x="170" y="334" style="font-size:11px">NODE A</text>
+    <text class="d-text" x="650" y="334" style="font-size:11px">NODE B</text>
+    <text class="d-text d-text--dim" x="410" y="396" style="font-size:11px">STORE</text>
+    <rect x="330" y="360" width="160" height="60" fill="none" stroke="#FFB547" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <g stroke="#FFB547" stroke-width="1.5">
+      <line x1="410" y1="114" x2="352" y2="72"/>
+      <line x1="214" y1="330" x2="160" y2="288"/>
+      <line x1="490" y1="390" x2="546" y2="428"/>
+    </g>
+    <g fill="#0F2350" stroke="#FFB547" stroke-width="1.5">
+      <circle cx="342" cy="66" r="14"/><circle cx="150" cy="282" r="14"/><circle cx="556" cy="434" r="14"/>
+    </g>
+    <g class="d-text d-text--amber" style="font-size:13px;font-weight:800">
+      <text x="342" y="71">1</text><text x="150" y="287">2</text><text x="556" y="439">3</text>
+    </g>
+  </svg>
+)}
+
+{!plate && name === 'pipeline' && (
+  <svg viewBox="0 0 820 480" role="img" aria-labelledby="fig31-pipeline-desc">
+    <desc id="fig31-pipeline-desc">Schematic of a three-stage pipeline: intake, processing and output, with an amber output stage, a queue beneath and a log panel below.</desc>
+    <rect x="0" y="0" width="820" height="44" fill="#16306A"/>
+    <line x1="0" y1="44" x2="820" y2="44" stroke="#7189BA"/>
+    <rect x="20" y="15" width="120" height="14" fill="#E8EEF7"/>
+    <rect x="640" y="12" width="160" height="20" fill="none" stroke="#7189BA"/>
+    <rect x="60" y="130" width="200" height="120" fill="#16306A" stroke="#E8EEF7" stroke-width="1.5"/>
+    <rect x="310" y="130" width="200" height="120" fill="#16306A" stroke="#E8EEF7" stroke-width="1.5"/>
+    <rect x="560" y="130" width="200" height="120" fill="#16306A" stroke="#FFB547" stroke-width="2"/>
+    <text class="d-text" x="160" y="184" style="font-size:13px;font-weight:800;letter-spacing:.14em">INTAKE</text>
+    <text class="d-text d-text--dim" x="160" y="212" style="font-size:11px">VALIDATE</text>
+    <text class="d-text" x="410" y="184" style="font-size:13px;font-weight:800;letter-spacing:.14em">PROCESS</text>
+    <text class="d-text d-text--dim" x="410" y="212" style="font-size:11px">TRANSFORM</text>
+    <text class="d-text" x="660" y="184" style="font-size:13px;font-weight:800;letter-spacing:.14em">OUTPUT</text>
+    <text class="d-text d-text--amber" x="660" y="212" style="font-size:11px">PUBLISH</text>
+    <path d="M260 190 H310 M510 190 H560" stroke="#E8EEF7" stroke-width="1.5"/>
+    <path d="M298 182 L310 190 L298 198 M548 182 L560 190 L548 198" fill="none" stroke="#E8EEF7" stroke-width="1.5"/>
+    <rect x="60" y="300" width="700" height="50" fill="none" stroke="#7189BA" stroke-dasharray="4 4"/>
+    <text class="d-text d-text--dim" x="76" y="330" style="font-size:11px">QUEUE</text>
+    <rect x="180" y="316" width="80" height="18" fill="#E8EEF7"/>
+    <rect x="272" y="316" width="80" height="18" fill="none" stroke="#E8EEF7"/>
+    <rect x="364" y="316" width="80" height="18" fill="#FFB547"/>
+    <path d="M160 250 V300 M410 250 V300 M660 250 V300" stroke="#7189BA" stroke-width="1" stroke-dasharray="2 5"/>
+    <rect x="60" y="380" width="700" height="60" fill="none" stroke="#7189BA"/>
+    <rect x="76" y="396" width="120" height="10" fill="#B4C3DE"/>
+    <rect x="76" y="416" width="420" height="4" fill="#7189BA"/>
+    <text class="d-text d-text--dim" x="620" y="416" style="font-size:10px">LOG</text>
+  </svg>
+)}

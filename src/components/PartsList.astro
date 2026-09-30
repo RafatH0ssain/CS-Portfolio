@@ -1,0 +1,57 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { revisions } from '../lib/content';
+import { currentStop, numberedProjects, stateClass } from '../lib/derive';
+import SheetFoot from './SheetFoot.astro';
+
+interface Props {
+  projects: CollectionEntry<'projects'>[];
+  n: number;
+  of: number;
+}
+
+const { projects, n, of } = Astro.props;
+const stop = currentStop(revisions);
+const rows = numberedProjects(projects);
+---
+
+<section class="section" id="parts-list" aria-labelledby="bom-h">
+  <div class="section__head">
+    <div class="section__title">
+      <span class="label">Sheet 3 — Bill of materials</span>
+      <h2 id="bom-h" class="t-sheet">Parts list</h2>
+    </div>
+    <p class="section__intro">Every release, not only the featured ones. Rows dim for anything not yet built at the revision picked above.</p>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col" class="w-70">Item</th>
+        <th scope="col">Part</th>
+        <th scope="col" class="w-120">Rev</th>
+        <th scope="col" class="w-300">Material</th>
+        <th scope="col" class="w-140">Type</th>
+        <th scope="col" class="w-160">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((p) => (
+        <tr data-release data-lvl={p.data.level} class:list={[stateClass(p.data.level, stop)]}>
+          <td class="num">{p.partNo}</td>
+          <td><a class="strong" href={`/parts/${p.id}/`}>{p.data.title}</a></td>
+          <td class="num">{p.data.version}</td>
+          <td>{p.data.stack.join(', ')}</td>
+          <td>{p.data.kind}</td>
+          <td class="st">
+            <span class="st-released">Released</span>
+            <span class="st-new">New in v<span data-rev-field="rev">{stop.rev}</span></span>
+            <span class="st-future">Not yet</span>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+
+  <SheetFoot left="Sheet 3 — Parts list" n={n} of={of} />
+</section>

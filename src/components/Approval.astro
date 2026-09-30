@@ -1,0 +1,71 @@
+---
+import { profile } from '../lib/content';
+import SheetFoot from './SheetFoot.astro';
+
+interface Props {
+  n: number;
+  of: number;
+}
+
+const { n, of } = Astro.props;
+const action = `https://formspree.io/f/${profile.formspreeId ?? 'FORMSPREE_ID'}`;
+
+const profileLinks = [
+  { label: 'GitHub', href: profile.links.github },
+  ...(profile.links.linkedin ? [{ label: 'LinkedIn', href: profile.links.linkedin }] : []),
+  { label: 'Résumé', href: profile.links.resume },
+];
+---
+
+<section class="section" id="approval" aria-labelledby="appr-h">
+  <div class="approval">
+    <div class="approval__main">
+      <span class="label label--amber">Awaiting approval</span>
+      <h2 id="appr-h" class="t-sheet">Sign off on this release.</h2>
+      <p class="t-lead">Open to {profile.openTo.toLowerCase()}, starting {profile.shipsOn}. A useful first message names the company, the role and the problem you want solved.</p>
+
+      <form class="form" action={action} method="POST" data-enhance>
+        <div class="form__field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
+        <div class="form__field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="form__field form__field--wide"><label for="f-role">Company and role</label><input id="f-role" name="role" autocomplete="organization"></div>
+        <div class="form__field form__field--wide"><label for="f-msg">Message</label><textarea id="f-msg" name="message" required></textarea></div>
+        <div class="form__trap" aria-hidden="true"><label for="f-gotcha">Leave this empty</label><input id="f-gotcha" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+        <div class="form__foot">
+          <button class="btn btn--primary" type="submit">Send message</button>
+          <p class="form__status" role="status" data-form-status></p>
+        </div>
+      </form>
+    </div>
+
+    <div class="approval__side">
+      <div class="approval__cell">
+        <span class="label">Issued for</span>
+        <span class="cell-value--lead">{profile.openTo}</span>
+      </div>
+      <div class="approval__cell">
+        <span class="label">Email</span>
+        <a class="cell-value--lead" href={`mailto:${profile.email}`}>{profile.email}</a>
+      </div>
+      {profile.location && (
+        <div class="approval__cell">
+          <span class="label">Based in</span>
+          <span class="cell-value--lead">{profile.location}</span>
+        </div>
+      )}
+      <div class="approval__cell row">
+        {profileLinks.map((l) => <a class="link-plain" href={l.href}>{l.label}</a>)}
+      </div>
+      <div class="approval__cell">
+        <span class="label">Approved by</span>
+        <div class="stack stack--tight">
+          <span class="signature"></span>
+          <span class="cell-note">Your signature here</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <SheetFoot n={n} of={of} />
+</section>
+
+<script>import '../scripts/form.ts';</script>

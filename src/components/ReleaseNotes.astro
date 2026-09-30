@@ -1,0 +1,37 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const d = project.data;
+
+const columns = [
+  { key: 'added', glyph: '+', cls: 'rl__m--add', aria: 'Added', heading: 'Added' },
+  { key: 'changed', glyph: '~', cls: 'rl__m--chg', aria: 'Changed', heading: 'Changed' },
+  { key: 'issues', glyph: '!', cls: 'rl__m--iss', aria: 'Known issue', heading: 'Known issues' },
+] as const;
+---
+
+<section class="section" aria-labelledby="rn-h">
+  <h2 id="rn-h" class="t-sheet t-sheet--sub">Release notes</h2>
+  <div class="notes3">
+    {columns
+      .filter((c) => d[c.key].length > 0)
+      .map((c) => (
+        <div>
+          <h3 class="t-sub">
+            <span class:list={['rl__m', c.cls]} aria-hidden="true">{c.glyph}</span>
+            {c.heading}
+          </h3>
+          <ul class="rl">
+            {d[c.key].map((line) => (
+              <li><span class:list={['rl__m', c.cls]} role="img" aria-label={c.aria}>{c.glyph}</span><span class="rl__t">{line}</span></li>
+            ))}
+          </ul>
+        </div>
+      ))}
+  </div>
+</section>

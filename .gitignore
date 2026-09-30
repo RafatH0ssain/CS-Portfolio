@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+.wrangler/
+.env
+.env.*
+.dev.vars
+.DS_Store
+*.log
+# Obsidian vaults are private and never belong in this repo
+.obsidian/

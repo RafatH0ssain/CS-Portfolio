@@ -1,0 +1,32 @@
+{
+  "name": { "first": "Rafat", "last": "Hossain" },
+  "email": "rafat.click.hossain@gmail.com",
+  "location": "Halifax, NS",
+  "links": {
+    "github": "https://github.com/RafatH0ssain",
+    "linkedin": "https://www.linkedin.com/in/rafat--hossain",
+    "resume": "/resume.pdf"
+  },
+  "drawingNo": "PF-2027-001",
+  "program": "BSc (Hons), Dalhousie",
+  "programLong": "BSc Computer Science (Honours), Dalhousie University",
+  "shipsOn": "May 2027",
+  "openTo": "New grad roles, any field",
+  "updated": "2026-09",
+  "formspreeId": "xrpbdoyq",
+  "head": "Generalist engineer, leaning ML",
+  "bio": "I build software end to end: a billing platform at SpryPoint, ice segmentation research at Dalhousie, and ML tools that got measured. Graduating May 2027, open to new grad roles across CS.",
+  "featured": ["part-01", "part-02", "part-03", "part-04"],
+  "shortVersion": [
+    { "lead": "Software developer co-op at SpryPoint", "rest": "Scala and Java back end, Knockout.js front end, on a billing platform for municipal utilities. About 20 client-facing stories delivered." },
+    { "lead": "Undergraduate researcher at Dalhousie", "rest": "Trains U-Net models on Landsat-8 imagery of West Greenland and builds the patch datasets the team trains against. Honours study on backdoor attacks in vision models." },
+    { "lead": "Treasurer, Dalhousie Machine Learning Society", "rest": "Secured $1,500+ in grants across two terms for a society of 150+ members." }
+  ],
+  "figure": {
+    "modules": [
+      ["Languages", "Algorithms"],
+      ["Systems", "Web"],
+      ["ML", "Product"]
+    ]
+  }
+}

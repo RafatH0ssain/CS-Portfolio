@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import Sheet from '../layouts/Sheet.astro';
+import { academics, certifications, profile, revisions } from '../lib/content';
+import { currentStop, sheetCount } from '../lib/derive';
+import Approval from '../components/Approval.astro';
+import Certifications from '../components/Certifications.astro';
+import GeneralNotes from '../components/GeneralNotes.astro';
+import Hero from '../components/Hero.astro';
+import Parts from '../components/Parts.astro';
+import PartsList from '../components/PartsList.astro';
+import Revisions from '../components/Revisions.astro';
+import Scrubber from '../components/Scrubber.astro';
+
+const projects = await getCollection('projects');
+const stop = currentStop(revisions);
+const hasCerts = certifications !== undefined;
+const hasInspection = academics?.show === true;
+const total = sheetCount(hasCerts, hasInspection);
+const fullName = `${profile.name.first} ${profile.name.last}`;
+const description = `${profile.bio} ${profile.programLong}, graduating ${profile.shipsOn}.`;
+---
+
+<Sheet title={`${fullName} — Portfolio`} description={description}>
+  <Hero stop={stop} releaseCount={projects.length} totalSheets={total}>
+    <Scrubber slot="scrubber" projects={projects} />
+    <GeneralNotes slot="notes" />
+  </Hero>
+
+  <Parts projects={projects} of={total} />
+  <PartsList projects={projects} n={3} of={total} />
+  <Revisions n={4} of={total} />
+
+  {(hasCerts || hasInspection) && <Certifications n={5} of={total} />}
+
+  <Approval n={total} of={total} />
+</Sheet>

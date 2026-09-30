@@ -1,0 +1,36 @@
+[
+  {
+    "org": "[Company]",
+    "location": "[City, or Remote]",
+    "stream": "development",
+    "roles": [
+      {
+        "title": "[Software developer co-op]",
+        "start": "2026-05",
+        "end": null,
+        "summary": "[One outcome, past tense, with a number if there is one.]",
+        "bullets": ["[Another outcome.]", "[Another outcome.]"],
+        "tags": ["[Language]", "[Platform]"],
+        "approvedBy": "[Manager], reference on request"
+      }
+    ]
+  },
+  {
+    "org": "[Student society]",
+    "stream": "leadership",
+    "roles": [
+      { "title": "[Current role after promotion]", "start": "2025-09", "end": null,
+        "summary": "[What they ran or changed.]", "approvedBy": "Society executive" },
+      { "title": "[Earlier role]", "start": "2024-09", "end": "2025-08",
+        "summary": "[What they ran or changed.]" }
+    ]
+  },
+  {
+    "org": "[Hackathon name]",
+    "stream": "awards",
+    "roles": [
+      { "title": "[2nd place]", "start": "2024-11", "end": "2024-11",
+        "summary": "[What they built, in how long, with how many teammates.]", "approvedBy": "Judging panel" }
+    ]
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "title": "AWS Certified Cloud Practitioner",
+    "issuer": "Amazon Web Services",
+    "year": 2025,
+    "verifyUrl": "https://aws.amazon.com/verification",
+    "verifyLabel": "Verify on AWS"
+  },
+  {
+    "title": "Fundamentals of Cloud Administration with Azure",
+    "issuer": "ShiftKey Labs",
+    "year": 2025
+  },
+  {
+    "title": "Level Up with CCubed (cybersecurity)",
+    "issuer": "Computing Councils of Canada",
+    "year": 2025
+  },
+  {
+    "title": "Practical Cybersecurity",
+    "issuer": "ShiftKey Labs",
+    "year": 2025
+  }
+]

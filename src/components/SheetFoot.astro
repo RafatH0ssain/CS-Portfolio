@@ -1,0 +1,19 @@
+---
+import { profile } from '../lib/content';
+
+interface Props {
+  /** Left-hand label. Defaults to when the content was last edited. */
+  left?: string;
+  /** 1-based sheet number. */
+  n: number;
+  /** Total sheets on this page. */
+  of: number;
+}
+
+const { left = `Updated ${profile.updated}`, n, of } = Astro.props;
+---
+
+<div class="sheet-foot">
+  <span class="label">{left}</span>
+  <span class="label">DWG {profile.drawingNo} — Sheet {n} of {of}</span>
+</div>

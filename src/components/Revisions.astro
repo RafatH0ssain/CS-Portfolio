@@ -1,0 +1,76 @@
+---
+import { dateRange, letteredExperience, previousTitles, promotionTag } from '../lib/derive';
+import SheetFoot from './SheetFoot.astro';
+
+interface Props {
+  n: number;
+  of: number;
+}
+
+const { n, of } = Astro.props;
+const groups = letteredExperience();
+---
+
+<section class="section" id="revisions" aria-labelledby="rev-h">
+  <div class="section__head">
+    <div class="section__title">
+      <span class="label">Sheet 4 — Revision history</span>
+      <h2 id="rev-h" class="t-sheet">Revisions</h2>
+    </div>
+    <p class="section__intro">Work, research, leadership, teaching and awards. Every change to the drawing, with who can sign it off.</p>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col" class="w-70">Rev</th>
+        <th scope="col" class="w-170">Date</th>
+        <th scope="col">Description</th>
+        <th scope="col" class="w-220">Approved by</th>
+      </tr>
+    </thead>
+    <tbody>
+      {groups.map((group) => (
+        <>
+          <tr class="group"><th colspan="4" scope="colgroup">{group.title}</th></tr>
+          {group.orgs.map((org) => {
+            const role = org.roles[0];
+            const tag = promotionTag(org.roles.length);
+            const heading =
+              org.stream === 'awards' ? `${org.org}, ${role.title}` : `${role.title}, ${org.org}`;
+            const previous = previousTitles(org);
+            return (
+              <tr>
+                <td>
+                  <span class:list={['rev-letter', org.latest && 'rev-letter--latest']}>{org.letter}</span>
+                </td>
+                <td class="num">{dateRange(org)}</td>
+                <td>
+                  <div class="desc">
+                    <span class="strong">
+                      {heading}
+                      {tag && <span class="tag">{tag}</span>}
+                    </span>
+                    <span>{role.summary}</span>
+                    {previous && <span>{previous}</span>}
+                    {role.bullets.length > 0 && (
+                      <details class="more">
+                        <summary>{role.bullets.length} more outcome{role.bullets.length === 1 ? '' : 's'}</summary>
+                        <ul class="bullets">
+                          {role.bullets.map((b) => <li>{b}</li>)}
+                        </ul>
+                      </details>
+                    )}
+                  </div>
+                </td>
+                <td>{role.approvedBy ?? ''}</td>
+              </tr>
+            );
+          })}
+        </>
+      ))}
+    </tbody>
+  </table>
+
+  <SheetFoot left="Sheet 4 — Revision history" n={n} of={of} />
+</section>

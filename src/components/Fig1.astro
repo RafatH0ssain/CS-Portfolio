@@ -1,0 +1,164 @@
+---
+import { profile } from '../lib/content';
+import { stateClass, type Stop } from '../lib/derive';
+
+interface Props {
+  stop: Stop;
+  /** Number of projects, printed as the dimension "N RELEASES". */
+  releaseCount: number;
+  totalSheets: number;
+}
+
+const { stop, releaseCount, totalSheets } = Astro.props;
+const [m1, m2, m3] = profile.figure.modules;
+const ships = `SHIPS ${profile.shipsOn.toUpperCase()}`;
+
+// The module pairs appear at levels 1, 2 and 3; new ones draw dashed amber.
+const lvl1 = stateClass(1, stop);
+const lvl2 = stateClass(2, stop);
+const lvl3 = stateClass(3, stop);
+const lvl4 = stateClass(4, stop);
+---
+
+<figure class="fig">
+  <figcaption class="fig__caption">
+    <span class="label">Fig. 1 — The system, as built at rev <span data-rev-field="rev">{stop.rev}</span></span>
+    <span class="label">Scale 1:1</span>
+  </figcaption>
+
+  <svg class="fig__wide" viewBox="0 0 600 420" role="img" aria-labelledby="fig1-desc">
+    <desc id="fig1-desc">Block diagram of skills: a core connected to {m1[0]}, {m1[1]}, {m2[0]}, {m2[1]}, {m3[0]} and {m3[1]} modules. It grows as the revision increases.</desc>
+    <g data-max-lvl="1" class:list={[stop.level > 1 ? 'is-off' : '']}>
+      <line class="d-guide" x1="20" y1="210" x2="580" y2="210"/>
+      <line class="d-guide" x1="310" y1="10" x2="310" y2="410"/>
+      <circle class="d-guide" cx="310" cy="210" r="132"/>
+    </g>
+    <g data-only-lvl="0" class={stop.level === 0 ? '' : 'is-off'}>
+      <path class="d-sketch" d="M236 168 C270 162 350 166 388 163 C392 196 394 232 390 262 C340 266 280 264 232 267 C229 232 231 198 236 168 Z"/>
+      <text class="d-text" x="312" y="221" style="font-size:16px">HELLO, WORLD</text>
+      <text class="d-text d-text--dim" x="312" y="296" style="font-size:11px">SKETCH ONLY — NOT TO SCALE</text>
+    </g>
+    <g class="mod" data-lvl="1" class:list={[lvl1]}>
+      <path class="d-line" d="M230 185 H205 V82 H180"/>
+      <rect class="d-box" x="40" y="50" width="140" height="64"/>
+      <text class="d-text" x="110" y="87">{m1[0].toUpperCase()}</text>
+      <path class="d-line" d="M230 235 H205 V338 H180"/>
+      <rect class="d-box" x="40" y="306" width="140" height="64"/>
+      <text class="d-text" x="110" y="343">{m1[1].toUpperCase()}</text>
+    </g>
+    <g class="mod" data-lvl="2" class:list={[lvl2]}>
+      <path class="d-line" d="M390 185 H405 V82 H420"/>
+      <rect class="d-box" x="420" y="50" width="140" height="64"/>
+      <text class="d-text" x="490" y="87">{m2[0].toUpperCase()}</text>
+      <path class="d-line" d="M390 235 H405 V338 H420"/>
+      <rect class="d-box" x="420" y="306" width="140" height="64"/>
+      <text class="d-text" x="490" y="343">{m2[1].toUpperCase()}</text>
+    </g>
+    <g class="mod" data-lvl="3" class:list={[lvl3]}>
+      <path class="d-line" d="M310 160 V92"/>
+      <rect class="d-box" x="250" y="40" width="120" height="52"/>
+      <text class="d-text" x="310" y="71">{m3[0].toUpperCase()}</text>
+      <path class="d-line" d="M310 260 V328"/>
+      <rect class="d-box" x="250" y="328" width="120" height="52"/>
+      <text class="d-text" x="310" y="359">{m3[1].toUpperCase()}</text>
+    </g>
+    <g data-lvl="1" class:list={[lvl1]}>
+      <rect class="d-core" x="230" y="160" width="160" height="100"/>
+      <rect class="d-port" x="226" y="181" width="8" height="8"/>
+      <rect class="d-port" x="226" y="231" width="8" height="8"/>
+      <rect class="d-port" x="386" y="181" width="8" height="8"/>
+      <rect class="d-port" x="386" y="231" width="8" height="8"/>
+      <rect class="d-port" x="306" y="156" width="8" height="8"/>
+      <rect class="d-port" x="306" y="256" width="8" height="8"/>
+      <text class="d-text" x="310" y="204" style="font-size:13px;font-weight:800;letter-spacing:.14em">CORE</text>
+      <text class="d-text d-text--amber" x="310" y="228" style="font-size:13px">REV <tspan data-rev-field="rev">{stop.rev}</tspan></text>
+    </g>
+    <g data-lvl="4" class:list={[lvl4]}>
+      <line class="d-thin" x1="40" y1="22" x2="560" y2="22"/>
+      <line class="d-thin" x1="40" y1="14" x2="40" y2="46"/>
+      <line class="d-thin" x1="560" y1="14" x2="560" y2="46"/>
+      <line class="d-tick" x1="35" y1="27" x2="45" y2="17"/>
+      <line class="d-tick" x1="555" y1="27" x2="565" y2="17"/>
+      <text class="d-text" x="300" y="15" style="font-size:11px">{releaseCount} RELEASES</text>
+      <line class="d-thin" x1="588" y1="50" x2="588" y2="370"/>
+      <line class="d-thin" x1="564" y1="50" x2="596" y2="50"/>
+      <line class="d-thin" x1="564" y1="370" x2="596" y2="370"/>
+      <line class="d-tick" x1="583" y1="55" x2="593" y2="45"/>
+      <line class="d-tick" x1="583" y1="375" x2="593" y2="365"/>
+      <text class="d-text" x="600" y="210" transform="rotate(90 600 210)" style="font-size:11px">4 YEARS ± 0</text>
+      <circle class="d-dot" cx="206" cy="82" r="3"/>
+      <circle class="d-dot" cx="404" cy="338" r="3"/>
+      <text class="d-text d-text--dim d-text--left" x="20" y="412" style="font-size:10px">NOTES: 1. ALL DIMENSIONS IN YEARS.  2. DO NOT SCALE.  3. CAFFEINE NOT SHOWN.</text>
+    </g>
+    <g data-locked-only class:list={[stop.locked ? 'is-on' : '']} transform="rotate(-9 310 210)">
+      <rect class="d-stamp" x="160" y="174" width="300" height="72"/>
+      <rect class="d-stamp-inner" x="166" y="180" width="288" height="60"/>
+      <text class="d-text d-text--amber" x="310" y="213" style="font-size:24px;font-weight:800;letter-spacing:.05em">RELEASE PENDING</text>
+      <text class="d-text d-text--amber" x="310" y="231" style="font-size:11px;letter-spacing:.16em">{ships}</text>
+    </g>
+  </svg>
+
+  <svg class="fig__narrow" viewBox="0 0 340 344" role="img" aria-labelledby="fig1n-desc">
+    <desc id="fig1n-desc">Block diagram of skills that grows as the revision increases.</desc>
+    <g data-max-lvl="1" class:list={[stop.level > 1 ? 'is-off' : '']}>
+      <line class="d-guide" x1="6" y1="165" x2="334" y2="165"/>
+      <line class="d-guide" x1="170" y1="16" x2="170" y2="320"/>
+      <circle class="d-guide" cx="170" cy="165" r="92"/>
+    </g>
+    <g data-only-lvl="0" class={stop.level === 0 ? '' : 'is-off'}>
+      <path class="d-sketch" d="M124 132 C150 127 196 131 218 128 C221 150 222 176 219 200 C190 204 150 202 121 204 C118 180 120 154 124 132 Z"/>
+      <text class="d-text" x="170" y="170" style="font-size:13px">HELLO, WORLD</text>
+    </g>
+    <g class="mod" data-lvl="1" class:list={[lvl1]}>
+      <path class="d-line" d="M120 150 H115 V58 H110"/>
+      <rect class="d-box" x="8" y="34" width="102" height="48"/>
+      <text class="d-text" x="59" y="62" style="font-size:11px;letter-spacing:.06em">{m1[0].toUpperCase()}</text>
+      <path class="d-line" d="M120 180 H115 V272 H110"/>
+      <rect class="d-box" x="8" y="248" width="102" height="48"/>
+      <text class="d-text" x="59" y="276" style="font-size:11px;letter-spacing:.06em">{m1[1].toUpperCase()}</text>
+    </g>
+    <g class="mod" data-lvl="2" class:list={[lvl2]}>
+      <path class="d-line" d="M220 150 H225 V58 H230"/>
+      <rect class="d-box" x="230" y="34" width="102" height="48"/>
+      <text class="d-text" x="281" y="62" style="font-size:11px;letter-spacing:.06em">{m2[0].toUpperCase()}</text>
+      <path class="d-line" d="M220 180 H225 V272 H230"/>
+      <rect class="d-box" x="230" y="248" width="102" height="48"/>
+      <text class="d-text" x="281" y="276" style="font-size:11px;letter-spacing:.06em">{m2[1].toUpperCase()}</text>
+    </g>
+    <g class="mod" data-lvl="3" class:list={[lvl3]}>
+      <path class="d-line" d="M170 130 V88"/>
+      <rect class="d-box" x="128" y="44" width="84" height="44"/>
+      <text class="d-text" x="170" y="70" style="font-size:11px">{m3[0].toUpperCase()}</text>
+      <path class="d-line" d="M170 200 V242"/>
+      <rect class="d-box" x="128" y="242" width="84" height="44"/>
+      <text class="d-text" x="170" y="268" style="font-size:11px">{m3[1].toUpperCase()}</text>
+    </g>
+    <g data-lvl="1" class:list={[lvl1]}>
+      <rect class="d-core" x="120" y="130" width="100" height="70"/>
+      <text class="d-text" x="170" y="161" style="font-size:12px;font-weight:800;letter-spacing:.14em">CORE</text>
+      <text class="d-text d-text--amber" x="170" y="182" style="font-size:12px">REV <tspan data-rev-field="rev">{stop.rev}</tspan></text>
+    </g>
+    <g data-lvl="4" class:list={[lvl4]}>
+      <line class="d-thin" x1="8" y1="14" x2="332" y2="14"/>
+      <line class="d-tick" x1="4" y1="18" x2="12" y2="10"/>
+      <line class="d-tick" x1="328" y1="18" x2="336" y2="10"/>
+      <rect x="120" y="5" width="100" height="16" fill="#0F2350"/>
+      <text class="d-text" x="170" y="17" style="font-size:10px">{releaseCount} RELEASES</text>
+      <text class="d-text d-text--dim d-text--left" x="6" y="336" style="font-size:9px">NOTES: DIMENSIONS IN YEARS. CAFFEINE NOT SHOWN.</text>
+    </g>
+    <g data-locked-only class:list={[stop.locked ? 'is-on' : '']} transform="rotate(-9 170 165)">
+      <rect class="d-stamp" x="52" y="136" width="236" height="58"/>
+      <text class="d-text d-text--amber" x="170" y="166" style="font-size:20px;font-weight:800;letter-spacing:.05em">RELEASE PENDING</text>
+      <text class="d-text d-text--amber" x="170" y="183" style="font-size:10px;letter-spacing:.16em">{ships}</text>
+    </g>
+  </svg>
+
+  <div class="tblock">
+    <div class="tblock__cell"><span class="label">Drawn by</span><span class="tblock__value">{profile.name.first} {profile.name.last}</span></div>
+    <div class="tblock__cell"><span class="label">Program</span><span class="tblock__value">{profile.program}</span></div>
+    <div class="tblock__cell"><span class="label">Ships</span><span class="tblock__value">{profile.shipsOn}</span></div>
+    <div class="tblock__cell"><span class="label">Rev</span><span class="tblock__value tblock__value--amber" data-rev-field="rev">{stop.rev}</span></div>
+    <div class="tblock__cell"><span class="label">Date</span><span class="tblock__value" data-rev-field="date">{stop.date}</span></div>
+    <div class="tblock__cell"><span class="label">Sheet</span><span class="tblock__value">1 of {totalSheets}</span></div>
+  </div>
+</figure>

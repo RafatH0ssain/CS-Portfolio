@@ -1,0 +1,34 @@
+# Runs on every push and pull request. The same commands run locally with
+# `npm run verify`. If a check fails here, fix the site, not the check.
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Type and template check
+        run: npx astro check
+      - name: Build (fails on placeholders in content/ and src/)
+        run: npm run build
+      - name: Placeholders in the built site
+        run: node scripts/check-content.mjs --dist
+      - name: Design rules
+        run: node scripts/check-design.mjs
+      - name: Page weight
+        run: node scripts/check-budget.mjs
+      - name: Links
+        run: node scripts/check-links.mjs

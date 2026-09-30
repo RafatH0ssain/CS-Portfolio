@@ -1,0 +1,21 @@
+---
+import Sheet from '../layouts/Sheet.astro';
+import { profile } from '../lib/content';
+
+const fullName = `${profile.name.first} ${profile.name.last}`;
+---
+
+<Sheet title={`Sheet not found — ${fullName}`} description={`No such drawing on this portfolio. Head back to sheet 1, the home page of ${fullName}'s portfolio.`}>
+  <section class="section solid" aria-labelledby="nf-h">
+    <div class="section__head">
+      <div class="section__title">
+        <span class="label">Sheet not found</span>
+        <h1 id="nf-h" class="t-sheet">Sheet not found.</h1>
+      </div>
+    </div>
+    <p class="t-lead">This drawing number is not on file.</p>
+    <div class="btn-row btn-row--spaced">
+      <a class="btn btn--outline" href="/">Back to sheet 1</a>
+    </div>
+  </section>
+</Sheet>

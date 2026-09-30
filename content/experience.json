@@ -1,0 +1,94 @@
+[
+  {
+    "org": "SpryPoint Services Inc.",
+    "location": "Remote",
+    "stream": "development",
+    "roles": [
+      {
+        "title": "Software Developer, co-op",
+        "start": "2026-01", "end": null,
+        "summary": "Delivered about 20 client-facing stories on SpryCIS, a billing platform for municipal utilities. Invited back for a second term.",
+        "bullets": [
+          "Owned a 5-point fix on the billing page, spending most of the estimate working out what the change could affect before altering anything.",
+          "Wrote unit and UI tests, ran regression testing at each sprint close, and reviewed teammates' code.",
+          "Extended cheque endorsement and receipt-printer configuration with new fields, leaving output unchanged for clients who had not opted in."
+        ],
+        "tags": ["Scala", "Java", "Knockout.js", "Jenkins", "Jira"]
+      }
+    ]
+  },
+  {
+    "org": "Knownautoparts",
+    "location": "Remote",
+    "stream": "development",
+    "roles": [
+      {
+        "title": "Data Architect / Technician",
+        "start": "2023-09", "end": "2025-01",
+        "summary": "Designed and maintained a relational product database of 1,000+ automotive SKUs.",
+        "bullets": [
+          "Implemented data quality controls that kept the catalogue accurate.",
+          "Restructured product categories for search, which lifted organic traffic 35%."
+        ],
+        "tags": ["SQL"]
+      }
+    ]
+  },
+  {
+    "org": "Dalhousie University, Faculty of Computer Science",
+    "location": "Halifax, NS",
+    "stream": "research",
+    "roles": [
+      {
+        "title": "Undergraduate Research Assistant",
+        "start": "2025-06", "end": null,
+        "summary": "Trains U-Net models on a Landsat-8 archive of West Greenland and builds the patch datasets four other researchers train against.",
+        "bullets": [
+          "Validated against independently published ice masks, not the training pseudo-labels, which showed the easier evaluation was circular.",
+          "Traced a season-mislabelled dataset export that had silently mixed summer and winter imagery across the team's training runs."
+        ],
+        "tags": ["PyTorch", "Python"],
+        "approvedBy": "Supervisor, reference on request"
+      },
+      {
+        "title": "Honours directed study (CSCI 4192)",
+        "start": "2026-05", "end": null,
+        "summary": "Reproduced a defocus-blur backdoor on a small CIFAR-10 network: 99.80% attack success, clean accuracy within 0.08% of baseline.",
+        "bullets": [
+          "Showed the blur is detectable (AUC 1.000 for variance of Laplacian) but its intent is not, and that four established defence families fail against it.",
+          "Proposed a detector based on the fact that real optical defocus varies with scene depth and the trigger does not."
+        ],
+        "tags": ["PyTorch", "Security"],
+        "approvedBy": "Supervisor, reference on request"
+      }
+    ]
+  },
+  {
+    "org": "Dalhousie Machine Learning Society",
+    "location": "Halifax, NS",
+    "stream": "leadership",
+    "roles": [
+      {
+        "title": "Treasurer",
+        "start": "2025-09", "end": null,
+        "summary": "Secured $1,500+ in grants across two terms for a society of 150+ members.",
+        "bullets": [
+          "Wrote the successful applications to the Dalhousie Student Union and ShiftKey Labs.",
+          "Manage budgets, invoicing and reconciliation across the academic year."
+        ]
+      }
+    ]
+  },
+  {
+    "org": "SURGE NeuroHack 2026",
+    "stream": "awards",
+    "roles": [
+      {
+        "title": "1st place, Machine Learning category",
+        "start": "2026-03", "end": "2026-05",
+        "summary": "Built SPECTRA-ICA, an EEG artifact-removal algorithm that beat standard ICA on all 7 metrics of a P300 benchmark.",
+        "tags": ["Python", "MNE", "scikit-learn"]
+      }
+    ]
+  }
+]

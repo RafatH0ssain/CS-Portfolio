@@ -1,0 +1,113 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Sheet from '../../layouts/Sheet.astro';
+import { profile } from '../../lib/content';
+import { numberedProjects } from '../../lib/derive';
+import Fig31 from '../../components/Fig31.astro';
+import PartHead from '../../components/PartHead.astro';
+import ReleaseNotes from '../../components/ReleaseNotes.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  const ordered = numberedProjects(projects);
+  return ordered.map((p, i) => ({
+    params: { slug: p.id },
+    props: {
+      project: p,
+      partNo: p.partNo,
+      totalParts: ordered.length,
+      sheetNo: i + 1,
+      prev: ordered[i - 1] ?? ordered[ordered.length - 1],
+      next: ordered[i + 1] ?? ordered[0],
+    },
+  }));
+}
+
+interface Props {
+  project: CollectionEntry<'projects'> & { partNo: string };
+  partNo: string;
+  totalParts: number;
+  sheetNo: number;
+  prev: CollectionEntry<'projects'>;
+  next: CollectionEntry<'projects'>;
+}
+
+const { project, partNo, totalParts, sheetNo, prev, next } = Astro.props;
+const { Content } = await render(project);
+const fullName = `${profile.name.first} ${profile.name.last}`;
+const label = (p: Props['prev']) => `${p.data.plateTitle ?? p.data.title}`;
+---
+
+<Sheet
+  title={`${project.data.title} — ${fullName}`}
+  description={project.data.summary}
+  current="parts"
+>
+  <PartHead project={project} partNo={partNo} totalParts={totalParts} sheetNo={sheetNo} />
+
+  <section class="section solid" aria-label="Overview">
+    <div class="intro">
+      <Content />
+    </div>
+  </section>
+
+  <Fig31 project={project} />
+  <ReleaseNotes project={project} />
+
+  <section class="section">
+    <div class="two-col">
+      <div class="stack stack--notes">
+        <h2 class="t-sheet t-sheet--bare">General notes</h2>
+        <ol class="gnotes">
+          {project.data.decisions.map((dec, i) => (
+            <li>
+              <span class="gnotes__n">{i + 1}.</span>
+              <div class="stack stack--tight">
+                <span class="t-part-note">{dec.title}</span>
+                <span class="t-body t-dim">
+                  <strong>Chose</strong> {dec.chose}, <strong>instead of</strong> {dec.instead},
+                  <strong>because</strong> {dec.because}.
+                </span>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+      <div class="stack stack--notes">
+        <h2 class="t-sheet t-sheet--bare">Revisions</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col" class="w-84">Rev</th>
+              <th scope="col" class="w-100">Date</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {project.data.history.map((h, i) => (
+              <tr>
+                <td>
+                  <span class:list={['rev-letter', 'rev-letter--sm', i === 0 && 'rev-letter--latest']}>{h.version}</span>
+                </td>
+                <td class="num">{h.date}</td>
+                <td class="t-chalk">{h.note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <nav class="sheet-nav" aria-label="Other parts">
+    <a href={`/parts/${prev.id}/`}>
+      <span class="label">Previous sheet</span>
+      <span>3.{sheetNo === 1 ? totalParts : sheetNo - 1} — {label(prev)}</span>
+    </a>
+    <span class="label sheet-nav__mid">DWG {profile.drawingNo} — Sheet 3.{sheetNo}</span>
+    <a href={`/parts/${next.id}/`}>
+      <span class="label">Next sheet</span>
+      <span>3.{sheetNo === totalParts ? 1 : sheetNo + 1} — {label(next)}</span>
+    </a>
+  </nav>
+</Sheet>

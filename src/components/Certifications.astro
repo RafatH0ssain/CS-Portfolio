@@ -1,0 +1,70 @@
+---
+import { academics, certifications } from '../lib/content';
+import SheetFoot from './SheetFoot.astro';
+import Inspection from './Inspection.astro';
+
+interface Props {
+  n: number;
+  of: number;
+}
+
+const { n, of } = Astro.props;
+const showInspect = academics?.show === true;
+---
+
+{ certifications && (
+  <section class="section" id="certifications" aria-labelledby="cert-h">
+    <div class="section__head">
+      <div class="section__title">
+        <span class="label">Sheet 5 — Certificates of conformance</span>
+        <h2 id="cert-h" class="t-sheet">Certifications</h2>
+      </div>
+      <p class="section__intro">Each one links to the issuer's own verification page.</p>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col" class="w-70">No.</th>
+          <th scope="col">Certification</th>
+          <th scope="col" class="w-220">Issuer</th>
+          <th scope="col" class="w-90">Year</th>
+          <th scope="col" class="w-160">Verify</th>
+        </tr>
+      </thead>
+      <tbody>
+        {certifications.map((c, i) => (
+          <tr>
+            <td class="num">C{i + 1}</td>
+            <td>
+              <div class="desc">
+                <span class="strong">{c.title}</span>
+                {c.credentialId && <span class="t-dim">Credential {c.credentialId}</span>}
+              </div>
+            </td>
+            <td>{c.issuer}</td>
+            <td class="num">{c.year}</td>
+            <td>{c.verifyUrl ? <a href={c.verifyUrl}>{c.verifyLabel ?? `Verify on ${c.issuer}`}</a> : 'On request'}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+
+    {showInspect && <Inspection />}
+
+    <SheetFoot n={n} of={of} />
+  </section>
+)}
+
+{showInspect && !certifications && (
+  <section class="section" id="inspection" aria-labelledby="insp-h">
+    <div class="section__head">
+      <div class="section__title">
+        <span class="label">Sheet {n} — Inspection report</span>
+        <h2 id="insp-h" class="t-sheet">Inspection report</h2>
+      </div>
+    </div>
+    <Inspection />
+    <SheetFoot n={n} of={of} />
+  </section>
+)}

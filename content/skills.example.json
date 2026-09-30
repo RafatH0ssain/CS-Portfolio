@@ -1,0 +1,7 @@
+[
+  { "name": "[First language]", "level": 0 },
+  { "name": "[Second-year skill]", "level": 1 },
+  { "name": "[Third-year skill]", "level": 2 },
+  { "name": "[Co-op skill]", "level": 3 },
+  { "name": "[Fourth-year skill]", "level": 4 }
+]

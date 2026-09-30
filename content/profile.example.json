@@ -1,0 +1,27 @@
+{
+  "name": { "first": "[First]", "last": "[Last]" },
+  "email": "[email the owner wants recruiters to use]",
+  "links": {
+    "github": "[https://github.com/username]",
+    "linkedin": "[https://www.linkedin.com/in/username, or delete this line]",
+    "resume": "/resume.pdf"
+  },
+  "formspreeId": "[the ID at the end of the Formspree form URL]",
+  "drawingNo": "PF-2027-001",
+  "program": "BCS, Dalhousie",
+  "programLong": "Bachelor of Computer Science, Dalhousie University",
+  "shipsOn": "May 2027",
+  "openTo": "New grad roles, any field",
+  "updated": "[YYYY-MM of the last content edit]",
+  "head": "Release candidate.",
+  "bio": "[One or two sentences, first person without the word I: the engineering done, the lean toward ML and product, open to new grad roles across CS.]",
+  "featured": ["[slug of top plate]", "[slug]", "[slug]", "[slug of bottom plate]"],
+  "shortVersion": [
+    { "lead": "[What the owner does now]", "rest": "[where, and one concrete detail.]" },
+    { "lead": "[The second thread of their work]", "rest": "[research, ML, or a product used by real people.]" },
+    { "lead": "[Leadership or teaching, optional]", "rest": "[one line.]" }
+  ],
+  "figure": {
+    "modules": [["Languages", "Algorithms"], ["Systems", "Web"], ["ML", "Product"]]
+  }
+}

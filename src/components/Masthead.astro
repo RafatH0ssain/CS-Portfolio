@@ -1,0 +1,41 @@
+---
+import { profile } from '../lib/content';
+
+interface Props {
+  /** Marks the active nav link at build time. No JavaScript involved. */
+  current?: string;
+}
+
+const { current } = Astro.props;
+const fullName = `${profile.name.first} ${profile.name.last}`;
+
+const links = [
+  { key: 'parts', href: '/#parts', text: 'Parts' },
+  { key: 'parts-list', href: '/#parts-list', text: 'Parts list' },
+  { key: 'revisions', href: '/#revisions', text: 'Revisions' },
+];
+---
+
+<header class="masthead">
+  <div class="masthead__id">
+    <a class="masthead__name" href="/">{fullName}</a>
+    <span class="label">DWG {profile.drawingNo}</span>
+  </div>
+  <nav class="masthead__nav" aria-label="Main">
+    {links.map((l) => (
+      <a href={l.href} aria-current={current === l.key ? 'page' : undefined}>{l.text}</a>
+    ))}
+    <a class="btn btn--primary" href={`mailto:${profile.email}`}>Email me</a>
+  </nav>
+  <details class="masthead__menu">
+    <summary aria-label="Menu">
+      <svg width="22" height="14" viewBox="0 0 22 14" aria-hidden="true"><line x1="1" y1="1" x2="21" y2="1" stroke="#E8EEF7" stroke-width="2"/><line x1="1" y1="7" x2="21" y2="7" stroke="#E8EEF7" stroke-width="2"/><line x1="1" y1="13" x2="13" y2="13" stroke="#FFB547" stroke-width="2"/></svg>
+    </summary>
+    <nav aria-label="Main">
+      {links.map((l) => (
+        <a href={l.href} aria-current={current === l.key ? 'page' : undefined}>{l.text}</a>
+      ))}
+      <a href={`mailto:${profile.email}`}>Email me</a>
+    </nav>
+  </details>
+</header>

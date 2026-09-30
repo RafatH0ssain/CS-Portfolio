@@ -1,0 +1,52 @@
+---
+import { profile } from '../lib/content';
+import { nameChars, stopText, type Stop } from '../lib/derive';
+import Fig1 from './Fig1.astro';
+import SheetFoot from './SheetFoot.astro';
+
+interface Props {
+  stop: Stop;
+  releaseCount: number;
+  totalSheets: number;
+}
+
+const { stop, releaseCount, totalSheets } = Astro.props;
+const { head, bio } = stopText(stop, profile);
+const chars = nameChars(profile);
+---
+
+<section class="hero" aria-labelledby="name">
+  <div class="hero__grid">
+    <div class="hero__intro">
+      <div class="stamp-row">
+        <span class="rev-badge">REV <span data-rev-field="rev">{stop.rev}</span></span>
+        <span class="stamp-row__era" data-rev-field="era">{stop.era}</span>
+        <span class="stamp-row__rule" aria-hidden="true"></span>
+        <span class="label" data-rev-field="status">{stop.status}</span>
+      </div>
+      <div class="name-box">
+        <h1 id="name" class="name" style={`--chars:${chars}`}>
+          <span>{profile.name.first}</span>
+          <span>{profile.name.last}</span>
+        </h1>
+      </div>
+      <div class="hero__copy">
+        <p class="t-head" data-rev-field="head">{head}</p>
+        <p class="hero__bio" data-rev-field="bio">{bio}</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn--primary" href={`mailto:${profile.email}`}>Email me</a>
+        <a class="btn btn--outline" href={profile.links.resume}>Résumé (PDF)</a>
+      </div>
+    </div>
+
+    <div class="fig-box">
+      <Fig1 stop={stop} releaseCount={releaseCount} totalSheets={totalSheets} />
+    </div>
+  </div>
+
+  <slot name="scrubber" />
+  <slot name="notes" />
+
+  <SheetFoot left="Sheet 1 — The system" n={1} of={totalSheets} />
+</section>

@@ -1,0 +1,44 @@
+#!/bin/sh
+# pre-push — a person must confirm every push by typing "push".
+#
+# Why: this repository is built by an AI coding agent. The owner has asked
+# to approve every push. An agent runs without a terminal, so it cannot
+# answer this prompt; the push stops and the agent has to ask the owner.
+#
+# Installed by scripts/setup-hooks.sh (git config core.hooksPath .githooks).
+# Do not bypass with --no-verify. Do not edit or delete this file.
+
+remote="$1"
+url="$2"
+branch="$(git rev-parse --abbrev-ref HEAD 2>/dev/null)"
+
+# Read what is being pushed (git passes it on stdin).
+summary=""
+while read -r local_ref local_sha remote_ref remote_sha; do
+  summary="${summary}  ${local_ref} -> ${remote_ref}\n"
+done
+
+if ! (exec </dev/tty) 2>/dev/null; then
+  echo "" >&2
+  echo "pre-push: blocked. No terminal is attached, so nobody can confirm this push." >&2
+  echo "pre-push: the owner must run 'git push' themselves, in their own terminal." >&2
+  echo "" >&2
+  exit 1
+fi
+
+{
+  echo ""
+  echo "About to push branch '${branch}' to ${remote} (${url}):"
+  printf "%b" "$summary"
+  echo ""
+  git --no-pager log --oneline @{u}..HEAD 2>/dev/null || git --no-pager log --oneline -5
+  echo ""
+  printf 'Type "push" to continue, anything else to cancel: '
+} > /dev/tty
+
+read -r answer < /dev/tty
+if [ "$answer" = "push" ]; then
+  exit 0
+fi
+echo "pre-push: cancelled." > /dev/tty
+exit 1
