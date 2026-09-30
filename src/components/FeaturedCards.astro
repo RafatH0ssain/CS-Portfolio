@@ -1,0 +1,48 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import { featuredProjects } from '../lib/derive';
+import Schematic from './Schematic.astro';
+
+interface Props {
+  projects: CollectionEntry<'projects'>[];
+}
+
+/** The featured projects, in profile order: the same four the exploded view
+ *  shows, as cards a reader can actually scan. */
+const { projects } = Astro.props;
+const cards = featuredProjects(projects).map((p) => ({
+  p,
+  image: p.data.figure.image,
+}));
+---
+
+<ul class="cards">
+  {cards.map(({ p, image }) => (
+    <li>
+      <a class="card" href={`/parts/${p.id}/`}>
+        <span class="card__fig">
+          {image ? (
+            <Image
+              src={image}
+              alt={p.data.figure.alt ?? ''}
+              widths={[320, 640]}
+              sizes="(max-width: 767px) 92vw, 320px"
+              quality={70}
+            />
+          ) : (
+            <Schematic name={p.data.figure.schematic} size="plate" />
+          )}
+        </span>
+        <span class="card__body">
+          <span class="label card__kind">{p.data.kind}</span>
+          <span class="card__title">{p.data.title}</span>
+          <span class="card__summary">{p.data.summary}</span>
+          <span class="card__tags">
+            {p.data.stack.slice(0, 3).map((s) => <span class="chip">{s}</span>)}
+          </span>
+        </span>
+      </a>
+    </li>
+  ))}
+</ul>

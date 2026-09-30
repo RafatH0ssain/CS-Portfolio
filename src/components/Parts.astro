@@ -25,13 +25,16 @@ const parts = featuredProjects(projects).map((p, i) => ({
 }));
 
 const n = parts.length;
+
+// The same `order` the parts list uses, so this list and sheet 3 never disagree.
+const all = numberedProjects(projects);
 ---
 
 <section class="section" id="parts" aria-labelledby="parts-h">
   <div class="section__head">
     <div class="section__title">
-      <span class="label">Sheet 2 — Exploded view</span>
-      <h2 id="parts-h" class="t-sheet">Parts</h2>
+      <h2 id="parts-h" class="t-sheet">Projects</h2>
+      <span class="label">Parts</span>
     </div>
     <p class="section__intro">{n === 4 ? 'Four' : String(n)} featured releases, pulled apart. Hover, tab or tap a part to lift it out and read its spec.</p>
   </div>
@@ -107,10 +110,25 @@ const n = parts.length;
           </div>
         </section>
       ))}
+
+      <div class="plist">
+        <span class="label">All projects</span>
+        <ul>
+          {all.map((p) => (
+            <li class="plist__row" data-lvl={p.data.level} class:list={[stateClass(p.data.level, stop)]}>
+              <a href={`/parts/${p.id}/`}>
+                <span class="plist__title">{p.data.title}</span>
+                <span class="label">{p.data.kind}</span>
+                <span class="plist__one">{p.data.summary}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   </div>
 
-  <SheetFoot left="Sheet 2 — Exploded view" n={2} of={of} />
+  <SheetFoot n={2} of={of} />
 </section>
 
 <script>import '../scripts/parts.ts';</script>

@@ -1,24 +1,29 @@
 ---
+import type { CollectionEntry } from 'astro:content';
 import { dateRange, letteredExperience, previousTitles, promotionTag } from '../lib/derive';
+import Scrubber from './Scrubber.astro';
 import SheetFoot from './SheetFoot.astro';
 
 interface Props {
+  projects: CollectionEntry<'projects'>[];
   n: number;
   of: number;
 }
 
-const { n, of } = Astro.props;
+const { projects, n, of } = Astro.props;
 const groups = letteredExperience();
 ---
 
 <section class="section" id="revisions" aria-labelledby="rev-h">
   <div class="section__head">
     <div class="section__title">
-      <span class="label">Sheet 4 — Revision history</span>
-      <h2 id="rev-h" class="t-sheet">Revisions</h2>
+      <h2 id="rev-h" class="t-sheet">Timeline</h2>
+      <span class="label">Revisions</span>
     </div>
     <p class="section__intro">Work, research, leadership, teaching and awards. Every change to the drawing, with who can sign it off.</p>
   </div>
+
+  <Scrubber projects={projects} />
 
   <table class="table">
     <thead>
@@ -72,5 +77,5 @@ const groups = letteredExperience();
     </tbody>
   </table>
 
-  <SheetFoot left="Sheet 4 — Revision history" n={n} of={of} />
+  <SheetFoot n={n} of={of} />
 </section>

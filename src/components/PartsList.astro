@@ -18,10 +18,10 @@ const rows = numberedProjects(projects);
 <section class="section" id="parts-list" aria-labelledby="bom-h">
   <div class="section__head">
     <div class="section__title">
-      <span class="label">Sheet 3 — Bill of materials</span>
-      <h2 id="bom-h" class="t-sheet">Parts list</h2>
+      <h2 id="bom-h" class="t-sheet">All projects</h2>
+      <span class="label">Parts list</span>
     </div>
-    <p class="section__intro">Every release, not only the featured ones. Rows dim for anything not yet built at the revision picked above.</p>
+    <p class="section__intro">Every release, not only the featured ones. Rows dim for anything not yet built at the revision picked in the timeline.</p>
   </div>
 
   <table class="table">
@@ -53,5 +53,5 @@ const rows = numberedProjects(projects);
     </tbody>
   </table>
 
-  <SheetFoot left="Sheet 3 — Parts list" n={n} of={of} />
+  <SheetFoot n={n} of={of} />
 </section>

@@ -10,16 +10,16 @@ const { current } = Astro.props;
 const fullName = `${profile.name.first} ${profile.name.last}`;
 
 const links = [
-  { key: 'parts', href: '/#parts', text: 'Parts' },
-  { key: 'parts-list', href: '/#parts-list', text: 'Parts list' },
-  { key: 'revisions', href: '/#revisions', text: 'Revisions' },
+  { key: 'parts', href: '/#parts', text: 'Projects' },
+  { key: 'revisions', href: '/#revisions', text: 'Experience' },
+  { key: 'resume', href: profile.links.resume, text: 'Resume' },
+  { key: 'contact', href: '/#contact', text: 'Contact' },
 ];
 ---
 
 <header class="masthead">
   <div class="masthead__id">
     <a class="masthead__name" href="/">{fullName}</a>
-    <span class="label">DWG {profile.drawingNo}</span>
   </div>
   <nav class="masthead__nav" aria-label="Main">
     {links.map((l) => (

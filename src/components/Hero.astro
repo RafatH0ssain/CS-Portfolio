@@ -13,23 +13,19 @@ interface Props {
 const { stop, releaseCount, totalSheets } = Astro.props;
 const { head, bio } = stopText(stop, profile);
 const chars = nameChars(profile);
+const gradYear = profile.shipsOn.split(' ')[1];
 ---
 
 <section class="hero" aria-labelledby="name">
   <div class="hero__grid">
     <div class="hero__intro">
-      <div class="stamp-row">
-        <span class="rev-badge">REV <span data-rev-field="rev">{stop.rev}</span></span>
-        <span class="stamp-row__era" data-rev-field="era">{stop.era}</span>
-        <span class="stamp-row__rule" aria-hidden="true"></span>
-        <span class="label" data-rev-field="status">{stop.status}</span>
-      </div>
       <div class="name-box">
         <h1 id="name" class="name" style={`--chars:${chars}`}>
           <span>{profile.name.first}</span>
           <span>{profile.name.last}</span>
         </h1>
       </div>
+      <p class="hero__status">Class of {gradYear}, open to {profile.openTo.toLowerCase()}</p>
       <div class="hero__copy">
         <p class="t-head" data-rev-field="head">{head}</p>
         <p class="hero__bio" data-rev-field="bio">{bio}</p>
@@ -41,11 +37,21 @@ const chars = nameChars(profile);
     </div>
 
     <div class="fig-box">
-      <Fig1 stop={stop} releaseCount={releaseCount} totalSheets={totalSheets} />
+      <Fig1 stop={stop} releaseCount={releaseCount} />
     </div>
   </div>
 
-  <slot name="scrubber" />
+  <slot name="projects" />
+
+  <div class="tblock tblock--2">
+    <div class="tblock__cell"><span class="label">Drawn by</span><span class="tblock__value">{profile.name.first} {profile.name.last}</span></div>
+    <div class="tblock__cell"><span class="label">Program</span><span class="tblock__value">{profile.program}</span></div>
+    <div class="tblock__cell"><span class="label">Ships</span><span class="tblock__value">{profile.shipsOn}</span></div>
+    <div class="tblock__cell"><span class="label">Rev</span><span class="tblock__value" data-rev-field="rev">{stop.rev}</span></div>
+    <div class="tblock__cell"><span class="label">Date</span><span class="tblock__value" data-rev-field="date">{stop.date}</span></div>
+    <div class="tblock__cell"><span class="label">Sheet</span><span class="tblock__value">1 of {totalSheets}</span></div>
+  </div>
+
   <slot name="notes" />
 
   <SheetFoot left="Sheet 1 — The system" n={1} of={totalSheets} />

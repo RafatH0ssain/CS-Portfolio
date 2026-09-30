@@ -17,11 +17,16 @@ const profileLinks = [
 ];
 ---
 
-<section class="section" id="approval" aria-labelledby="appr-h">
+<section class="section" id="contact" aria-labelledby="appr-h">
+  <div class="section__head">
+    <div class="section__title">
+      <h2 id="appr-h" class="t-sheet">Get in touch</h2>
+      <span class="label">Sign off on this release</span>
+    </div>
+  </div>
+
   <div class="approval">
     <div class="approval__main">
-      <span class="label label--amber">Awaiting approval</span>
-      <h2 id="appr-h" class="t-sheet">Sign off on this release.</h2>
       <p class="t-lead">Open to {profile.openTo.toLowerCase()}, starting {profile.shipsOn}. A useful first message names the company, the role and the problem you want solved.</p>
 
       <form class="form" action={action} method="POST" data-enhance>

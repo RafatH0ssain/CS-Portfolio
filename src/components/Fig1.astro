@@ -6,10 +6,9 @@ interface Props {
   stop: Stop;
   /** Number of projects, printed as the dimension "N RELEASES". */
   releaseCount: number;
-  totalSheets: number;
 }
 
-const { stop, releaseCount, totalSheets } = Astro.props;
+const { stop, releaseCount } = Astro.props;
 const [m1, m2, m3] = profile.figure.modules;
 const ships = `SHIPS ${profile.shipsOn.toUpperCase()}`;
 
@@ -152,13 +151,4 @@ const lvl4 = stateClass(4, stop);
       <text class="d-text d-text--amber" x="170" y="183" style="font-size:10px;letter-spacing:.16em">{ships}</text>
     </g>
   </svg>
-
-  <div class="tblock">
-    <div class="tblock__cell"><span class="label">Drawn by</span><span class="tblock__value">{profile.name.first} {profile.name.last}</span></div>
-    <div class="tblock__cell"><span class="label">Program</span><span class="tblock__value">{profile.program}</span></div>
-    <div class="tblock__cell"><span class="label">Ships</span><span class="tblock__value">{profile.shipsOn}</span></div>
-    <div class="tblock__cell"><span class="label">Rev</span><span class="tblock__value tblock__value--amber" data-rev-field="rev">{stop.rev}</span></div>
-    <div class="tblock__cell"><span class="label">Date</span><span class="tblock__value" data-rev-field="date">{stop.date}</span></div>
-    <div class="tblock__cell"><span class="label">Sheet</span><span class="tblock__value">1 of {totalSheets}</span></div>
-  </div>
 </figure>

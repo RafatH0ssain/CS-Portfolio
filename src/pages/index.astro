@@ -5,12 +5,12 @@ import { academics, certifications, profile, revisions } from '../lib/content';
 import { currentStop, sheetCount } from '../lib/derive';
 import Approval from '../components/Approval.astro';
 import Certifications from '../components/Certifications.astro';
+import FeaturedCards from '../components/FeaturedCards.astro';
 import GeneralNotes from '../components/GeneralNotes.astro';
 import Hero from '../components/Hero.astro';
 import Parts from '../components/Parts.astro';
 import PartsList from '../components/PartsList.astro';
 import Revisions from '../components/Revisions.astro';
-import Scrubber from '../components/Scrubber.astro';
 
 const projects = await getCollection('projects');
 const stop = currentStop(revisions);
@@ -23,13 +23,13 @@ const description = `${profile.bio} ${profile.programLong}, graduating ${profile
 
 <Sheet title={`${fullName} — Portfolio`} description={description}>
   <Hero stop={stop} releaseCount={projects.length} totalSheets={total}>
-    <Scrubber slot="scrubber" projects={projects} />
+    <FeaturedCards slot="projects" projects={projects} />
     <GeneralNotes slot="notes" />
   </Hero>
 
   <Parts projects={projects} of={total} />
   <PartsList projects={projects} n={3} of={total} />
-  <Revisions n={4} of={total} />
+  <Revisions projects={projects} n={4} of={total} />
 
   {(hasCerts || hasInspection) && <Certifications n={5} of={total} />}
 
