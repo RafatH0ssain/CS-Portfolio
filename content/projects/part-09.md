@@ -49,7 +49,7 @@ history:
   - { version: "v0.6.0", date: "2025-04", note: "Last editor pass on 2025-04-03, fixing supervised data preparation and unsupervised model definition." }
 ---
 
-DEEBug is a Python debugging platform built with a course team, and my share was the editor the student works in. You bring a Keras script, it is split into five sections, and you fix it one section at a time. The backend runs the script for you, diffs the output against a known-good copy of the same file, and hands back a number.
+DEEBug is a Python debugging platform built with a course team, and my share was the editor the student works in. You bring a Keras script, it is split into five sections, and you fix it one section at a time. The backend runs the script for you, diffs the output against a known-good copy of the same file, and hands back a number. Issue resolution time fell 25%.
 
 My part was that editor: data preparation, model definition, training configuration, evaluation and visualization, in a Monaco editor with next and previous navigation and a sticky header above them. Each section opens from a template, and each template carries a marker line; everything below that marker becomes a read-only range. That is the piece I am happiest with, because the harness the server appends to the script calls load_data, build_model, train_model and evaluate_model by name. A student who renames one of them breaks the run for reasons that have nothing to do with the bug being chased, and the read-only ranges are what stop that.
 

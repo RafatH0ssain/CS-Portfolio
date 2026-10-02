@@ -24,7 +24,7 @@
     "roles": [
       {
         "title": "Data Architect / Technician",
-        "start": "2023-09", "end": "2025-01",
+        "start": "2023-01", "end": "2025-01",
         "summary": "Designed and maintained a relational product database of 1,000+ automotive SKUs.",
         "bullets": [
           "Implemented data quality controls that kept the catalogue accurate.",

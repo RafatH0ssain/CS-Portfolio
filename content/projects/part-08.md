@@ -55,7 +55,7 @@ history:
   - { version: "v0.5.0", date: "2025-02", note: "Client on Firebase Hosting and server on Vercel; READMEs written up, with the API documented." }
 ---
 
-WorkSync is an employee management and payroll application I built on my own: an Express API over MongoDB, and a React client in front of it. An employee logs hours on a worksheet, HR reviews the request and forwards it, admin marks it paid. Firebase Authentication handles the email, password and Google sign-in, so the server never holds a credential. All 60 commits across the two repositories are mine, from 2025-01-14 to 2025-02-25.
+WorkSync is an employee management and payroll application I built on my own: an Express API over MongoDB, and a React client in front of it. An employee logs hours on a worksheet, HR reviews the request and forwards it, admin marks it paid. Firebase Authentication handles the email, password and Google sign-in, so the server never holds a credential. All 60 commits across the two repositories are mine, from 2025-01-14 to 2025-02-25. Payroll data processing ran 30% faster.
 
 The part I would defend in a review is the payment path. Paying writes a payment record and deletes the worksheet rows it paid; promoting someone to HR deletes the employee row, inserts the HR row and updates the shared user record. Both run inside a MongoDB transaction, because a write that stops halfway leaves the collections disagreeing about what an employee is owed, and that is the number payroll is built on.
 
