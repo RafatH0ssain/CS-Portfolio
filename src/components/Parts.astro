@@ -2,7 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { Image } from 'astro:assets';
 import { revisions } from '../lib/content';
-import { currentStop, featuredProjects, numberedProjects, stateClass } from '../lib/derive';
+import { countWord, currentStop, numberedDeck, numberedProjects, stateClass } from '../lib/derive';
 import Schematic from './Schematic.astro';
 import SheetFoot from './SheetFoot.astro';
 
@@ -13,15 +13,9 @@ interface Props {
 const { projects } = Astro.props;
 const stop = currentStop(revisions);
 
-// Project numbers come from `order`, the same source the project list uses.
-const partNoById = new Map(numberedProjects(projects).map((q) => [q.id, q.partNo]));
-
-// Top plate first in profile.featured; position i is 0 for the top plate.
-const parts = featuredProjects(projects).map((p, i) => ({
-  p,
-  i,
-  partNo: partNoById.get(p.id) ?? String(i + 1).padStart(2, '0'),
-}));
+// Top plate first in profile.deck, or profile.featured when there is no deck.
+// Position i is 0 for the top plate, and the part number is the deck position.
+const parts = numberedDeck(projects).map((p, i) => ({ p, i, partNo: p.partNo }));
 
 const n = parts.length;
 
@@ -34,7 +28,7 @@ const all = numberedProjects(projects);
     <div class="section__title">
       <h2 id="parts-h" class="t-sheet">Projects</h2>
     </div>
-    <p class="section__intro">{n === 4 ? 'Four' : String(n)} featured projects, pulled apart. Hover, tab or tap one to lift it out and read its summary.</p>
+    <p class="section__intro">{countWord(n)} projects, pulled apart. Hover, tab or tap one to lift it out and read its summary.</p>
   </div>
 
   <div class="parts" data-parts style={`--n:${n}`}>

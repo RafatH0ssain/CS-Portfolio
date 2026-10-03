@@ -50,7 +50,8 @@ export const Profile = z.object({
   updated: yearMonth,
   head: z.string().min(2).max(40), // headline at the current revision
   bio: z.string().min(20).max(220), // bio at the current revision
-  featured: z.array(z.string()).min(3).max(4), // project slugs for the exploded view, top plate first
+  featured: z.array(z.string()).min(3).max(4), // project slugs for the hero cards, top card first
+  deck: z.array(z.string()).min(3).max(10).optional(), // project slugs for the exploded plate stack, top plate first; falls back to featured
   shortVersion: z
     .array(z.object({ lead: z.string().min(5).max(70), rest: z.string().min(5).max(180) }))
     .min(2)

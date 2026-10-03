@@ -2,7 +2,7 @@
 import { getCollection, render, type CollectionEntry } from 'astro:content';
 import Sheet from '../../layouts/Sheet.astro';
 import { profile } from '../../lib/content';
-import { numberedProjects } from '../../lib/derive';
+import { numberedProjects, partSheetNumber } from '../../lib/derive';
 import Fig31 from '../../components/Fig31.astro';
 import PartHead from '../../components/PartHead.astro';
 import ReleaseNotes from '../../components/ReleaseNotes.astro';
@@ -10,17 +10,22 @@ import ReleaseNotes from '../../components/ReleaseNotes.astro';
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
   const ordered = numberedProjects(projects);
-  return ordered.map((p, i) => ({
-    params: { slug: p.id },
-    props: {
-      project: p,
-      partNo: p.partNo,
-      totalParts: ordered.length,
-      sheetNo: i + 1,
-      prev: ordered[i - 1] ?? ordered[ordered.length - 1],
-      next: ordered[i + 1] ?? ordered[0],
-    },
-  }));
+  return ordered.map((p, i) => {
+    // A project on a plate numbers itself by its place in the deck; anything
+    // else keeps its place in the full parts list.
+    const sheet = partSheetNumber(p, projects);
+    return {
+      params: { slug: p.id },
+      props: {
+        project: p,
+        partNo: sheet.partNo,
+        totalParts: sheet.totalParts,
+        sheetNo: sheet.sheetNo,
+        prev: ordered[i - 1] ?? ordered[ordered.length - 1],
+        next: ordered[i + 1] ?? ordered[0],
+      },
+    };
+  });
 }
 
 interface Props {

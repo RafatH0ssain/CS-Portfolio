@@ -17,6 +17,7 @@
   "head": "CS student, leaning toward ML",
   "bio": "Computer science honours student at Dalhousie, graduating May 2027. Co-op developer at SpryPoint, research assistant on Greenland ice segmentation. Looking for new grad roles.",
   "featured": ["part-01", "part-02", "part-03", "part-04"],
+  "deck": ["part-01", "part-02", "part-03", "part-04", "part-07", "part-08", "part-09", "part-10"],
   "shortVersion": [
     { "lead": "Co-op developer at SpryPoint", "rest": "Worked on a Scala/Java and Knockout.js billing platform for municipal utilities: bug fixes, configuration pages, forms and tests. About 20 client-facing stories." },
     { "lead": "Research assistant at Dalhousie", "rest": "Worked on U-Net models and patch datasets over Landsat-8 Greenland imagery, plus an Honours study on backdoor attacks in vision models." },

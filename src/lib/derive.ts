@@ -56,17 +56,67 @@ export function builtCount(projects: CollectionEntry<'projects'>[], stop: Stop):
   return { built: projects.filter((p) => p.data.level <= stop.level).length, total: projects.length };
 }
 
-/** The featured projects, top plate first. Throws on an unknown slug. */
-export function featuredProjects(projects: CollectionEntry<'projects'>[]) {
-  return profile.featured.map((slug) => {
+/** Resolve a list of slugs to projects. Throws on an unknown slug. */
+function bySlug(slugs: string[], field: string, projects: CollectionEntry<'projects'>[]) {
+  return slugs.map((slug) => {
     const found = projects.find((p) => p.id === slug);
     if (!found) {
       throw new Error(
-        `content/profile.json lists "${slug}" in featured, but content/projects/${slug}.md does not exist.`,
+        `content/profile.json lists "${slug}" in ${field}, but content/projects/${slug}.md does not exist.`,
       );
     }
     return found;
   });
+}
+
+/** The featured projects, top card first. Throws on an unknown slug. */
+export function featuredProjects(projects: CollectionEntry<'projects'>[]) {
+  return bySlug(profile.featured, 'featured', projects);
+}
+
+/** The plate stack: profile.deck when the owner set one, else profile.featured. */
+export function deckProjects(projects: CollectionEntry<'projects'>[]) {
+  return bySlug(profile.deck ?? profile.featured, profile.deck ? 'deck' : 'featured', projects);
+}
+
+/** The plate stack, each plate tagged with its deck position as the part number. */
+export function numberedDeck(
+  projects: CollectionEntry<'projects'>[],
+): (CollectionEntry<'projects'> & { partNo: string; n: number })[] {
+  return deckProjects(projects).map((p, i) => ({ ...p, n: i + 1, partNo: String(i + 1).padStart(2, '0') }));
+}
+
+/** The number words a count of 3 to 10 needs, so no copy hard-codes a count. */
+const COUNT_WORDS = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
+
+/** "Eight" for 8, and the digit itself for a count outside the map. */
+export function countWord(n: number): string {
+  return COUNT_WORDS[n] ?? String(n);
+}
+
+export interface PartSheetNumber {
+  partNo: string;
+  sheetNo: number;
+  totalParts: number;
+}
+
+/**
+ * How a project sheet numbers itself: its place in the plate deck when it sits on
+ * a plate, otherwise its place in the full parts list, so a sheet never disagrees
+ * with the plate stack it was reached from.
+ */
+export function partSheetNumber(
+  project: CollectionEntry<'projects'>,
+  projects: CollectionEntry<'projects'>[],
+): PartSheetNumber {
+  const deck = numberedDeck(projects);
+  const onDeck = deck.findIndex((p) => p.id === project.id);
+  if (onDeck !== -1) {
+    return { partNo: deck[onDeck].partNo, sheetNo: onDeck + 1, totalParts: deck.length };
+  }
+  const ordered = numberedProjects(projects);
+  const i = ordered.findIndex((p) => p.id === project.id);
+  return { partNo: ordered[i].partNo, sheetNo: i + 1, totalParts: ordered.length };
 }
 
 export type LetteredOrg = Org & { letter: string; latest: boolean; roles: Org['roles'] };

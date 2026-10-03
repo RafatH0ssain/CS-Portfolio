@@ -433,7 +433,10 @@ ul, ol { padding: 0; list-style: none; }
   .chip { font-size: 13px; padding: 4px 8px; }
 }
 
-/* ---------- 12. Exploded parts view ---------- */
+/* ---------- 12. Exploded parts view ----------
+ * The stack scales with --n (the number of plates) rather than with a fixed
+ * count: plate size, offset, z-order, label rows and the axis all derive from
+ * --i (the plate's position) and --gap, so any --n from 3 to 10 lays out. */
 .parts {
   display: grid; grid-template-columns: minmax(0, 860px) minmax(0, 1fr); gap: 40px; align-items: start;
   --pw: 340px;  /* plate width  (unprojected) */
@@ -525,7 +528,9 @@ ul, ol { padding: 0; list-style: none; }
   .parts { grid-template-columns: minmax(0, 1fr); gap: 0; --pw: 220px; --ph: 140px; --gap: 130px; --thick: 8px; --pscale: .8; --ox: calc(50% + (var(--ph) - var(--pw)) * .433); }
   .plate-wrap.is-active { transform: translate(-14px, -12px); }
   .part-label { display: none; }
-  .parts__picker { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 8px; margin: 10px 0 0; }
+  /* Wraps by row width: eight buttons sit on one row when there is room and fold
+     onto two rows on a phone instead of squeezing eight narrow cells. */
+  .parts__picker { display: grid; grid-template-columns: repeat(auto-fit, minmax(56px, 1fr)); gap: 8px; margin: 10px 0 0; }
   .parts__picker button {
     min-height: 48px; font-family: var(--font); font-size: 16px; font-weight: 800; cursor: pointer;
     color: var(--chalk); background: var(--ground); border: 1.5px solid var(--chalk);
@@ -533,6 +538,11 @@ ul, ol { padding: 0; list-style: none; }
   .parts__picker button[aria-pressed="true"] { background: var(--amber); color: var(--ground); border-color: var(--amber); }
   .parts__picker button.is-future { opacity: .45; }
   .spec { margin-top: 14px; }
+}
+/* Phone: the stack is several thousand pixels of plate, so it is dropped and the
+   picker plus the spec panel carry the same choice on their own. */
+@media (max-width: 767px) {
+  .parts__stage { display: none; }
 }
 /* Numbered balloon printed on each plate, shown only in the compact layout. */
 .plate__balloon { display: none; }
