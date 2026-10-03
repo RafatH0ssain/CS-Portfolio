@@ -13,12 +13,14 @@ stack: ["PHP", "MySQL", "HTML", "CSS", "JavaScript", "Bootstrap"]
 links:
   repo: "https://github.com/nafisahnubah/lbook"
 figure:
+  image: "../../src/assets/projects/lbook.png"
+  alt: "LBook staff dashboard with coloured tiles for active, inactive and suspended students, book counts and percentage gauges."
   schematic: "grid"
   callouts:
-    - { x: 0.24, y: 0.22, title: "Five tables, five files", note: "books, students, employees, borrowbooks and user, each created by a runnable file in db/." }
-    - { x: 0.62, y: 0.28, title: "One gate on every page", note: "loggedin() in includes/functions.php redirects to login.php after 1800 idle seconds." }
-    - { x: 0.80, y: 0.64, title: "The loan list is a join", note: "borrow_books_list.php joins students, borrowbooks and books in one query." }
-    - { x: 0.30, y: 0.80, title: "md5 for passwords", note: "checking.php hashes the posted password with md5 and keeps the hash in the session." }
+    - { x: 0.12, y: 0.2, title: "Five tables, five files", note: "books, students, employees, borrowbooks and user, each created by a runnable file in db/." }
+    - { x: 0.5, y: 0.72, title: "One gate on every page", note: "loggedin() in includes/functions.php redirects to login.php after 1800 idle seconds." }
+    - { x: 0.3, y: 0.5, title: "The loan list is a join", note: "borrow_books_list.php joins students, borrowbooks and books in one query." }
+    - { x: 0.8, y: 0.2, title: "md5 for passwords", note: "checking.php hashes the posted password with md5 and keeps the hash in the session." }
 added:
   - "Eight add and list pages over five tables, every one of them behind a staff login."
   - "Adding a loan wrote the borrowbooks row and set books.status to 1 in the same request."
