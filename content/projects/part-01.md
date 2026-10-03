@@ -14,12 +14,14 @@ stack: ["Python", "NumPy", "Canon EDSDK", "Canon CCAPI", "LibRaw", "PyInstaller"
 links:
   repo: "https://github.com/RafatH0ssain/Canon-EDSDK-Film-Scanner"
 figure:
+  image: "../../src/assets/projects/canon-scanners.png"
+  alt: "Film Scanner app showing a live negative preview with focus peaking highlighted in red and capture controls on the right."
   schematic: "chart"
   callouts:
-    - { x: 0.28, y: 0.21, title: "59.79 fps over USB", note: "EDSDK live view at 960x640, against 3.98 fps on the Wi-Fi build." }
-    - { x: 0.58, y: 0.30, title: "One inversion path", note: "Every step is a scalar of one input, so the preview and the saved file cannot drift." }
-    - { x: 0.82, y: 0.66, title: "A bundled mock camera", note: "The build runs with no Python, no SDK and no hardware attached." }
-    - { x: 0.20, y: 0.74, title: "Fine focus, 1x1", note: "The SDK minimum, chosen by hand at 8x magnification, not by the frame metric." }
+    - { x: 0.45, y: 0.3, title: "59.79 fps over USB", note: "EDSDK live view at 960x640, against 3.98 fps on the Wi-Fi build." }
+    - { x: 0.5, y: 0.55, title: "One inversion path", note: "Every step is a scalar of one input, so the preview and the saved file cannot drift." }
+    - { x: 0.12, y: 0.8, title: "A bundled mock camera", note: "The build runs with no Python, no SDK and no hardware attached." }
+    - { x: 0.9, y: 0.35, title: "Fine focus, 1x1", note: "The SDK minimum, chosen by hand at 8x magnification, not by the frame metric." }
 added:
   - "Two apps for one job: EDSDK at 59.79 fps over USB, CCAPI at 3.98 fps over Wi-Fi, 15x the frame rate."
   - "A double-clickable build of 66 MB with a mock camera, and 250 tests that need neither a camera nor the SDK."

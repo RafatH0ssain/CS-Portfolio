@@ -15,12 +15,14 @@ links:
   live: "https://lumen-gallery.pages.dev"
   repo: "https://github.com/RafatH0ssain/Lumen-Gallery"
 figure:
+  image: "../../src/assets/projects/lumen-gallery.png"
+  alt: "Lumen Gallery showing a Cleveland Museum of Art etching, The Little Cavaliers, with a short note card below it."
   schematic: "pipeline"
   callouts:
-    - { x: 0.28, y: 0.21, title: "Cleveland Open Access", note: "Keyless and CC0, so the browser can call it directly and the key never ships." }
-    - { x: 0.58, y: 0.30, title: "Write-once note", note: "Each docent note is generated once, then served from KV at about $0.0001." }
-    - { x: 0.82, y: 0.66, title: "Genre loop", note: "Double-tap a work and the next few come from its genre, then it drifts back." }
-    - { x: 0.20, y: 0.74, title: "41,511 works", note: "The explore pool, up from the 1,000 the previous source would serve." }
+    - { x: 0.12, y: 0.15, title: "Cleveland Open Access", note: "Keyless and CC0, so the browser can call it directly and the key never ships." }
+    - { x: 0.5, y: 0.88, title: "Write-once note", note: "Each docent note is generated once, then served from KV at about $0.0001." }
+    - { x: 0.55, y: 0.45, title: "Genre loop", note: "Double-tap a work and the next few come from its genre, then it drifts back." }
+    - { x: 0.88, y: 0.2, title: "41,511 works", note: "The explore pool, up from the 1,000 the previous source would serve." }
 added:
   - "AI docent notes for $0 a month: cached per artwork, rate limited per IP, capped in the OpenAI dashboard."
   - "Grew the explore pool from 1,000 reachable works to 41,511 by moving off a capped search API."

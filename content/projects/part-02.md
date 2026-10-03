@@ -14,12 +14,14 @@ stack: ["Python", "MNE", "scikit-learn", "NumPy", "ICLabel"]
 links:
   repo: "https://github.com/RafatH0ssain/SPECTRAICA-Surge-NeuroHack-2026"
 figure:
+  image: "../../src/assets/projects/spectra-ica.png"
+  alt: "Title slide from the SPECTRA-ICA talk: independent component analysis decomposes EEG into sources and removes artifact components."
   schematic: "pipeline"
   callouts:
-    - { x: 0.28, y: 0.21, title: "Temporal gate", note: "Blink, muscle, cardiac and channel-noise events detected per component." }
-    - { x: 0.58, y: 0.30, title: "Spectral profile", note: "Each component's own STFT decides which frequencies are artifact." }
-    - { x: 0.82, y: 0.66, title: "Gated subtraction", note: "Removal scaled by the ICLabel probability instead of a binary cut." }
-    - { x: 0.20, y: 0.74, title: "10-subject LOPOCV", note: "7,200 P300 epochs, Euclidean Alignment then logistic regression." }
+    - { x: 0.2, y: 0.2, title: "Temporal gate", note: "Blink, muscle, cardiac and channel-noise events detected per component." }
+    - { x: 0.3, y: 0.52, title: "Spectral profile", note: "Each component's own STFT decides which frequencies are artifact." }
+    - { x: 0.72, y: 0.4, title: "Gated subtraction", note: "Removal scaled by the ICLabel probability instead of a binary cut." }
+    - { x: 0.7, y: 0.75, title: "10-subject LOPOCV", note: "7,200 P300 epochs, Euclidean Alignment then logistic regression." }
 added:
   - "Beat standard ICA on all 7 P300 BCI metrics across 10 subjects, Cohen's d = 0.703, a medium effect."
   - "Found 28 more P300 targets and produced 11 fewer false alarms than binary ICA exclusion."

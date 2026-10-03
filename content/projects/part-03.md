@@ -14,12 +14,14 @@ stack: ["Python", "PyTorch", "Ollama", "Unsloth", "rank-bm25", "Gradio"]
 links:
   repo: "https://github.com/RafatH0ssain/camus-gpt"
 figure:
+  image: "../../src/assets/projects/camusgpt.png"
+  alt: "Architecture diagram of CamusGPT: training the persona weights, a knowledge base feeding retrieval, the chat layer on Ollama, and the evaluation harness."
   schematic: "nodes"
   callouts:
-    - { x: 0.28, y: 0.21, title: "Identity card", note: "About 230 tokens of verified facts sit in the prompt, so trivia cannot miss." }
-    - { x: 0.58, y: 0.30, title: "Hybrid retrieval", note: "BM25 and dense fused by reciprocal rank, then a cross-encoder reranks the top 30." }
-    - { x: 0.82, y: 0.66, title: "34 probes", note: "Ten categories, scored 1 to 5 by a judge, history keyed to the git commit." }
-    - { x: 0.20, y: 0.74, title: "13,794 entries", note: "Semantic dedup cut about 19.6k extracted rows down without losing a curated fact." }
+    - { x: 0.49, y: 0.57, title: "Identity card", note: "About 230 tokens of verified facts sit in the prompt, so trivia cannot miss." }
+    - { x: 0.69, y: 0.38, title: "Hybrid retrieval", note: "BM25 and dense fused by reciprocal rank, then a cross-encoder reranks the top 30." }
+    - { x: 0.29, y: 0.77, title: "34 probes", note: "Ten categories, scored 1 to 5 by a judge, history keyed to the git commit." }
+    - { x: 0.29, y: 0.37, title: "13,794 entries", note: "Semantic dedup cut about 19.6k extracted rows down without losing a curated fact." }
 added:
   - "Shipped a 12B two-pass fine-tune, judged at factuality 4.06 against 3.44 for the 8B build it replaced."
   - "A knowledge base of 13,794 entries holding 109 hand-verified facts, trimmed so those facts surface more often."
