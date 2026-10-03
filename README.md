@@ -1,6 +1,6 @@
 # Portfolio
 
-Personal portfolio site for Rafat Hossain. Astro static site, deployed on Cloudflare Workers.
+Personal portfolio site for Rafat Hossain, live at [work.rafathossain.com](https://work.rafathossain.com). Astro static site, deployed on Cloudflare Workers.
 
 - `content/` holds all the text (JSON and Markdown, one file per project).
 - `src/` holds the components, styles and scripts.

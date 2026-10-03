@@ -12,7 +12,7 @@ duration: "8 months"
 status: "In production"
 stack: ["Next.js 16", "React 19", "Tailwind CSS v4", "Framer Motion", "Vercel"]
 links:
-  live: "https://photosbyrh.vercel.app"
+  live: "https://photo.rafathossain.com"
   repo: "https://github.com/RafatH0ssain/PhotosByRH"
 figure:
   schematic: "grid"
