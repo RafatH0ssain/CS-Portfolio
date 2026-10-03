@@ -4,8 +4,8 @@ version: "v0.5.0"
 level: 1
 order: 8
 kind: "Product"
-summary: "Employee management and payroll I built end to end: employees log hours on a worksheet, HR forwards the request, admin pays it."
-role: "Everything: the Express API, the MongoDB collections, the React client"
+summary: "Employee management and payroll app I built on my own: employees log hours on a worksheet, HR forwards the request, admin pays it."
+role: "The Express API, the MongoDB collections and the React client"
 team: "Solo build"
 duration: "Six weeks, Jan to Feb 2025"
 status: "Archived"
@@ -21,7 +21,7 @@ figure:
     - { x: 0.84, y: 0.66, title: "PaymentRequests", note: "One transaction writes the payment record and deletes the worksheet rows it paid." }
     - { x: 0.20, y: 0.84, title: "Twenty per hour", note: "Amount owed is hoursWorked times a literal 20; the employee record holds no rate." }
 added:
-  - "The payroll path end to end: employees log hours, HR forwards the request, admin marks it paid and the paid rows leave the worksheet."
+  - "The payroll path: employees log hours, HR forwards the request, admin marks it paid and the paid rows leave the worksheet."
   - "Sign-in by email, password or Google, plus a server check that signs out anyone whose record says status fired."
   - "Three role views off one login, because the navbar, profile and home page each switch on the userType read from Mongo."
   - "Full CRUD on the worksheet collection, the only one with create, read, update and delete routes."
@@ -57,6 +57,6 @@ history:
 
 WorkSync is an employee management and payroll application I built on my own: an Express API over MongoDB, and a React client in front of it. An employee logs hours on a worksheet, HR reviews the request and forwards it, admin marks it paid. Firebase Authentication handles the email, password and Google sign-in, so the server never holds a credential. All 60 commits across the two repositories are mine, from 2025-01-14 to 2025-02-25. Payroll data processing ran 30% faster.
 
-The part I would defend in a review is the payment path. Paying writes a payment record and deletes the worksheet rows it paid; promoting someone to HR deletes the employee row, inserts the HR row and updates the shared user record. Both run inside a MongoDB transaction, because a write that stops halfway leaves the collections disagreeing about what an employee is owed, and that is the number payroll is built on.
+The payment path took the most work. Paying writes a payment record and deletes the worksheet rows it paid; promoting someone to HR deletes the employee row, inserts the HR row and updates the shared user record. Both run inside a MongoDB transaction, because a write that stops halfway leaves the collections disagreeing about what an employee is owed, and that is the number payroll is built on.
 
 What I would not ship again: the hourly rate is a literal 20 in the amount-owed query, the API base URL is written straight into the client code with no dev proxy, and the README still advertises JWT authentication that the server never implements. Role checks live in the React components, not on the routes, so the HR and admin pages sit behind the same gate as the employee worksheet.

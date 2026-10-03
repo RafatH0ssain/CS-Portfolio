@@ -4,8 +4,8 @@ version: "v0.3.0"
 level: 0
 order: 10
 kind: "Web"
-summary: "Staff-facing library system: catalog books, track students and loans, and put every page behind a login."
-role: "Books and employee pages, staff signup, and the January 2025 cleanup pass"
+summary: "Staff-facing library system built with a team of three: catalog books, track students and loans, and put every page behind a login."
+role: "My part: books and employee pages, staff signup, and the January 2025 cleanup"
 team: "Team of 3"
 duration: "Build 3 days, cleanup Jan 2025"
 status: "In progress"
@@ -54,6 +54,6 @@ history:
 
 LBook is a staff-facing library system. You add books, students and employees, hand a book out against a borrow date and a due date, and read it all back off one dashboard. Staff sign up first: every page behind the menu calls loggedin() in includes/functions.php, which throws the session away after 1800 seconds of quiet. The storage is five MySQL tables, books, students, employees, borrowbooks and user, each defined by a small script in db/ that you open once to create the table.
 
-I built the books pages and the employee pages, and I wrote the staff signup. Adding a loan wrote the borrowbooks row and set books.status to 1 in the same request, so the book list and the dashboard read one column instead of counting open loans. The loan list is a three-table join across students, borrowbooks and books, which is the piece I would keep. Three days of commits in June 2024 got the app to that state; the log holds 106 commits, 32 of them mine.
+I built the books pages and the employee pages, and I wrote the staff signup. Adding a loan wrote the borrowbooks row and set books.status to 1 in the same request, so the book list and the dashboard read one column instead of counting open loans. The loan list is a three-table join across students, borrowbooks and books. Three days of commits in June 2024 got the app to that state; the log holds 106 commits, 32 of them mine.
 
 I came back in January 2025 and stripped the starter template's redundant comments and reformatted the HTML, CSS and JS, in five commits, then fixed the README. What is still wrong is in the issues: md5 passwords kept in the session, no prepared statements anywhere, and a dashboard tile counting a status the book form never writes.

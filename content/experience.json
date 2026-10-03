@@ -7,9 +7,9 @@
       {
         "title": "Software Developer, co-op",
         "start": "2026-01", "end": null,
-        "summary": "Delivered about 20 client-facing stories on SpryCIS, a billing platform for municipal utilities. Invited back for a second term.",
+        "summary": "Worked on about 20 client-facing stories on SpryCIS, a billing platform for municipal utilities. Invited back for a second term.",
         "bullets": [
-          "Owned a 5-point fix on the billing page, spending most of the estimate working out what the change could affect before altering anything.",
+          "Fixed a 5-point issue on the billing page, spending most of the estimate working out what the change could affect before altering anything.",
           "Wrote unit and UI tests, ran regression testing at each sprint close, and reviewed teammates' code.",
           "Extended cheque endorsement and receipt-printer configuration with new fields, leaving output unchanged for clients who had not opted in."
         ],
@@ -25,7 +25,7 @@
       {
         "title": "Data Architect / Technician",
         "start": "2023-01", "end": "2025-01",
-        "summary": "Designed and maintained a relational product database of 1,000+ automotive SKUs.",
+        "summary": "Built and maintained a relational product database of 1,000+ automotive SKUs.",
         "bullets": [
           "Implemented data quality controls that kept the catalogue accurate.",
           "Restructured product categories for search, which lifted organic traffic 35%."
@@ -42,9 +42,9 @@
       {
         "title": "Undergraduate Research Assistant",
         "start": "2025-06", "end": null,
-        "summary": "Trains U-Net models on a Landsat-8 archive of West Greenland and builds the patch datasets four other researchers train against.",
+        "summary": "Worked on U-Net models trained on a Landsat-8 archive of West Greenland, and built the patch datasets four other researchers train against.",
         "bullets": [
-          "Validated against independently published ice masks, not the training pseudo-labels, which showed the easier evaluation was circular.",
+          "Validated the models against independently published ice masks, not the training pseudo-labels, which showed the easier evaluation was circular.",
           "Traced a season-mislabelled dataset export that had silently mixed summer and winter imagery across the team's training runs."
         ],
         "tags": ["PyTorch", "Python"],
@@ -71,7 +71,7 @@
       {
         "title": "Treasurer",
         "start": "2025-09", "end": null,
-        "summary": "Secured $1,500+ in grants across two terms for a society of 150+ members.",
+        "summary": "Managed the society's grants and budgets: $1,500+ across two terms, for 150+ members.",
         "bullets": [
           "Wrote the successful applications to the Dalhousie Student Union and ShiftKey Labs.",
           "Manage budgets, invoicing and reconciliation across the academic year."
@@ -86,7 +86,7 @@
       {
         "title": "1st place, Machine Learning category",
         "start": "2026-03", "end": "2026-05",
-        "summary": "Built SPECTRA-ICA, an EEG artifact-removal algorithm that beat standard ICA on all 7 metrics of a P300 benchmark.",
+        "summary": "Part of the team that built SPECTRA-ICA, an EEG artifact-removal algorithm that beat standard ICA on all 7 metrics of a P300 benchmark.",
         "tags": ["Python", "MNE", "scikit-learn"]
       }
     ]

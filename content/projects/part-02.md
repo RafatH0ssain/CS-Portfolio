@@ -5,8 +5,8 @@ version: "v1.0.0"
 level: 3
 order: 2
 kind: "ML"
-summary: "An EEG artifact remover that strips only artifact-characteristic frequencies during detected events, and beat plain ICA on all 7 P300 metrics."
-role: "Designed the artifact removal algorithm and the 10-subject LOPOCV benchmark"
+summary: "A team-built EEG artifact remover that strips only artifact-characteristic frequencies during detected events, and beat plain ICA on all 7 P300 metrics."
+role: "My part of Team DMLS: the algorithm and the 10-subject LOPOCV benchmark"
 team: "Team DMLS"
 duration: "One day, March 2026"
 status: "Archived"
@@ -50,8 +50,8 @@ history:
   - { version: "v1.0.0", date: "2026-05", note: "NeuroHack slides added to the repository, and the NeuroHack PDF deleted." }
 ---
 
-Standard EEG cleaning throws away a whole independent component when it thinks that component carries a blink. That is a big hammer: the component also carries alpha and beta, so the neural signal inside it goes too. In the benchmark, binary ICA came out at 0.499 OCI, about half the neural power in the 1 to 30 Hz band removed, on average.
+Standard EEG cleaning throws away a whole independent component when it thinks that component carries a blink. The component also carries alpha and beta, so the neural signal inside it goes too. In the benchmark, binary ICA came out at 0.499 OCI, about half the neural power in the 1 to 30 Hz band removed, on average.
 
-SPECTRA-ICA does two things instead. It gates in time, detecting blinks, muscle bursts, heartbeats and channel noise per component, and it gates in frequency, estimating a per-component weight from the STFT of that component's own artifact windows against its own clean windows. Removal is then scaled by the ICLabel probability, so a component nobody is sure about is barely touched.
+The method we built does two things instead. It gates in time, detecting blinks, muscle bursts, heartbeats and channel noise per component, and it gates in frequency, estimating a per-component weight from the STFT of that component's own artifact windows against its own clean windows. Removal is then scaled by the ICLabel probability, so a component nobody is sure about is barely touched.
 
-Across 10 subjects on a P300 oddball BCI benchmark it beat standard ICA on all 7 metrics, with balanced accuracy 0.6270 to 0.6505 (+2.35 pp), AUC +1.89 pp, Cohen's d of 0.703, and 6 of 10 subjects improved. The spectral path switches itself off for muscle components because their profiles did not survive testing. It took first place in the machine learning category at SURGE NeuroHack 2026 and the repository has not moved since.
+Across 10 subjects on a P300 oddball BCI benchmark it beat standard ICA on all 7 metrics, with balanced accuracy 0.6270 to 0.6505 (+2.35 pp), AUC +1.89 pp, Cohen's d of 0.703, and 6 of 10 subjects improved. The spectral path switches itself off for muscle components because their profiles did not survive testing. Working with Team DMLS, it took first place in the machine learning category at SURGE NeuroHack 2026, and the repository has not moved since.

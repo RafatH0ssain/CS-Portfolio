@@ -22,7 +22,7 @@ figure:
     - { x: 0.20, y: 0.74, title: "13,794 entries", note: "Semantic dedup cut about 19.6k extracted rows down without losing a curated fact." }
 added:
   - "Shipped a 12B two-pass fine-tune, judged at factuality 4.06 against 3.44 for the 8B build it replaced."
-  - "A knowledge base of 13,794 entries holding 109 hand-verified facts, trimmed so they actually surface."
+  - "A knowledge base of 13,794 entries holding 109 hand-verified facts, trimmed so those facts surface more often."
   - "34 probes across 10 categories, scored through the real chat pipeline and tracked per commit."
   - "A memory layer, off by default, that fixed a self-reference probe scoring 0 of 5."
 changed:
@@ -54,7 +54,7 @@ history:
   - { version: "v0.4.0", date: "2026-09", note: "First blind A/B rejected the lean prompt: median reply length only moved 40 words to 38." }
 ---
 
-A small language model can hold a voice. It cannot hold a life. So this splits the problem: the weights are trained once to make the model speak and behave like Camus, and everything it knows about his life is retrieved at query time from a knowledge base mined from biographies and his own notebooks. A wrong fact is a data edit, not a retraining job.
+The project splits the problem in two: the weights are trained once to make the model speak and behave like Camus, and everything it knows about his life is retrieved at query time from a knowledge base mined from biographies and his own notebooks. A wrong fact is a data edit, not a retraining job.
 
 Retrieval is the part that kept needing work. It started as one flat boost for hand-verified facts, which flooded unrelated prompts. It ended as BM25 fused with dense vectors by reciprocal rank, a cross-encoder reranking the top 30, and a small identity card in the prompt so the cat and the dogs are right even when retrieval misses. The judge scores 34 probes over 10 categories after every change, keyed to the commit, so a retrain cannot quietly make things worse.
 

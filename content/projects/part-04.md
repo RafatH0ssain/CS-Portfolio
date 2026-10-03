@@ -6,7 +6,7 @@ level: 3
 order: 4
 kind: "Web"
 summary: "A snap-through feed of the Cleveland Museum of Art's open collection, with docent notes written once and cached for good."
-role: "Owned the spec, the museum API migration and the cost controls"
+role: "Wrote the spec, the museum API migration and the cost controls"
 team: "Solo build"
 duration: "About 2 months"
 status: "In production"
@@ -53,6 +53,6 @@ history:
 
 One artwork per screen, hung on a black wall in De Stijl red, blue and yellow. Tap a piece to open it full-screen, then pinch, double-tap or scroll to get into the brushwork. Double-tap something you like and the next few pieces come from the same genre, weighted by a hierarchy that goes culture, then technique, then type, and the feed reverts to serendipity once you scroll past them untapped. Every piece carries a docent note that streams in token by token.
 
-The cost is the part that mattered. The museum's API is free and keyless, so the browser calls it directly and the only secret that has to be protected is the OpenAI key, which never leaves a Pages Function. Each note is generated once, written through to a Workers KV namespace, and served from there after that, which puts the whole thing at about $0.0001 per artwork, once, forever.
+The cost of the API calls shaped the design. The museum's API is free and keyless, so the browser calls it directly and the only secret that has to be protected is the OpenAI key, which never leaves a Pages Function. Each note is generated once, written through to a Workers KV namespace, and served from there after that, which puts the whole thing at about $0.0001 per artwork, once, forever.
 
 The rewrite came from a header. On 5 December 2025 the previous source's image host started answering every programmatic request with a Cloudflare challenge and a header forbidding cross-origin embedding, so every artwork rendered as a broken-image icon. I reproduced it from residential, cellular, datacenter and edge vantage points, which ruled out a server-side proxy, and eventually moved the whole feed to Cleveland's CC0 API in a single release.

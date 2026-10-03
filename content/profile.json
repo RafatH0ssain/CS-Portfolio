@@ -14,13 +14,13 @@
   "openTo": "New grad roles, any field",
   "updated": "2026-09",
   "formspreeId": "xrpbdoyq",
-  "head": "Generalist engineer, leaning ML",
-  "bio": "I build software end to end: a billing platform at SpryPoint, ice segmentation research at Dalhousie, and ML tools that got measured. Graduating May 2027, open to new grad roles across CS.",
+  "head": "CS student, leaning toward ML",
+  "bio": "Computer science honours student at Dalhousie, graduating May 2027. Co-op developer at SpryPoint, research assistant on Greenland ice segmentation. Looking for new grad roles.",
   "featured": ["part-01", "part-02", "part-03", "part-04"],
   "shortVersion": [
-    { "lead": "Software developer co-op at SpryPoint", "rest": "Scala and Java back end, Knockout.js front end, on a billing platform for municipal utilities. About 20 client-facing stories delivered." },
-    { "lead": "Undergraduate researcher at Dalhousie", "rest": "Trains U-Net models on Landsat-8 imagery of West Greenland and builds the patch datasets the team trains against. Honours study on backdoor attacks in vision models." },
-    { "lead": "Treasurer, Dalhousie Machine Learning Society", "rest": "Secured $1,500+ in grants across two terms for a society of 150+ members." }
+    { "lead": "Co-op developer at SpryPoint", "rest": "Worked on a Scala/Java and Knockout.js billing platform for municipal utilities: bug fixes, configuration pages, forms and tests. About 20 client-facing stories." },
+    { "lead": "Research assistant at Dalhousie", "rest": "Worked on U-Net models and patch datasets over Landsat-8 Greenland imagery, plus an Honours study on backdoor attacks in vision models." },
+    { "lead": "Treasurer, Dalhousie Machine Learning Society", "rest": "Grants of $1,500+ across two terms for a society of 150+ members." }
   ],
   "figure": {
     "modules": [

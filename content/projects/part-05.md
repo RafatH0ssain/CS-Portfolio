@@ -6,7 +6,7 @@ level: 4
 order: 5
 kind: "Systems"
 summary: "A zero-dependency catalogue for a film folder, combining TMDB metadata with ffprobe facts read out of the files themselves."
-role: "Wrote the catalogue, the CLI, and the rule that keeps the model out of facts"
+role: "Wrote the catalogue, the CLI and the no-facts-from-the-model rule"
 team: "Solo build"
 duration: "1 month"
 status: "In progress"
