@@ -45,7 +45,7 @@ const label = (p: Props['prev']) => `${p.data.plateTitle ?? p.data.title}`;
 >
   <PartHead project={project} partNo={partNo} totalParts={totalParts} sheetNo={sheetNo} />
 
-  <section class="section solid" aria-label="Overview">
+  <section class="section solid" aria-label="Summary">
     <div class="intro">
       <Content />
     </div>
@@ -57,7 +57,7 @@ const label = (p: Props['prev']) => `${p.data.plateTitle ?? p.data.title}`;
   <section class="section">
     <div class="two-col">
       <div class="stack stack--notes">
-        <h2 class="t-sheet t-sheet--bare">General notes</h2>
+        <h2 class="t-sheet t-sheet--bare">Decisions</h2>
         <ol class="gnotes">
           {project.data.decisions.map((dec, i) => (
             <li>
@@ -65,8 +65,8 @@ const label = (p: Props['prev']) => `${p.data.plateTitle ?? p.data.title}`;
               <div class="stack stack--tight">
                 <span class="t-part-note">{dec.title}</span>
                 <span class="t-body t-dim">
-                  <strong>Chose</strong> {dec.chose}, <strong>instead of</strong> {dec.instead},
-                  <strong>because</strong> {dec.because}.
+                  <strong>I chose</strong> {dec.chose}, <strong>Instead of</strong> {dec.instead},
+                  <strong>Because</strong> {dec.because}.
                 </span>
               </div>
             </li>
@@ -74,11 +74,11 @@ const label = (p: Props['prev']) => `${p.data.plateTitle ?? p.data.title}`;
         </ol>
       </div>
       <div class="stack stack--notes">
-        <h2 class="t-sheet t-sheet--bare">Revisions</h2>
+        <h2 class="t-sheet t-sheet--bare">Timeline</h2>
         <table class="table">
           <thead>
             <tr>
-              <th scope="col" class="w-84">Rev</th>
+              <th scope="col" class="w-84">Version</th>
               <th scope="col" class="w-100">Date</th>
               <th scope="col">Description</th>
             </tr>
@@ -99,15 +99,15 @@ const label = (p: Props['prev']) => `${p.data.plateTitle ?? p.data.title}`;
     </div>
   </section>
 
-  <nav class="sheet-nav" aria-label="Other parts">
+  <nav class="sheet-nav" aria-label="Other projects">
     <a href={`/parts/${prev.id}/`}>
-      <span class="label">Previous sheet</span>
-      <span>3.{sheetNo === 1 ? totalParts : sheetNo - 1} — {label(prev)}</span>
+      <span class="label">Previous project</span>
+      <span>{label(prev)}</span>
     </a>
-    <span class="label sheet-nav__mid">DWG {profile.drawingNo} — Sheet 3.{sheetNo}</span>
+    <span class="label sheet-nav__mid">{sheetNo} of {totalParts}</span>
     <a href={`/parts/${next.id}/`}>
-      <span class="label">Next sheet</span>
-      <span>3.{sheetNo === totalParts ? 1 : sheetNo + 1} — {label(next)}</span>
+      <span class="label">Next project</span>
+      <span>{label(next)}</span>
     </a>
   </nav>
 </Sheet>

@@ -1,7 +1,7 @@
-/* Revision scrubber — the only script that changes page state by revision.
+/* Timeline scrubber — the only script that changes page state by stop.
  * Ported from docs/reference/prototype/assets/scrubber.js. Reads the stops from
  * <script type="application/json" id="revisions-data">. Without JavaScript the
- * page stays at the current revision and the controls stay hidden.
+ * page stays at the current stop and the controls stay hidden.
  *
  * Markup contract (the Astro build emits exactly these hooks):
  *   [data-scrubber-controls]      wrapper, has `hidden` until this runs
@@ -9,12 +9,12 @@
  *   [data-stop="i"]               stop buttons under the track
  *   .scrubber__tick (style --i)   ticks on the track
  *   .scrubber__track              gets --v = selected index
- *   [data-rev-field="rev|era|status|date|head|bio"]  text replaced per stop
+ *   [data-rev-field="<stop key>"] text replaced per stop (the build emits head and bio)
  *   [data-lvl="n"]                gets .is-future (n > level) / .is-new (n == level, not locked)
  *   [data-only-lvl="n"]           .is-off unless level == n
  *   [data-max-lvl="n"]            .is-off unless level <= n
- *   [data-locked-only]            .is-on only at the locked stop (v1.0)
- *   [data-release]                every parts-list row; counted for "N of M built"
+ *   [data-locked-only]            .is-on only at the locked stop (reserved; no markup uses it)
+ *   [data-release]                every project-list row; counted for "N of M built"
  *   [data-built]                  receives "N of M"
  *   [data-rev-live]               polite live region for announcements
  */
@@ -32,6 +32,11 @@ type Stop = {
 };
 
 const dataEl = document.getElementById('revisions-data');
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const monthYear = (ym: string) => {
+  const [year, month] = ym.split('-');
+  return `${MONTHS[Number(month) - 1]} ${year}`;
+};
 const range = document.getElementById('rev-range') as HTMLInputElement | null;
 if (dataEl && range) {
   const revs: Stop[] = JSON.parse(dataEl.textContent ?? '[]');
@@ -76,7 +81,7 @@ if (dataEl && range) {
     });
 
     range.value = String(i);
-    range.setAttribute('aria-valuetext', `Revision ${r.rev}, ${r.era}`);
+    range.setAttribute('aria-valuetext', `Timeline: ${r.era}, ${monthYear(r.date)}`);
     if (track) track.style.setProperty('--v', String(i));
     stops.forEach((b) => {
       const s = Number(b.getAttribute('data-stop'));
@@ -88,7 +93,7 @@ if (dataEl && range) {
     const built = rows.filter((row) => Number(row.getAttribute('data-lvl')) <= L).length;
     if (builtEl) builtEl.textContent = `${built} of ${rows.length}`;
     if (announce && live) {
-      live.textContent = `Revision ${r.rev}, ${r.era}: ${built} of ${rows.length} releases built.`;
+      live.textContent = `${r.era}, ${monthYear(r.date)}: ${built} of ${rows.length} projects.`;
     }
   };
 

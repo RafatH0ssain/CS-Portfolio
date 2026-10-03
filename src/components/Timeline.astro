@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Scrubber from './Scrubber.astro';
+
+interface Props {
+  projects: CollectionEntry<'projects'>[];
+}
+
+const { projects } = Astro.props;
+---
+
+<section class="section" id="timeline" aria-labelledby="timeline-h">
+  <div class="section__head">
+    <div class="section__title">
+      <h2 id="timeline-h" class="t-sheet">Timeline</h2>
+    </div>
+    <p class="section__intro">Drag to see my degree year by year; the projects below update to match.</p>
+  </div>
+
+  <Scrubber projects={projects} />
+</section>

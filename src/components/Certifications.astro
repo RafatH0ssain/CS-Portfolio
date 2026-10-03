@@ -3,12 +3,6 @@ import { academics, certifications } from '../lib/content';
 import SheetFoot from './SheetFoot.astro';
 import Inspection from './Inspection.astro';
 
-interface Props {
-  n: number;
-  of: number;
-}
-
-const { n, of } = Astro.props;
 const showInspect = academics?.show === true;
 ---
 
@@ -51,18 +45,18 @@ const showInspect = academics?.show === true;
 
     {showInspect && <Inspection />}
 
-    <SheetFoot n={n} of={of} />
+    <SheetFoot />
   </section>
 )}
 
 {showInspect && !certifications && (
-  <section class="section" id="inspection" aria-labelledby="insp-h">
+  <section class="section" id="academics" aria-labelledby="acad-h">
     <div class="section__head">
       <div class="section__title">
-        <h2 id="insp-h" class="t-sheet">Inspection report</h2>
+        <h2 id="acad-h" class="t-sheet">Academics</h2>
       </div>
     </div>
     <Inspection />
-    <SheetFoot n={n} of={of} />
+    <SheetFoot />
   </section>
 )}

@@ -33,7 +33,7 @@ const geometry = callouts.map((c) => {
 });
 ---
 
-<section class="section" aria-label="Figure 3.1">
+<section class="section" aria-label="Diagram">
   <div class="fig31">
     <figure class="stack stack--fig">
       <div class="fig31__frame">
@@ -62,8 +62,8 @@ const geometry = callouts.map((c) => {
         </svg>
       </div>
       <figcaption class="figcaption-row">
-        <span class="label">Fig. 3.1 — {d.plateTitle ?? d.title}</span>
-        <span class="label">{d.figure.image ? 'Screenshot' : 'Schematic, not to scale'}</span>
+        <span class="label">{d.plateTitle ?? d.title}</span>
+        <span class="label">{d.figure.image ? 'Screenshot' : 'Diagram'}</span>
       </figcaption>
     </figure>
 
@@ -82,7 +82,7 @@ const geometry = callouts.map((c) => {
 
       {links.some((l) => d.links[l.key]) && (
         <div class="stack stack--links">
-          <span class="label">Inspect it yourself</span>
+          <span class="label">Project links</span>
           <div class="btn-row">
             {links
               .filter((l) => d.links[l.key])

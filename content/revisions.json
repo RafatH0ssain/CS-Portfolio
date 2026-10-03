@@ -9,7 +9,7 @@
     "head": "First co-op, and a hackathon win", "bio": "Joined SpryPoint as a software developer on a municipal utility billing platform. Won 1st place in the Machine Learning category at SURGE NeuroHack 2026 with SPECTRA-ICA." },
   { "rev": "0.9", "era": "Year 4", "short": "Yr 4", "date": "2026-09", "status": "Release candidate", "level": 4,
     "current": true },
-  { "rev": "1.0", "era": "May 2027", "short": "2027", "date": "2027-05", "status": "Release pending", "level": 4,
-    "locked": true, "head": "Not yet released.",
-    "bio": "Scheduled for May 2027. Like every release date it is a plan, not a promise, but this one comes with a degree." }
+  { "rev": "1.0", "era": "Graduation", "short": "2027", "date": "2027-05", "status": "Release pending", "level": 4,
+    "locked": true, "head": "Graduation",
+    "bio": "Graduating May 2027 with a Bachelor of Computer Science (Honours). Open to new grad roles." }
 ]

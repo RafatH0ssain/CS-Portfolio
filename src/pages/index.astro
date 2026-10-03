@@ -1,8 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import Sheet from '../layouts/Sheet.astro';
-import { academics, certifications, profile, revisions } from '../lib/content';
-import { currentStop, sheetCount } from '../lib/derive';
+import { profile, revisions } from '../lib/content';
+import { currentStop } from '../lib/derive';
 import Approval from '../components/Approval.astro';
 import Certifications from '../components/Certifications.astro';
 import FeaturedCards from '../components/FeaturedCards.astro';
@@ -11,27 +11,26 @@ import Hero from '../components/Hero.astro';
 import Parts from '../components/Parts.astro';
 import PartsList from '../components/PartsList.astro';
 import Revisions from '../components/Revisions.astro';
+import Timeline from '../components/Timeline.astro';
 
 const projects = await getCollection('projects');
 const stop = currentStop(revisions);
-const hasCerts = certifications !== undefined;
-const hasInspection = academics?.show === true;
-const total = sheetCount(hasCerts, hasInspection);
 const fullName = `${profile.name.first} ${profile.name.last}`;
 const description = `${profile.bio} ${profile.programLong}, graduating ${profile.shipsOn}.`;
 ---
 
 <Sheet title={`${fullName} — Portfolio`} description={description}>
-  <Hero stop={stop} releaseCount={projects.length} totalSheets={total}>
+  <Hero stop={stop} projectCount={projects.length}>
     <FeaturedCards slot="projects" projects={projects} />
     <GeneralNotes slot="notes" />
   </Hero>
 
-  <Parts projects={projects} of={total} />
-  <PartsList projects={projects} n={3} of={total} />
-  <Revisions projects={projects} n={4} of={total} />
+  <Timeline projects={projects} />
+  <Parts projects={projects} />
+  <PartsList projects={projects} />
+  <Revisions />
 
-  {(hasCerts || hasInspection) && <Certifications n={5} of={total} />}
+  <Certifications />
 
-  <Approval n={total} of={total} />
+  <Approval />
 </Sheet>

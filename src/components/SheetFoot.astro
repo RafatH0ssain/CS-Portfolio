@@ -2,18 +2,14 @@
 import { profile } from '../lib/content';
 
 interface Props {
-  /** Left-hand label. Defaults to when the content was last edited. */
-  left?: string;
-  /** 1-based sheet number. */
-  n: number;
-  /** Total sheets on this page. */
-  of: number;
+  /** Only the last foot on a page carries the copyright line. */
+  copyright?: boolean;
 }
 
-const { left = `Updated ${profile.updated}`, n, of } = Astro.props;
+const { copyright = false } = Astro.props;
+const line = `(c) ${profile.updated.slice(0, 4)} ${profile.name.first} ${profile.name.last}`;
 ---
 
 <div class="sheet-foot">
-  <span class="label">{left}</span>
-  <span class="label">DWG {profile.drawingNo} — Sheet {n} of {of}</span>
+  {copyright && <span class="label">{line}</span>}
 </div>

@@ -69,19 +69,10 @@ export function featuredProjects(projects: CollectionEntry<'projects'>[]) {
   });
 }
 
-/**
- * Sheet count. Sheet 5 is certifications, or the inspection report when there
- * are no certifications but the owner asked for the academics block. With
- * neither, the approval block becomes sheet 5 and the count is 4.
- */
-export function sheetCount(hasCertifications: boolean, hasInspection: boolean): number {
-  return hasCertifications || hasInspection ? 5 : 4;
-}
-
 export type LetteredOrg = Org & { letter: string; latest: boolean; roles: Org['roles'] };
 
 /**
- * Sheet 4 rows. Organisations are lettered A, B, C... by the start of their
+ * Experience rows. Organisations are lettered A, B, C... by the start of their
  * oldest role, oldest first; the newest letter is amber. Rows are newest first
  * inside each stream, and empty streams are dropped.
  */

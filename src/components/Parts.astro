@@ -7,14 +7,12 @@ import SheetFoot from './SheetFoot.astro';
 
 interface Props {
   projects: CollectionEntry<'projects'>[];
-  /** Total sheets on the home page, for the foot. */
-  of: number;
 }
 
-const { projects, of } = Astro.props;
+const { projects } = Astro.props;
 const stop = currentStop(revisions);
 
-// Part numbers come from `order`, the same source the parts list uses.
+// Project numbers come from `order`, the same source the project list uses.
 const partNoById = new Map(numberedProjects(projects).map((q) => [q.id, q.partNo]));
 
 // Top plate first in profile.featured; position i is 0 for the top plate.
@@ -26,7 +24,7 @@ const parts = featuredProjects(projects).map((p, i) => ({
 
 const n = parts.length;
 
-// The same `order` the parts list uses, so this list and sheet 3 never disagree.
+// The same `order` the project list uses, so this list and the pages never disagree.
 const all = numberedProjects(projects);
 ---
 
@@ -34,9 +32,8 @@ const all = numberedProjects(projects);
   <div class="section__head">
     <div class="section__title">
       <h2 id="parts-h" class="t-sheet">Projects</h2>
-      <span class="label">Parts</span>
     </div>
-    <p class="section__intro">{n === 4 ? 'Four' : String(n)} featured releases, pulled apart. Hover, tab or tap a part to lift it out and read its spec.</p>
+    <p class="section__intro">{n === 4 ? 'Four' : String(n)} featured projects, pulled apart. Hover, tab or tap one to lift it out and read its summary.</p>
   </div>
 
   <div class="parts" data-parts style={`--n:${n}`}>
@@ -50,7 +47,7 @@ const all = numberedProjects(projects);
               <Schematic name={p.data.figure.schematic} size="plate" />
             </div>
             <span class="plate__balloon">{i + 1}</span>
-            <span class="plate__no">PART {partNo}</span>
+            <span class="plate__no">{partNo}</span>
             <span class="plate__title">{p.data.plateTitle ?? p.data.title}</span>
             <span class="plate__ver">{p.data.version}</span>
           </div>
@@ -67,7 +64,7 @@ const all = numberedProjects(projects);
             <span class="part-label__title">{p.data.title}</span>
             <span class="part-label__note">
               <span class="note-built">{p.data.version} — {p.data.kind}</span>
-              <span class="note-future">Not built at v<span data-rev-field="rev">{stop.rev}</span></span>
+              <span class="note-future">Not started yet</span>
             </span>
           </span>
         </a>
@@ -75,7 +72,7 @@ const all = numberedProjects(projects);
     </div>
 
     <div>
-      <div class="parts__picker" role="group" aria-label="Choose a part">
+      <div class="parts__picker" role="group" aria-label="Choose a project">
         {parts.map(({ p, i }) => (
           <button type="button" data-pick={i} data-lvl={p.data.level} aria-pressed={i === 0 ? 'true' : 'false'}>{i + 1}</button>
         ))}
@@ -84,29 +81,29 @@ const all = numberedProjects(projects);
       {parts.map(({ p, i, partNo }) => (
         <section class="spec" data-part={i} data-lvl={p.data.level} class:list={[stateClass(p.data.level, stop)]} aria-live="polite">
           <div class="spec__bar">
-            <span class="label label--amber">Part {partNo} — Detail</span>
+            <span class="label label--amber">Project {partNo}</span>
             <span class="label">{p.data.version}</span>
           </div>
           <div class="spec__body">
             <h3 class="t-part">{p.data.title}</h3>
             <p class="t-body t-dim">{p.data.summary}</p>
-            <p class="spec__notice note-future">Not yet built at rev <span data-rev-field="rev">{stop.rev}</span>.</p>
+            <p class="spec__notice note-future">Not started yet.</p>
             <ul class="rl rule-top">
               {p.data.added.map((line) => (
-                <li><span class="rl__m rl__m--add" role="img" aria-label="Added">+</span><span class="rl__t">{line}</span></li>
+                <li><span class="rl__m rl__m--add" role="img" aria-label="What I built">+</span><span class="rl__t">{line}</span></li>
               ))}
               {p.data.changed.map((line) => (
-                <li><span class="rl__m rl__m--chg" role="img" aria-label="Changed">~</span><span class="rl__t">{line}</span></li>
+                <li><span class="rl__m rl__m--chg" role="img" aria-label="What I rebuilt">~</span><span class="rl__t">{line}</span></li>
               ))}
               {p.data.issues.map((line) => (
-                <li><span class="rl__m rl__m--iss" role="img" aria-label="Known issue">!</span><span class="rl__t">{line}</span></li>
+                <li><span class="rl__m rl__m--iss" role="img" aria-label="Known limitation">!</span><span class="rl__t">{line}</span></li>
               ))}
             </ul>
             <div class="stack stack--tight rule-top rule-top--tight">
-              <span class="label label--tiny">Material</span>
+              <span class="label label--tiny">Stack</span>
               <span class="cell-value">{p.data.stack.join(', ')}</span>
             </div>
-            <a class="btn btn--primary self-start" href={`/parts/${p.id}/`}>Open release notes</a>
+            <a class="btn btn--primary self-start" href={`/parts/${p.id}/`}>View project</a>
           </div>
         </section>
       ))}
@@ -128,7 +125,7 @@ const all = numberedProjects(projects);
     </div>
   </div>
 
-  <SheetFoot n={2} of={of} />
+  <SheetFoot />
 </section>
 
 <script>import '../scripts/parts.ts';</script>

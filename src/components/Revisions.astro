@@ -1,41 +1,27 @@
 ---
-import type { CollectionEntry } from 'astro:content';
 import { dateRange, letteredExperience, previousTitles, promotionTag } from '../lib/derive';
-import Scrubber from './Scrubber.astro';
 import SheetFoot from './SheetFoot.astro';
-
-interface Props {
-  projects: CollectionEntry<'projects'>[];
-  n: number;
-  of: number;
-}
-
-const { projects, n, of } = Astro.props;
-const groups = letteredExperience();
 ---
 
-<section class="section" id="revisions" aria-labelledby="rev-h">
+<section class="section" id="experience" aria-labelledby="exp-h">
   <div class="section__head">
     <div class="section__title">
-      <h2 id="rev-h" class="t-sheet">Timeline</h2>
-      <span class="label">Revisions</span>
+      <h2 id="exp-h" class="t-sheet">Experience</h2>
     </div>
-    <p class="section__intro">Work, research, leadership, teaching and awards. Every change to the drawing, with who can sign it off.</p>
+    <p class="section__intro">Work, research, leadership, teaching and awards.</p>
   </div>
-
-  <Scrubber projects={projects} />
 
   <table class="table">
     <thead>
       <tr>
-        <th scope="col" class="w-70">Rev</th>
-        <th scope="col" class="w-170">Date</th>
-        <th scope="col">Description</th>
-        <th scope="col" class="w-220">Approved by</th>
+        <th scope="col" class="w-70">No.</th>
+        <th scope="col" class="w-170">Dates</th>
+        <th scope="col">Role</th>
+        <th scope="col" class="w-220">Reference</th>
       </tr>
     </thead>
     <tbody>
-      {groups.map((group) => (
+      {letteredExperience().map((group) => (
         <>
           <tr class="group"><th colspan="4" scope="colgroup">{group.title}</th></tr>
           {group.orgs.map((org) => {
@@ -77,5 +63,5 @@ const groups = letteredExperience();
     </tbody>
   </table>
 
-  <SheetFoot n={n} of={of} />
+  <SheetFoot />
 </section>

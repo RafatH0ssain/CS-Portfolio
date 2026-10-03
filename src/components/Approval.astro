@@ -2,12 +2,6 @@
 import { profile } from '../lib/content';
 import SheetFoot from './SheetFoot.astro';
 
-interface Props {
-  n: number;
-  of: number;
-}
-
-const { n, of } = Astro.props;
 const action = `https://formspree.io/f/${profile.formspreeId ?? 'FORMSPREE_ID'}`;
 
 const profileLinks = [
@@ -17,22 +11,20 @@ const profileLinks = [
 ];
 ---
 
-<section class="section" id="contact" aria-labelledby="appr-h">
+<section class="section" id="contact" aria-labelledby="contact-h">
   <div class="section__head">
     <div class="section__title">
-      <h2 id="appr-h" class="t-sheet">Get in touch</h2>
-      <span class="label">Sign off on this release</span>
+      <h2 id="contact-h" class="t-sheet">Get in touch</h2>
     </div>
   </div>
 
   <div class="approval">
     <div class="approval__main">
-      <p class="t-lead">Open to {profile.openTo.toLowerCase()}, starting {profile.shipsOn}. A useful first message names the company, the role and the problem you want solved.</p>
+      <p class="t-lead">Open to {profile.openTo.toLowerCase()}, starting {profile.shipsOn}; a useful first message names the company, the role and the problem you want solved.</p>
 
       <form class="form" action={action} method="POST" data-enhance>
         <div class="form__field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
         <div class="form__field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
-        <div class="form__field form__field--wide"><label for="f-role">Company and role</label><input id="f-role" name="role" autocomplete="organization"></div>
         <div class="form__field form__field--wide"><label for="f-msg">Message</label><textarea id="f-msg" name="message" required></textarea></div>
         <div class="form__trap" aria-hidden="true"><label for="f-gotcha">Leave this empty</label><input id="f-gotcha" name="_gotcha" tabindex="-1" autocomplete="off"></div>
         <div class="form__foot">
@@ -44,7 +36,7 @@ const profileLinks = [
 
     <div class="approval__side">
       <div class="approval__cell">
-        <span class="label">Issued for</span>
+        <span class="label">Open to</span>
         <span class="cell-value--lead">{profile.openTo}</span>
       </div>
       <div class="approval__cell">
@@ -60,17 +52,10 @@ const profileLinks = [
       <div class="approval__cell row">
         {profileLinks.map((l) => <a class="link-plain" href={l.href}>{l.label}</a>)}
       </div>
-      <div class="approval__cell">
-        <span class="label">Approved by</span>
-        <div class="stack stack--tight">
-          <span class="signature"></span>
-          <span class="cell-note">Your signature here</span>
-        </div>
-      </div>
     </div>
   </div>
 
-  <SheetFoot n={n} of={of} />
+  <SheetFoot copyright />
 </section>
 
 <script>import '../scripts/form.ts';</script>

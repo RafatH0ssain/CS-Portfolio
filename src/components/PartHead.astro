@@ -15,18 +15,18 @@ const fullName = d.plateTitle ?? d.title;
 
 <section class="part-head" aria-labelledby="part-title">
   <div class="stack">
-    <a class="back-link" href="/#parts">Back to all projects</a>
-    <span class="label label--amber">Sheet 3.{sheetNo} — Part {partNo} of {totalParts}</span>
+    <a class="back-link" href="/#parts">All projects</a>
+    <span class="label label--amber">Project {sheetNo} of {totalParts}</span>
     <h1 id="part-title" class="part-head__title">{fullName}</h1>
     <p class="t-lead">{d.summary}</p>
   </div>
   <div class="tblock tblock--2">
-    <div class="tblock__cell"><span class="label">Part no.</span><span class="tblock__value">{partNo}</span></div>
-    <div class="tblock__cell"><span class="label">Rev</span><span class="tblock__value tblock__value--amber">{d.version}</span></div>
+    <div class="tblock__cell"><span class="label">No.</span><span class="tblock__value">{partNo}</span></div>
+    <div class="tblock__cell"><span class="label">Version</span><span class="tblock__value tblock__value--amber">{d.version}</span></div>
     <div class="tblock__cell"><span class="label">Role</span><span class="tblock__value">{d.role}</span></div>
     <div class="tblock__cell"><span class="label">Duration</span><span class="tblock__value">{d.duration}</span></div>
     <div class="tblock__cell"><span class="label">Status</span><span class="tblock__value">{d.status}</span></div>
     {d.users && <div class="tblock__cell"><span class="label">Users</span><span class="tblock__value">{d.users}</span></div>}
-    <div class="tblock__cell tblock__cell--wide"><span class="label">Material</span><span class="tblock__value">{d.stack.join(', ')}</span></div>
+    <div class="tblock__cell tblock__cell--wide"><span class="label">Stack</span><span class="tblock__value">{d.stack.join(', ')}</span></div>
   </div>
 </section>

@@ -9,14 +9,14 @@ const { project } = Astro.props;
 const d = project.data;
 
 const columns = [
-  { key: 'added', glyph: '+', cls: 'rl__m--add', aria: 'Added', heading: 'Added' },
-  { key: 'changed', glyph: '~', cls: 'rl__m--chg', aria: 'Changed', heading: 'Changed' },
-  { key: 'issues', glyph: '!', cls: 'rl__m--iss', aria: 'Known issue', heading: 'Known issues' },
+  { key: 'added', glyph: '+', cls: 'rl__m--add', aria: 'What I built', heading: 'What I built' },
+  { key: 'changed', glyph: '~', cls: 'rl__m--chg', aria: 'What I rebuilt', heading: 'What I rebuilt' },
+  { key: 'issues', glyph: '!', cls: 'rl__m--iss', aria: 'Known limitation', heading: 'Known limitations' },
 ] as const;
 ---
 
 <section class="section" aria-labelledby="rn-h">
-  <h2 id="rn-h" class="t-sheet t-sheet--sub">Release notes</h2>
+  <h2 id="rn-h" class="t-sheet t-sheet--sub">Overview</h2>
   <div class="notes3">
     {columns
       .filter((c) => d[c.key].length > 0)

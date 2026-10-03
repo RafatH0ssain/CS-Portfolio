@@ -6,11 +6,10 @@ import SheetFoot from './SheetFoot.astro';
 
 interface Props {
   stop: Stop;
-  releaseCount: number;
-  totalSheets: number;
+  projectCount: number;
 }
 
-const { stop, releaseCount, totalSheets } = Astro.props;
+const { stop, projectCount } = Astro.props;
 const { head, bio } = stopText(stop, profile);
 const chars = nameChars(profile);
 const gradYear = profile.shipsOn.split(' ')[1];
@@ -37,22 +36,23 @@ const gradYear = profile.shipsOn.split(' ')[1];
     </div>
 
     <div class="fig-box">
-      <Fig1 stop={stop} releaseCount={releaseCount} />
+      <Fig1 stop={stop} projectCount={projectCount} />
     </div>
   </div>
 
   <slot name="projects" />
 
-  <div class="tblock tblock--2">
-    <div class="tblock__cell"><span class="label">Drawn by</span><span class="tblock__value">{profile.name.first} {profile.name.last}</span></div>
-    <div class="tblock__cell"><span class="label">Program</span><span class="tblock__value">{profile.program}</span></div>
-    <div class="tblock__cell"><span class="label">Ships</span><span class="tblock__value">{profile.shipsOn}</span></div>
-    <div class="tblock__cell"><span class="label">Rev</span><span class="tblock__value" data-rev-field="rev">{stop.rev}</span></div>
-    <div class="tblock__cell"><span class="label">Date</span><span class="tblock__value" data-rev-field="date">{stop.date}</span></div>
-    <div class="tblock__cell"><span class="label">Sheet</span><span class="tblock__value">1 of {totalSheets}</span></div>
+  <div class="stack">
+    <span class="label">At a glance</span>
+    <div class="tblock tblock--2">
+      <div class="tblock__cell"><span class="label">Program</span><span class="tblock__value">{profile.program}</span></div>
+      <div class="tblock__cell"><span class="label">Graduating</span><span class="tblock__value">{profile.shipsOn}</span></div>
+      {profile.location && <div class="tblock__cell"><span class="label">Based in</span><span class="tblock__value">{profile.location}</span></div>}
+      <div class="tblock__cell"><span class="label">Updated</span><span class="tblock__value">{profile.updated}</span></div>
+    </div>
   </div>
 
   <slot name="notes" />
 
-  <SheetFoot left="Sheet 1 — The system" n={1} of={totalSheets} />
+  <SheetFoot />
 </section>
