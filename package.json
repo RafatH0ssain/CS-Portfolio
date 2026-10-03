@@ -14,8 +14,7 @@
     "check:budget": "node scripts/check-budget.mjs",
     "check:links": "node scripts/check-links.mjs",
     "check:external": "node scripts/check-links.mjs --external",
-    "verify": "astro check && npm run build && node scripts/check-content.mjs --dist && npm run check:design && npm run check:budget && npm run check:links",
-    "hooks": "sh scripts/setup-hooks.sh"
+    "verify": "astro check && npm run build && node scripts/check-content.mjs --dist && npm run check:design && npm run check:budget && npm run check:links"
   },
   "dependencies": {
     "astro": "^7.3.5"
