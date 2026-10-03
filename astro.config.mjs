@@ -5,7 +5,7 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   // Replace with the real domain once the owner has one (ask them).
   // Used for canonical URLs, Open Graph tags and the sitemap.
-  site: 'https://portfolio.invalid',
+  site: 'https://portfolio.rafat-click-hossain.workers.dev',
   trailingSlash: 'always',
   build: {
     format: 'directory',
