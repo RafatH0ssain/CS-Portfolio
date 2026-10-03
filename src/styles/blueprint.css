@@ -397,10 +397,13 @@ ul, ol { padding: 0; list-style: none; }
 .scrubber__stop.is-past b { color: var(--chalk); }
 .scrubber__stop[aria-pressed="true"] b { color: var(--amber); font-weight: 800; }
 .scrubber__stop .short { display: none; }
+.scrubber__stop .era-short { display: none; }
 @media (max-width: 767px) {
   .scrubber { padding: 16px 14px; margin-top: 30px; }
   .scrubber__stop b { font-size: 13px; }
   .scrubber__stop span.long { display: none; }
+  .scrubber__stop .era-long { display: none; }
+  .scrubber__stop .era-short { display: block; }
   .scrubber__stop span.short { display: block; font-size: 10px; }
 }
 

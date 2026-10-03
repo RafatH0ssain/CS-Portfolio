@@ -4,7 +4,7 @@ import { profile, revisions } from '../lib/content';
 import { builtCount, currentStop, stopText } from '../lib/derive';
 import Chips from './Chips.astro';
 interface Props {
-  /** The parts-list rows, which is what "N of M releases built" counts. */
+  /** The project rows, which is what the "N of M" count counts. */
   projects: CollectionEntry<'projects'>[];
 }
 
@@ -13,6 +13,12 @@ const stop = currentStop(revisions);
 const currentIndex = revisions.findIndex((s) => s.current);
 const { built, total } = builtCount(projects, stop);
 
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const monthYear = (ym: string) => {
+  const [year, month] = ym.split('-');
+  return `${MONTHS[Number(month) - 1]} ${year}`;
+};
+
 const stopsForScript = revisions.map((s) => (s.current ? { ...s, ...stopText(s, profile) } : s));
 const json = JSON.stringify(stopsForScript).replace(/</g, '\\u003c');
 ---
@@ -20,20 +26,20 @@ const json = JSON.stringify(stopsForScript).replace(/</g, '\\u003c');
 <div class="scrubber">
   <div data-scrubber-controls hidden>
     <div class="scrubber__top">
-      <label for="rev-range">Drag to see my degree year by year</label>
-      <span class="scrubber__count"><b data-built>{built} of {total}</b> releases built by v<span data-rev-field="rev">{stop.rev}</span></span>
+      <label for="rev-range">Year by year</label>
+      <span class="scrubber__count"><b data-built>{built} of {total}</b> projects</span>
     </div>
     <div class="scrubber__track" style={`--v:${currentIndex}; --stops:${revisions.length}`}>
       <div class="scrubber__rail"></div>
       <div class="scrubber__fill"></div>
       {revisions.map((_, i) => <span class="scrubber__tick" style={`--i:${i}`}></span>)}
       <input id="rev-range" type="range" min="0" max={revisions.length - 1} step="1" value={currentIndex}
-        aria-valuetext={`Revision ${stop.rev}, ${stop.era}`}>
+        aria-valuetext={`Timeline: ${stop.era}, ${monthYear(stop.date)}`}>
     </div>
     <div class="scrubber__stops" style={`--stops:${revisions.length}`}>
       {revisions.map((s, i) => (
         <button type="button" class="scrubber__stop" data-stop={i} style={`--i:${i}`} aria-pressed={s.current === true ? 'true' : 'false'}>
-          <b>v{s.rev}</b><span class="long">{s.era}</span><span class="short">{s.short}</span>
+          <b class="era-long">{s.era}</b><b class="era-short">{s.short}</b><span class="long">{monthYear(s.date)}</span><span class="short">{monthYear(s.date)}</span>
         </button>
       ))}
     </div>
@@ -41,7 +47,7 @@ const json = JSON.stringify(stopsForScript).replace(/</g, '\\u003c');
   </div>
 
   <div class="onhand">
-    <span class="label">Parts on hand at rev <span data-rev-field="rev">{stop.rev}</span></span>
+    <span class="label">Skills</span>
     <Chips stop={stop} />
   </div>
 </div>
