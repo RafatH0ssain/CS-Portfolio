@@ -5,18 +5,17 @@ import { academics } from '../lib/content';
 <div class="inspect">
   <div class="inspect__head">
     <span class="label label--amber">Academics</span>
-    <span class="label">Shown on request</span>
   </div>
   <div class="inspect__grid">
+    {academics?.gpa && (
+      <div class="tblock__cell"><span class="label">CGPA</span><span class="tblock__value">{academics.gpa}</span></div>
+    )}
     {academics?.standing && (
       <div class="tblock__cell"><span class="label">Standing</span><span class="tblock__value">{academics.standing}</span></div>
     )}
-    {academics?.gpa && (
-      <div class="tblock__cell"><span class="label">GPA</span><span class="tblock__value">{academics.gpa}</span></div>
-    )}
     {academics?.awards && academics.awards.length > 0 && (
       <div class="tblock__cell">
-        <span class="label">Awards</span>
+        <span class="label">Scholarship</span>
         <span class="tblock__value">{academics.awards.join('; ')}</span>
       </div>
     )}

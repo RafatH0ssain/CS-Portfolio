@@ -56,7 +56,7 @@ export const Profile = z.object({
     .min(2)
     .max(3),
   figure: z.object({
-    // FIG. 1 module labels, in pairs that appear at levels 1, 2 and 3.
+    // FIG. 1 module labels, in pairs that appear at levels 1 and 2.
     modules: z.tuple([
       z.tuple([z.string().max(10), z.string().max(10)]),
       z.tuple([z.string().max(10), z.string().max(10)]),
@@ -80,10 +80,12 @@ const Stop = z.object({
 });
 export const Revisions = z
   .array(Stop)
-  .length(6)
+  .min(3)
+  .max(6)
   .superRefine((stops, ctx) => {
+    const last = stops.length - 1;
     if (stops.filter((s) => s.current).length !== 1) ctx.addIssue({ code: 'custom', message: 'exactly one stop has "current": true' });
-    if (!stops[5].locked || stops.slice(0, 5).some((s) => s.locked)) ctx.addIssue({ code: 'custom', message: 'only the last stop (v1.0) has "locked": true' });
+    if (!stops[last].locked || stops.slice(0, last).some((s) => s.locked)) ctx.addIssue({ code: 'custom', message: 'only the last stop has "locked": true' });
     stops.forEach((s, i) => {
       if (i > 0 && s.level < stops[i - 1].level) ctx.addIssue({ code: 'custom', path: [i, 'level'], message: 'levels never go down' });
       if (!s.current && (!s.head || !s.bio)) ctx.addIssue({ code: 'custom', path: [i], message: 'head and bio are required on every stop except the current one' });

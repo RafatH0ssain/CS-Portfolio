@@ -1,5 +1,5 @@
 ---
-import { profile } from '../lib/content';
+import { academics, profile } from '../lib/content';
 import { nameChars, stopText, type Stop } from '../lib/derive';
 import Fig1 from './Fig1.astro';
 import SheetFoot from './SheetFoot.astro';
@@ -42,13 +42,13 @@ const gradYear = profile.shipsOn.split(' ')[1];
 
   <slot name="projects" />
 
-  <div class="stack">
+  <div class="stack stack--glance">
     <span class="label">At a glance</span>
     <div class="tblock tblock--2">
       <div class="tblock__cell"><span class="label">Program</span><span class="tblock__value">{profile.program}</span></div>
       <div class="tblock__cell"><span class="label">Graduating</span><span class="tblock__value">{profile.shipsOn}</span></div>
       {profile.location && <div class="tblock__cell"><span class="label">Based in</span><span class="tblock__value">{profile.location}</span></div>}
-      <div class="tblock__cell"><span class="label">Updated</span><span class="tblock__value">{profile.updated}</span></div>
+      {academics?.gpa && <div class="tblock__cell"><span class="label">CGPA</span><span class="tblock__value">{academics.gpa}</span></div>}
     </div>
   </div>
 

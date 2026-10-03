@@ -2,7 +2,7 @@
 title: "Greenland ice segmentation"
 plateTitle: "Greenland ice"
 version: "v0.2.0"
-level: 1
+level: 2
 order: 7
 kind: "ML"
 summary: "U-Net segmentation of snow and glacier ice in a Landsat-8 archive over West Greenland, scored against a published ice mask."

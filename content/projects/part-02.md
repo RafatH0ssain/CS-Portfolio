@@ -2,7 +2,7 @@
 title: "SPECTRA-ICA"
 plateTitle: "SPECTRA-ICA"
 version: "v1.0.0"
-level: 3
+level: 2
 order: 2
 kind: "ML"
 summary: "A team-built EEG artifact remover that strips only artifact-characteristic frequencies during detected events, and beat plain ICA on all 7 P300 metrics."

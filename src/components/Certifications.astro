@@ -12,7 +12,7 @@ const showInspect = academics?.show === true;
       <div class="section__title">
         <h2 id="cert-h" class="t-sheet">Certifications</h2>
       </div>
-      <p class="section__intro">Each one links to the issuer's own verification page.</p>
+      <p class="section__intro">Issuer and year for each one.</p>
     </div>
 
     <table class="table">
@@ -22,7 +22,6 @@ const showInspect = academics?.show === true;
           <th scope="col">Certification</th>
           <th scope="col" class="w-220">Issuer</th>
           <th scope="col" class="w-90">Year</th>
-          <th scope="col" class="w-160">Verify</th>
         </tr>
       </thead>
       <tbody>
@@ -37,7 +36,6 @@ const showInspect = academics?.show === true;
             </td>
             <td>{c.issuer}</td>
             <td class="num">{c.year}</td>
-            <td>{c.verifyUrl ? <a href={c.verifyUrl}>{c.verifyLabel ?? `Verify on ${c.issuer}`}</a> : 'On request'}</td>
           </tr>
         ))}
       </tbody>

@@ -2,7 +2,7 @@
 title: "CamusGPT"
 plateTitle: "CamusGPT"
 version: "v0.4.0"
-level: 3
+level: 1
 order: 3
 kind: "ML"
 summary: "A fine-tuned 12B Camus persona that keeps his biography in a retrieval layer, so a wrong fact is a data bug and not a retrain."

@@ -2,7 +2,7 @@
 title: "Lumen Gallery"
 plateTitle: "Lumen Gallery"
 version: "v1.0.0"
-level: 3
+level: 2
 order: 4
 kind: "Web"
 summary: "A snap-through feed of the Cleveland Museum of Art's open collection, with docent notes written once and cached for good."

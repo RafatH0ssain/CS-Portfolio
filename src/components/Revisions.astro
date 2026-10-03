@@ -17,13 +17,12 @@ import SheetFoot from './SheetFoot.astro';
         <th scope="col" class="w-70">No.</th>
         <th scope="col" class="w-170">Dates</th>
         <th scope="col">Role</th>
-        <th scope="col" class="w-220">Reference</th>
       </tr>
     </thead>
     <tbody>
       {letteredExperience().map((group) => (
         <>
-          <tr class="group"><th colspan="4" scope="colgroup">{group.title}</th></tr>
+          <tr class="group"><th colspan="3" scope="colgroup">{group.title}</th></tr>
           {group.orgs.map((org) => {
             const role = org.roles[0];
             const tag = promotionTag(org.roles.length);
@@ -54,7 +53,6 @@ import SheetFoot from './SheetFoot.astro';
                     )}
                   </div>
                 </td>
-                <td>{role.approvedBy ?? ''}</td>
               </tr>
             );
           })}

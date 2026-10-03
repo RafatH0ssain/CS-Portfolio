@@ -11,11 +11,9 @@ interface Props {
 const { stop, projectCount } = Astro.props;
 const [m1, m2, m3] = profile.figure.modules;
 
-// The module pairs appear at levels 1, 2 and 3; new ones draw dashed amber.
+// The module pairs appear at levels 1 and 2; new ones draw dashed amber.
 const lvl1 = stateClass(1, stop);
 const lvl2 = stateClass(2, stop);
-const lvl3 = stateClass(3, stop);
-const lvl4 = stateClass(4, stop);
 ---
 
 <figure class="fig">
@@ -46,7 +44,7 @@ const lvl4 = stateClass(4, stop);
       <rect class="d-box" x="420" y="306" width="140" height="64"/>
       <text class="d-text" x="490" y="343">{m2[1].toUpperCase()}</text>
     </g>
-    <g class="mod" data-lvl="3" class:list={[lvl3]}>
+    <g class="mod" data-lvl="2" class:list={[lvl2]}>
       <path class="d-line" d="M310 160 V92"/>
       <rect class="d-box" x="250" y="40" width="120" height="52"/>
       <text class="d-text" x="310" y="71">{m3[0].toUpperCase()}</text>
@@ -65,7 +63,7 @@ const lvl4 = stateClass(4, stop);
       <text class="d-text" x="310" y="204" style="font-size:13px;font-weight:800;letter-spacing:.14em">CORE</text>
       <text class="d-text d-text--amber" x="310" y="228" style="font-size:13px">NOW</text>
     </g>
-    <g data-lvl="4" class:list={[lvl4]}>
+    <g data-lvl="2" class:list={[lvl2]}>
       <line class="d-thin" x1="40" y1="22" x2="560" y2="22"/>
       <line class="d-thin" x1="40" y1="14" x2="40" y2="46"/>
       <line class="d-thin" x1="560" y1="14" x2="560" y2="46"/>
@@ -77,7 +75,7 @@ const lvl4 = stateClass(4, stop);
       <line class="d-thin" x1="564" y1="370" x2="596" y2="370"/>
       <line class="d-tick" x1="583" y1="55" x2="593" y2="45"/>
       <line class="d-tick" x1="583" y1="375" x2="593" y2="365"/>
-      <text class="d-text" x="600" y="210" transform="rotate(90 600 210)" style="font-size:11px">4 YEARS</text>
+      <text class="d-text" x="600" y="210" transform="rotate(90 600 210)" style="font-size:11px">3.5 YEARS</text>
       <circle class="d-dot" cx="206" cy="82" r="3"/>
       <circle class="d-dot" cx="404" cy="338" r="3"/>
     </g>
@@ -110,7 +108,7 @@ const lvl4 = stateClass(4, stop);
       <rect class="d-box" x="230" y="248" width="102" height="48"/>
       <text class="d-text" x="281" y="276" style="font-size:11px;letter-spacing:.06em">{m2[1].toUpperCase()}</text>
     </g>
-    <g class="mod" data-lvl="3" class:list={[lvl3]}>
+    <g class="mod" data-lvl="2" class:list={[lvl2]}>
       <path class="d-line" d="M170 130 V88"/>
       <rect class="d-box" x="128" y="44" width="84" height="44"/>
       <text class="d-text" x="170" y="70" style="font-size:11px">{m3[0].toUpperCase()}</text>
@@ -123,7 +121,7 @@ const lvl4 = stateClass(4, stop);
       <text class="d-text" x="170" y="161" style="font-size:12px;font-weight:800;letter-spacing:.14em">CORE</text>
       <text class="d-text d-text--amber" x="170" y="182" style="font-size:12px">NOW</text>
     </g>
-    <g data-lvl="4" class:list={[lvl4]}>
+    <g data-lvl="2" class:list={[lvl2]}>
       <line class="d-thin" x1="8" y1="14" x2="332" y2="14"/>
       <line class="d-tick" x1="4" y1="18" x2="12" y2="10"/>
       <line class="d-tick" x1="328" y1="18" x2="336" y2="10"/>

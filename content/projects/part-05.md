@@ -2,7 +2,7 @@
 title: "lazy-catalog"
 plateTitle: "lazy-catalog"
 version: "v0.2.0"
-level: 4
+level: 2
 order: 5
 kind: "Systems"
 summary: "A zero-dependency catalogue for a film folder, combining TMDB metadata with ffprobe facts read out of the files themselves."
