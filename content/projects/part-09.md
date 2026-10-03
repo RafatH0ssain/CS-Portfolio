@@ -11,12 +11,14 @@ duration: "Sep 2024 to Apr 2025"
 status: "Archived"
 stack: ["React", "Flask", "TensorFlow", "Gemini API", "Pyodide", "MySQL"]
 figure:
+  image: "../../src/assets/projects/deebug.png"
+  alt: "DEEBug flow: a browser lane with the five-section code editor and a server lane that saves, runs and scores the code."
   schematic: "grid"
   callouts:
-    - { x: 0.26, y: 0.22, title: "Five sections", note: "CodeEditorPage.js: data-preparation, model-definition, training-configuration, evaluation, visualization." }
-    - { x: 0.58, y: 0.46, title: "Locked ranges", note: "CodeTemplates.jsx finds each marker line and hands Monaco a read-only range below it." }
-    - { x: 0.82, y: 0.68, title: "run_code", note: "app.py appends a fixed harness to the student's script, then runs it with subprocess." }
-    - { x: 0.22, y: 0.86, title: "Diff accuracy", note: "calculate_accuracy counts unified_diff lines against the matching file named _correct.py." }
+    - { x: 0.38, y: 0.2, title: "Five sections", note: "CodeEditorPage.js: data-preparation, model-definition, training-configuration, evaluation, visualization." }
+    - { x: 0.38, y: 0.37, title: "Locked ranges", note: "CodeTemplates.jsx finds each marker line and hands Monaco a read-only range below it." }
+    - { x: 0.88, y: 0.56, title: "run_code", note: "app.py appends a fixed harness to the student's script, then runs it with subprocess." }
+    - { x: 0.65, y: 0.77, title: "Diff accuracy", note: "calculate_accuracy counts unified_diff lines against the matching file named _correct.py." }
 added:
   - "The five-section editor, with next and previous navigation between sections and a sticky header over them."
   - "Templates for both supervised and unsupervised mode, each section opening on the same starter Keras code."

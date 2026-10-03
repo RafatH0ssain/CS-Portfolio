@@ -12,12 +12,14 @@ duration: "Summer 2025 to now"
 status: "In progress"
 stack: ["Python", "U-Net", "Google Earth Engine", "Landsat 8", "NSIDC GIMP"]
 figure:
+  image: "../../src/assets/projects/greenland-ice.png"
+  alt: "Two Greenland scenes, ice sheet interior and ice margin, shown as an RGB composite, a spectral index, the glacier mask and the GIMP ice mask."
   schematic: "pipeline"
   callouts:
-    - { x: 0.28, y: 0.21, title: "40,836 patches", note: "Four year-season sets over West Greenland, 132 GB, on one 30 m grid." }
-    - { x: 0.58, y: 0.30, title: "NSIDC-0714", note: "An independently published ice mask already on the same EPSG:3413 grid." }
-    - { x: 0.82, y: 0.66, title: "IoU 0.766", note: "The U-Net against that mask on 10,318 summer 2020 patches, centre crops only." }
-    - { x: 0.20, y: 0.74, title: "Zero-shot transfer", note: "The validated model never saw a Greenland label; it was trained in the Alps." }
+    - { x: 0.14, y: 0.28, title: "40,836 patches", note: "Four year-season sets over West Greenland, 132 GB, on one 30 m grid." }
+    - { x: 0.88, y: 0.28, title: "NSIDC-0714", note: "An independently published ice mask already on the same EPSG:3413 grid." }
+    - { x: 0.88, y: 0.78, title: "IoU 0.766", note: "The U-Net against that mask on 10,318 summer 2020 patches, centre crops only." }
+    - { x: 0.4, y: 0.78, title: "Zero-shot transfer", note: "The validated model never saw a Greenland label; it was trained in the Alps." }
 added:
   - "IoU 0.766 for the U-Net against an independent ice mask on 10,318 patches, 3.1x the spectral rule beside it."
   - "40,836 patches and 132 GB across four sets, after re-exporting a winter set that had lost two of its four tiles."

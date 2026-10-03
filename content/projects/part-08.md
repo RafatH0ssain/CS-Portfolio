@@ -14,12 +14,14 @@ links:
   live: "https://worksync-2ca3b.web.app"
   repo: "https://github.com/RafatH0ssain/WorkSync-Client"
 figure:
+  image: "../../src/assets/projects/worksync.png"
+  alt: "WorkSync architecture: React client views for employee, HR and admin, an Express API grouped by resource, and MongoDB collections plus Firebase auth."
   schematic: "pipeline"
   callouts:
-    - { x: 0.24, y: 0.20, title: "Firebase sign-in", note: "AuthProvider.jsx takes an email, a password or Google, then reads the UID from the Users collection." }
-    - { x: 0.60, y: 0.42, title: "EmployeeWorksheets", note: "One row per logged day: hoursWorked and a date, read back per employee by the HR screen." }
-    - { x: 0.84, y: 0.66, title: "PaymentRequests", note: "One transaction writes the payment record and deletes the worksheet rows it paid." }
-    - { x: 0.20, y: 0.84, title: "Twenty per hour", note: "Amount owed is hoursWorked times a literal 20; the employee record holds no rate." }
+    - { x: 0.9, y: 0.8, title: "Firebase sign-in", note: "AuthProvider.jsx takes an email, a password or Google, then reads the UID from the Users collection." }
+    - { x: 0.1, y: 0.78, title: "EmployeeWorksheets", note: "One row per logged day: hoursWorked and a date, read back per employee by the HR screen." }
+    - { x: 0.37, y: 0.78, title: "PaymentRequests", note: "One transaction writes the payment record and deletes the worksheet rows it paid." }
+    - { x: 0.17, y: 0.93, title: "Twenty per hour", note: "Amount owed is hoursWorked times a literal 20; the employee record holds no rate." }
 added:
   - "The payroll path: employees log hours, HR forwards the request, admin marks it paid and the paid rows leave the worksheet."
   - "Sign-in by email, password or Google, plus a server check that signs out anyone whose record says status fired."
