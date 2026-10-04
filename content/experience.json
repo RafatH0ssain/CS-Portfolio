@@ -107,7 +107,7 @@
   },
   {
     "org": "SURGE NeuroHack 2026",
-    "stream": "awards",
+    "stream": "hackathons",
     "roles": [
       {
         "title": "1st place, Machine Learning category",
@@ -124,13 +124,37 @@
   },
   {
     "org": "Global Game Jam 2024",
-    "stream": "awards",
+    "stream": "hackathons",
     "roles": [
       {
         "title": "Best Sound Design",
         "start": "2024-01",
         "end": "2024-01",
         "summary": "Won the Best Sound Design award at Global Game Jam 2024."
+      }
+    ]
+  },
+  {
+    "org": "Dalhousie University",
+    "stream": "awards",
+    "roles": [
+      {
+        "title": "Chancellor's Scholarship",
+        "start": "2023-09",
+        "end": null,
+        "summary": "Renewed every year since 2023."
+      }
+    ]
+  },
+  {
+    "org": "Dalhousie University",
+    "stream": "awards",
+    "roles": [
+      {
+        "title": "Dalhousie Global Scholar Award",
+        "start": "2023-09",
+        "end": null,
+        "summary": "Renewed every year since 2023."
       }
     ]
   }

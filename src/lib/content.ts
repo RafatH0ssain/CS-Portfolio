@@ -112,14 +112,15 @@ export const STREAMS = {
   development: 'Software development',
   research: 'Research',
   leadership: 'Leadership and teaching',
-  awards: 'Hackathons and awards',
+  hackathons: 'Hackathons',
+  awards: 'Awards',
 } as const;
 export const Experience = z
   .array(
     z.object({
       org: z.string().min(2).max(60),
       location: z.string().max(40).optional(),
-      stream: z.enum(['development', 'research', 'leadership', 'awards']),
+      stream: z.enum(['development', 'research', 'leadership', 'hackathons', 'awards']),
       roles: z.array(Role).min(1).max(5), // newest first; more than one role = promotions
     }),
   )

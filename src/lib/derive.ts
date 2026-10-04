@@ -114,29 +114,24 @@ export function partSheetNumber(
 export type LetteredOrg = Org & { letter: string; latest: boolean; roles: Org['roles'] };
 
 /**
- * Experience rows. Organisations are lettered A, B, C... by the start of their
- * oldest role, oldest first; the newest letter is amber. Rows are newest first
- * inside each stream, and empty streams are dropped.
+ * Experience rows, grouped by stream in STREAMS order (empty streams dropped).
+ * Each group gets a letter (A, B, C...) and its rows are numbered newest first:
+ * A1, A2, B1...
  */
 export function letteredExperience(): { stream: keyof typeof STREAMS; title: string; orgs: LetteredOrg[] }[] {
-  const byStart = [...experience].sort((a, b) => oldestStart(a).localeCompare(oldestStart(b)));
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  const withLetters: LetteredOrg[] = byStart.map((org, i) => ({
-    ...org,
-    roles: [...org.roles].sort((a, b) => b.start.localeCompare(a.start)),
-    letter: letters[i] ?? String(i + 1),
-    latest: i === byStart.length - 1,
-  }));
-
   const order = Object.keys(STREAMS) as (keyof typeof STREAMS)[];
   return order
-    .map((stream) => {
-      const orgs = withLetters
+    .map((stream) => ({
+      stream,
+      title: STREAMS[stream],
+      orgs: experience
         .filter((o) => o.stream === stream)
-        .sort((a, b) => newestStartRank(b).localeCompare(newestStartRank(a)));
-      return { stream, title: STREAMS[stream], orgs };
-    })
-    .filter((g) => g.orgs.length > 0);
+        .map((org) => ({ ...org, roles: [...org.roles].sort((a, b) => b.start.localeCompare(a.start)), letter: '', latest: false }))
+        .sort((a, b) => newestStartRank(b).localeCompare(newestStartRank(a))),
+    }))
+    .filter((g) => g.orgs.length > 0)
+    .map((g, gi) => ({ ...g, orgs: g.orgs.map((o, i) => ({ ...o, letter: `${letters[gi]}${i + 1}` })) }));
 }
 
 /** The date cell for a revisions row. */
