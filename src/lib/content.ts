@@ -33,7 +33,8 @@ export const Profile = z.object({
     last: z.string().min(1).max(14),
   }),
   email: z.email(),
-  location: z.string().max(40).optional(), // shown only if the owner wants it
+  location: z.string().max(40).optional(),
+  workAuth: z.string().max(40).optional(), // e.g. "Eligible to work in Canada" // shown only if the owner wants it
   links: z.object({
     github: z.url(),
     linkedin: z.url().optional(),

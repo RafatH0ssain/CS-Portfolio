@@ -50,6 +50,7 @@ const gradYear = profile.shipsOn.split(' ')[1];
       <div class="tblock__cell"><span class="label">Program</span><span class="tblock__value">{profile.program}</span></div>
       <div class="tblock__cell"><span class="label">Graduating</span><span class="tblock__value">{profile.shipsOn}</span></div>
       {profile.location && <div class="tblock__cell"><span class="label">Based in</span><span class="tblock__value">{profile.location}</span></div>}
+      {profile.workAuth && <div class="tblock__cell"><span class="label">Work authorization</span><span class="tblock__value">{profile.workAuth}</span></div>}
     </div>
   </div>
 
