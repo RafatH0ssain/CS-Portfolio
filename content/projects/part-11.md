@@ -15,12 +15,14 @@ links:
   live: "https://rafath0ssain.github.io/launch-window-engine/"
   repo: "https://github.com/RafatH0ssain/launch-window-engine"
 figure:
+  image: "../../src/assets/projects/launch-window-engine.png"
+  alt: "The public view: Earth with the ascent from Canso drawn on it, a countdown to the next launch window and dials for azimuth and time to orbit."
   schematic: "pipeline"
   callouts:
-    - { x: 0.15, y: 0.4, title: "Frozen /v1 contract", note: "Eight JSON Schemas and 63 good and bad examples, tagged before anyone wrote engine code." }
-    - { x: 0.4, y: 0.6, title: "Physics answers are 200s", note: "An unreachable orbit returns HTTP 200 with its 26.8 m/s plane change, never an error." }
-    - { x: 0.65, y: 0.35, title: "Same request, same answer", note: "Every run gets a citation id hashed from the request and constants, stored for replay." }
-    - { x: 0.88, y: 0.6, title: "24-check integration gate", note: "One script boots the app and checks every endpoint end to end on a clean clone." }
+    - { x: 0.28, y: 0.37, title: "Ascent from the pad", note: "The climb from Canso to orbit, drawn from the API's own ascent ephemeris." }
+    - { x: 0.86, y: 0.2, title: "Live countdown", note: "Counts down to the next window and says plainly whether its weather is a go." }
+    - { x: 0.85, y: 0.66, title: "Solved at injection", note: "Aim azimuth, time to orbit and reached inclination for the selected window." }
+    - { x: 0.45, y: 0.92, title: "Every crossing in range", note: "A timeline of each window, scrubbable at up to 600x speed." }
 added:
   - "Every launch window from Canso for LEO, polar, SSO or custom orbits, timed to injection rather than liftoff."
   - "A FastAPI service with a frozen /v1 contract, provenance on every response and a pip-installable Python client."
