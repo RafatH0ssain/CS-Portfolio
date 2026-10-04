@@ -45,7 +45,6 @@ const n = parts.length;
             <span class="plate__balloon">{i + 1}</span>
             <span class="plate__no">{partNo}</span>
             <span class="plate__title">{p.data.plateTitle ?? p.data.title}</span>
-            <span class="plate__ver">{p.data.version}</span>
           </div>
         </div>
       ))}
@@ -59,7 +58,7 @@ const n = parts.length;
           <span class="part-label__text">
             <span class="part-label__title">{p.data.title}</span>
             <span class="part-label__note">
-              <span class="note-built">{p.data.version} — {p.data.kind}</span>
+              <span class="note-built">{p.data.kind}</span>
               <span class="note-future">Not started yet</span>
             </span>
           </span>
