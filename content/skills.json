@@ -20,6 +20,10 @@
     "level": 0
   },
   {
+    "name": "C",
+    "level": 0
+  },
+  {
     "name": "PyTorch",
     "level": 1
   },
@@ -29,6 +33,10 @@
   },
   {
     "name": "Next.js",
+    "level": 1
+  },
+  {
+    "name": "R",
     "level": 1
   },
   {
