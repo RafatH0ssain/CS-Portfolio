@@ -2,6 +2,7 @@
 import { academics, profile } from '../lib/content';
 import { nameChars, stopText, type Stop } from '../lib/derive';
 import Fig1 from './Fig1.astro';
+import Inspection from './Inspection.astro';
 import SheetFoot from './SheetFoot.astro';
 
 interface Props {
@@ -29,6 +30,7 @@ const gradYear = profile.shipsOn.split(' ')[1];
         <p class="t-head" data-rev-field="head">{head}</p>
         <p class="hero__bio" data-rev-field="bio">{bio}</p>
       </div>
+      {academics?.show === true && <Inspection />}
       <div class="btn-row">
         <a class="btn btn--primary" href={`mailto:${profile.email}`}>Email me</a>
         <a class="btn btn--outline" href={profile.links.resume}>Résumé (PDF)</a>

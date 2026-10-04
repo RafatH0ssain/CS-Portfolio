@@ -14,7 +14,7 @@
  *   [data-only-lvl="n"]           .is-off unless level == n
  *   [data-max-lvl="n"]            .is-off unless level <= n
  *   [data-locked-only]            .is-on only at the locked stop (reserved; no markup uses it)
- *   [data-release]                every project-list row; counted for "N of M built"
+ *   #project-levels               every project's level, so "N of M" needs no project list
  *   [data-built]                  receives "N of M"
  *   [data-rev-live]               polite live region for announcements
  */
@@ -32,6 +32,8 @@ type Stop = {
 };
 
 const dataEl = document.getElementById('revisions-data');
+const levelsEl = document.getElementById('project-levels');
+const levels: number[] = levelsEl ? JSON.parse(levelsEl.textContent ?? '[]') : [];
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const monthYear = (ym: string) => {
   const [year, month] = ym.split('-');
@@ -53,7 +55,6 @@ if (dataEl && range) {
   const fields = q<HTMLElement>('[data-rev-field]');
   const stops = q<HTMLButtonElement>('[data-stop]');
   const ticks = q<HTMLElement>('.scrubber__tick');
-  const rows = q<HTMLElement>('[data-release]');
 
   let current = 0;
   revs.forEach((r, k) => {
@@ -90,10 +91,11 @@ if (dataEl && range) {
     });
     ticks.forEach((t, s) => t.classList.toggle('is-past', s <= i));
 
-    const built = rows.filter((row) => Number(row.getAttribute('data-lvl')) <= L).length;
-    if (builtEl) builtEl.textContent = `${built} of ${rows.length}`;
+    if (!levels.length) return;
+    const built = levels.filter((n) => n <= L).length;
+    if (builtEl) builtEl.textContent = `${built} of ${levels.length}`;
     if (announce && live) {
-      live.textContent = `${r.era}, ${monthYear(r.date)}: ${built} of ${rows.length} projects.`;
+      live.textContent = `${r.era}, ${monthYear(r.date)}: ${built} of ${levels.length} projects.`;
     }
   };
 

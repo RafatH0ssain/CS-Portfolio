@@ -4,7 +4,7 @@ import { profile, revisions } from '../lib/content';
 import { builtCount, currentStop, stopText } from '../lib/derive';
 import Chips from './Chips.astro';
 interface Props {
-  /** The project rows, which is what the "N of M" count counts. */
+  /** Every project, which is what the "N of M" count totals. */
   projects: CollectionEntry<'projects'>[];
 }
 
@@ -21,6 +21,9 @@ const monthYear = (ym: string) => {
 
 const stopsForScript = revisions.map((s) => (s.current ? { ...s, ...stopText(s, profile) } : s));
 const json = JSON.stringify(stopsForScript).replace(/</g, '\\u003c');
+// The level of every project, so the scrubber can keep "N of M" live without a
+// project list in the page.
+const levelsJson = JSON.stringify(projects.map((p) => p.data.level));
 ---
 
 <div class="scrubber">
@@ -53,4 +56,5 @@ const json = JSON.stringify(stopsForScript).replace(/</g, '\\u003c');
 </div>
 
 <script type="application/json" id="revisions-data" is:inline set:html={json} />
+<script type="application/json" id="project-levels" is:inline set:html={levelsJson} />
 <script>import '../scripts/scrubber.ts';</script>

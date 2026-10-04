@@ -25,17 +25,12 @@ figure:
 added:
   - "The payroll path: employees log hours, HR forwards the request, admin marks it paid and the paid rows leave the worksheet."
   - "Sign-in by email, password or Google, plus a server check that signs out anyone whose record says status fired."
-  - "Three role views off one login, because the navbar, profile and home page each switch on the userType read from Mongo."
-  - "Full CRUD on the worksheet collection, the only one with create, read, update and delete routes."
 changed:
   - "Fixed the payment pipeline after a 2025-01-26 commit recorded the database updating while the worksheet entries stayed behind."
   - "Added the fired-user check at login, one day after the firing system itself landed on 2025-01-19."
-  - "Took the admin option out of the registration form on 2025-01-19, so a signup could not pick its own role."
-  - "Deleted the .env and the Firebase service account key from the server repository on 2025-02-25, after both had been committed."
 issues:
   - "The hourly rate is a literal 20 inside the amount-owed query, and the employee record has no rate field, so a pay change means a redeploy."
   - "The README claims JWT authentication for role-based access, but the server has no jsonwebtoken dependency and no auth middleware on any route."
-  - "Neither repository has a test: the server's test script prints 'no test specified' and exits, and the client package.json has no test script."
 decisions:
   - title: "Firebase for sign-in, MongoDB for roles"
     chose: "Firebase Authentication for the password and Google sign-in, MongoDB for userType and status"
@@ -45,10 +40,6 @@ decisions:
     chose: "the client on Firebase Hosting and the server on Vercel, each in its own repository"
     instead: "one repository holding both halves"
     because: "each README links the other repository, and each side has its own deploy commit on 2025-01-29."
-  - title: "Transactions for the money moves"
-    chose: "session.withTransaction around both promotion and payment"
-    instead: "sequential writes across the collections"
-    because: "promotion deletes the employee row, inserts the HR row and updates Users, and payment inserts a request and deletes the worksheet rows, so half of either leaves the collections disagreeing."
 history:
   - { version: "v0.1.0", date: "2025-01", note: "First commits in both repositories: React, Tailwind and daisyUI, plus the Express server and its Mongo connection." }
   - { version: "v0.2.0", date: "2025-01", note: "Firebase email and Google sign-in, user records in Mongo, and the pages split by user type." }
@@ -57,8 +48,6 @@ history:
   - { version: "v0.5.0", date: "2025-02", note: "Client on Firebase Hosting and server on Vercel; READMEs written up, with the API documented." }
 ---
 
-WorkSync is an employee management and payroll application I built on my own: an Express API over MongoDB, and a React client in front of it. An employee logs hours on a worksheet, HR reviews the request and forwards it, admin marks it paid. Firebase Authentication handles the email, password and Google sign-in, so the server never holds a credential. All 60 commits across the two repositories are mine, from 2025-01-14 to 2025-02-25. Payroll data processing ran 30% faster.
+WorkSync is an employee management and payroll application I built on my own: an Express API over MongoDB, and a React client in front of it. An employee logs hours on a worksheet, HR reviews the request and forwards it, admin marks it paid.
 
-The payment path took the most work. Paying writes a payment record and deletes the worksheet rows it paid; promoting someone to HR deletes the employee row, inserts the HR row and updates the shared user record. Both run inside a MongoDB transaction, because a write that stops halfway leaves the collections disagreeing about what an employee is owed, and that is the number payroll is built on.
-
-What I would not ship again: the hourly rate is a literal 20 in the amount-owed query, the API base URL is written straight into the client code with no dev proxy, and the README still advertises JWT authentication that the server never implements. Role checks live in the React components, not on the routes, so the HR and admin pages sit behind the same gate as the employee worksheet.
+Paying writes a payment record and deletes the worksheet rows it paid; promoting someone to HR deletes the employee row, inserts the HR row and updates the shared user record. Both run inside a MongoDB transaction, because a write that stops halfway leaves the collections disagreeing about what an employee is owed, and that is the number payroll is built on.

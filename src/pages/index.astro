@@ -9,7 +9,6 @@ import FeaturedCards from '../components/FeaturedCards.astro';
 import GeneralNotes from '../components/GeneralNotes.astro';
 import Hero from '../components/Hero.astro';
 import Parts from '../components/Parts.astro';
-import PartsList from '../components/PartsList.astro';
 import Revisions from '../components/Revisions.astro';
 import Timeline from '../components/Timeline.astro';
 
@@ -27,7 +26,6 @@ const description = `${profile.bio} ${profile.programLong}, graduating ${profile
 
   <Timeline projects={projects} />
   <Parts projects={projects} />
-  <PartsList projects={projects} />
   <Revisions />
 
   <Certifications />

@@ -1,9 +1,6 @@
 ---
-import { academics, certifications } from '../lib/content';
+import { certifications } from '../lib/content';
 import SheetFoot from './SheetFoot.astro';
-import Inspection from './Inspection.astro';
-
-const showInspect = academics?.show === true;
 ---
 
 { certifications && (
@@ -12,7 +9,6 @@ const showInspect = academics?.show === true;
       <div class="section__title">
         <h2 id="cert-h" class="t-sheet">Certifications</h2>
       </div>
-      <p class="section__intro">Issuer and year for each one.</p>
     </div>
 
     <table class="table">
@@ -41,20 +37,6 @@ const showInspect = academics?.show === true;
       </tbody>
     </table>
 
-    {showInspect && <Inspection />}
-
-    <SheetFoot />
-  </section>
-)}
-
-{showInspect && !certifications && (
-  <section class="section" id="academics" aria-labelledby="acad-h">
-    <div class="section__head">
-      <div class="section__title">
-        <h2 id="acad-h" class="t-sheet">Academics</h2>
-      </div>
-    </div>
-    <Inspection />
     <SheetFoot />
   </section>
 )}

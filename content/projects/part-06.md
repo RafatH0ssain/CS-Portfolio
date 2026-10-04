@@ -24,14 +24,11 @@ figure:
 added:
   - "Six galleries deployed, with a repeatable optimize script anyone can re-run after adding photos."
   - "Static image imports, so every gallery renders a blur placeholder at the right aspect ratio."
-  - "A branded 404 page, cross-origin isolation headers, and text that clears WCAG AA."
 changed:
   - "Found why no full-size photo ever loaded: a quality of 85 against an allow-list of 75, which Next 16 answers with a 400."
   - "Cut lightbox open latency by asking for 2x density and deferring the neighbours' prefetch."
-  - "Reverted the spring-driven redesign back to the pre-redesign lightbox implementation."
 issues:
   - "A CSP nonce is not viable while every route is statically prerendered, so the policy ships without one."
-  - "Any quality passed to next/image must be listed in images.qualities, and an unlisted one is a silent 400."
 decisions:
   - title: "CSS on the page, Framer in the lightbox"
     chose: "plain CSS transitions for page and grid motion, Framer Motion only inside the lightbox"
@@ -41,10 +38,6 @@ decisions:
     chose: "a white pill with a black label, 19.3:1, as the primary action"
     instead: "a saturated accent colour for the primary action"
     because: "on a page that is almost entirely photographs, a UI colour competes with the only thing meant to carry colour."
-  - title: "Mount the lightbox late"
-    chose: "mount only the photo that was clicked, on its first frame"
-    instead: "mounting the whole lightbox with every neighbour up front"
-    because: "the neighbours are prefetched once the photo is on screen, so arrowing does not stall on a cold fetch."
 history:
   - { version: "v0.1.0", date: "2025-12", note: "First commits: base files, the image set, and a landing page that stopped breaking." }
   - { version: "v0.2.0", date: "2026-02", note: "Sports, pets, wildlife and about sections, an image lightbox, and the galleries moved to WebP." }
@@ -52,8 +45,6 @@ history:
   - { version: "v1.0.0", date: "2026-08", note: "System typography and a redesign, then the redesigned lightbox reverted to the earlier one." }
 ---
 
-My own photographs, in six galleries: wildlife, sports, pets, film, brands and event work. It is a portfolio, so the only thing that matters is that the picture arrives and nothing is in the way of it. Hero entrances are CSS animations, above-the-fold images are never hidden behind a scroll reveal, and the lightbox mounts only the photo you tapped on its first frame, with its neighbours prefetched once that one is on screen.
+My own photographs, in six galleries: wildlife, sports, pets, film, brands and event work. Hero entrances are CSS animations, above-the-fold images are never hidden behind a scroll reveal, and the lightbox mounts only the photo you tapped on its first frame, with its neighbours prefetched once that one is on screen.
 
-The palette is monochrome on purpose. On a page that is almost entirely photographs, a saturated interface colour competes with the only thing meant to carry colour, so the primary action is a white pill with a black label at 19.3:1. Chrome is a translucent material that fades in once content scrolls under it and honours the reduced-transparency and contrast settings.
-
-One bug took some finding. The lightbox had been requesting a quality Next 16 does not allow, and Next answers an unlisted quality with a 400 rather than clamping it, so no full-size photo ever loaded and the blur placeholder simply stayed up. A later redesign rebuilt the lightbox around spring-driven gestures, and it was reverted to the earlier implementation.
+The lightbox had been requesting a quality Next 16 does not allow, and Next answers an unlisted quality with a 400 rather than clamping it, so no full-size photo ever loaded and the blur placeholder simply stayed up.

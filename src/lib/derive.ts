@@ -86,14 +86,6 @@ export function numberedDeck(
   return deckProjects(projects).map((p, i) => ({ ...p, n: i + 1, partNo: String(i + 1).padStart(2, '0') }));
 }
 
-/** The number words a count of 3 to 10 needs, so no copy hard-codes a count. */
-const COUNT_WORDS = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
-
-/** "Eight" for 8, and the digit itself for a count outside the map. */
-export function countWord(n: number): string {
-  return COUNT_WORDS[n] ?? String(n);
-}
-
 export interface PartSheetNumber {
   partNo: string;
   sheetNo: number;
