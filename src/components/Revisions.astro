@@ -1,5 +1,5 @@
 ---
-import { dateRange, letteredExperience, previousTitles, promotionTag } from '../lib/derive';
+import { dateRange, letteredExperience, previousTitles } from '../lib/derive';
 import SheetFoot from './SheetFoot.astro';
 ---
 
@@ -24,21 +24,19 @@ import SheetFoot from './SheetFoot.astro';
           <tr class="group"><th colspan="3" scope="colgroup">{group.title}</th></tr>
           {group.orgs.map((org) => {
             const role = org.roles[0];
-            const tag = promotionTag(org.roles.length);
             const heading =
               org.stream === 'awards' ? `${org.org}, ${role.title}` : `${role.title}, ${org.org}`;
             const previous = previousTitles(org);
             return (
               <tr>
                 <td>
-                  <span class:list={['rev-letter', org.latest && 'rev-letter--latest']}>{org.letter}</span>
+                  <span class="rev-letter">{org.letter}</span>
                 </td>
                 <td class="num">{dateRange(org)}</td>
                 <td>
                   <div class="desc">
                     <span class="strong">
                       {heading}
-                      {tag && <span class="tag">{tag}</span>}
                     </span>
                     <span>{role.summary}</span>
                     {previous && <span>{previous}</span>}
