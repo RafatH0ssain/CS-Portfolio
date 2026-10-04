@@ -12,7 +12,7 @@ duration: "About 2 months"
 status: "In production"
 stack: ["React 18", "Vite 6", "Tailwind 4", "Cloudflare Pages", "Workers KV", "OpenAI"]
 links:
-  live: "https://lumen-gallery.pages.dev"
+  live: "https://lumen.rafathossain.com"
   repo: "https://github.com/RafatH0ssain/Lumen-Gallery"
 figure:
   image: "../../src/assets/projects/lumen-gallery.png"
