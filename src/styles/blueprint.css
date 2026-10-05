@@ -254,13 +254,12 @@ ul, ol { padding: 0; list-style: none; }
 .hero__copy { display: flex; flex-direction: column; gap: 12px; min-height: 9.5em; }
 .hero__bio { font-size: clamp(17px, 1.45vw, 19px); line-height: 1.55; color: var(--dim); max-width: 32em; }
 
-/* FIG. 1 is a small decorative figure in the hero's corner on a wide screen;
-   below that it is hidden, because the drawings already carry the idea. */
+/* FIG. 1 sits beside the name on a wide screen; below that it is hidden,
+   because the drawings already carry the idea. */
 .hero .fig-box { display: none; }
-@media (min-width: 1300px) {
-  .hero .fig-box {
-    display: block; position: absolute; top: 40px; right: var(--pad); width: 280px; margin: 0;
-  }
+@media (min-width: 1200px) {
+  .hero__grid { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); column-gap: 56px; align-items: start; }
+  .hero .fig-box { display: block; margin: 12px 0 0; }
   .hero .fig__caption { flex-direction: column; gap: 2px; }
 }
 
