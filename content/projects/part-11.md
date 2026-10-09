@@ -4,7 +4,7 @@ plateTitle: "Launch windows"
 version: "v1.0.0"
 level: 2
 order: 11
-kind: "Systems"
+kind: "Backend"
 summary: "Finds every launch window from Spaceport Nova Scotia for a target orbit, timed to orbital injection, with a scored weather probability on each."
 role: "Designed the API contract, built the FastAPI service and the first frontend"
 team: "Team of 5"

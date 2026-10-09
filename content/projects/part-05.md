@@ -4,7 +4,7 @@ plateTitle: "lazy-catalog"
 version: "v0.2.0"
 level: 2
 order: 5
-kind: "Systems"
+kind: "CLI tool"
 summary: "A zero-dependency catalogue for a film folder, combining TMDB metadata with ffprobe facts read out of the files themselves."
 role: "Wrote the catalogue, the CLI and the no-facts-from-the-model rule"
 team: "Solo build"

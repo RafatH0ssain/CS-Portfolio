@@ -4,7 +4,7 @@ plateTitle: "Canon scanners"
 version: "v1.0.0"
 level: 2
 order: 1
-kind: "Systems"
+kind: "Desktop app"
 summary: "Two desktop apps that turn a Canon EOS R7 into a film scanner, one over USB at 59.79 fps and one over Wi-Fi at 3.98."
 role: "Built both transports, the film inversion and the packaged desktop app"
 team: "Solo build"
